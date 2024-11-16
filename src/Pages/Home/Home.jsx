@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import Chart from 'react-apexcharts';
 import Topbar from '../../Components/Topbar/Topbar'
 import Breadcrumb from '../../Components/breadcrumb/Breadcrumb'
 import Widget from '../../Components/widgets/widget'
@@ -31,6 +32,36 @@ const Home = () => {
             
           }
     ]
+
+    const multiLineChartOptions = {
+      chart: {
+        type: 'line',
+        height: 400,
+      },
+      series: [
+        {
+          name: 'Series 1',
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        },
+        {
+          name: 'Series 2',
+          data: [23, 12, 54, 61, 32, 56, 81, 19, 72],
+        },
+      ],
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      },
+    };
+  
+    const donutChartOptions = {
+      chart: {
+        type: 'donut',
+        height: 345,
+      },
+      labels: ['Canada', 'USA', 'London'],
+      series: [44, 55, 13],
+      colors: ['#4CAF50', '#2196F3', '#9E9E9E'],
+    };
   return (
     <>
       <div class="content-page">
@@ -55,54 +86,58 @@ const Home = () => {
                 })}
                 {/* <!-- Column --> */}
               </div>
-              <div class="row">
-                <div class="col-md-12 col-lg-12 col-xl-8">
-                  <div class="card m-b-30">
-                    <div class="card-body">
-                      <h5 class="header-title pb-3 mt-0">Overview</h5>
-                      <div id="multi-line-chart" style={{height: "400px"}}></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 col-lg-12 col-xl-4">
-                  <div class="card m-b-30">
-                    <div class="card-body">
-                      <a href="" class="btn btn-primary btn-sm float-right"
-                        >More Info</a
-                      >
-                      <h5 class="header-title mt-0 pb-3">Revenue By Country</h5>
+              <div className="row">
+      <div className="col-md-12 col-lg-12 col-xl-8">
+        <div className="card m-b-30">
+          <div className="card-body">
+            <h5 className="header-title pb-3 mt-0">Overview</h5>
+            <Chart
+              options={multiLineChartOptions}
+              series={multiLineChartOptions.series}
+              type="line"
+              height="400"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="col-md-12 col-lg-12 col-xl-4">
+        <div className="card m-b-30">
+          <div className="card-body">
+            {/* <a href="#" className="btn btn-primary btn-sm float-right">
+              More Info
+            </a> */}
+            <h5 className="header-title mt-0 pb-3">Revenue By Country</h5>
 
-                      <ul class="list-unstyled list-inline text-center">
-                        <li class="list-inline-item">
-                          <p>
-                            <i
-                              class="mdi mdi-checkbox-blank-circle text-primary mr-2"
-                            ></i
-                            >Canada
-                          </p>
-                        </li>
-                        <li class="list-inline-item">
-                          <p>
-                            <i
-                              class="mdi mdi-checkbox-blank-circle text-info mr-2"
-                            ></i
-                            >USA
-                          </p>
-                        </li>
-                        <li class="list-inline-item">
-                          <p>
-                            <i
-                              class="mdi mdi-checkbox-blank-circle text-greylight mr-2"
-                            ></i
-                            >London
-                          </p>
-                        </li>
-                      </ul>
-                      <div id="morris-donut-chart" style={{height: "345px"}}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <ul className="list-unstyled list-inline text-center">
+              <li className="list-inline-item">
+                <p>
+                  <i className="mdi mdi-checkbox-blank-circle text-primary mr-2"></i>
+                  Canada
+                </p>
+              </li>
+              <li className="list-inline-item">
+                <p>
+                  <i className="mdi mdi-checkbox-blank-circle text-info mr-2"></i>
+                  USA
+                </p>
+              </li>
+              <li className="list-inline-item">
+                <p>
+                  <i className="mdi mdi-checkbox-blank-circle text-greylight mr-2"></i>
+                  London
+                </p>
+              </li>
+            </ul>
+            <Chart
+              options={donutChartOptions}
+              series={donutChartOptions.series}
+              type="donut"
+              height="345"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
               <div class="row">
                 <div class="col-md-12 col-lg-6 col-xl-4">
@@ -295,207 +330,97 @@ const Home = () => {
               <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-8 align-self-center">
                   <div class="card bg-white m-b-30">
-                    <div class="card-body new-user">
-                      <h5 class="header-title mb-4 mt-0">Members Profiles</h5>
-                      <div class="table-responsive">
-                        <table class="table table-hover">
-                          <thead>
-                            <tr>
-                              <th class="border-top-0" style={{width: "60px"}}>
-                                Member
-                              </th>
-                              <th class="border-top-0">Name</th>
-                              <th class="border-top-0">Country</th>
-                              <th class="border-top-0">Earnings</th>
-                              <th class="border-top-0">Sales</th>
-                              <th class="border-top-0">Reviews</th>
-                              <th class="border-top-0">Progress</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <img
-                                  class="rounded-circle"
-                                  src="assets/images/users/avatar-2.jpg"
-                                  alt="user"
-                                  width="40"
-                                />
-                              </td>
-                              <td>
-                                <a href="javascript:void(0);">Ruby T. Curd</a>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/images/flags/us_flag.jpg"
-                                  alt=""
-                                  style={{width: "30px"}}
-                                />
-                              </td>
-                              <td>$100</td>
-                              <td>10</td>
-                              <td>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star-half text-warning"></i>
-                                <i
-                                  class="mdi mdi-star-outline text-warning"
-                                ></i>
-                              </td>
-                              <td>
-                                <div class="progress" style={{height: "8px"}}>
-                                  <div
-                                    class="progress-bar bg-primary"
-                                    role="progressbar"
-                                    aria-valuenow="94"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style={{width: "94%"}}
-                                   
-                                  ></div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img
-                                  class="rounded-circle"
-                                  src="assets/images/users/avatar-3.jpg"
-                                  alt="user"
-                                  width="40"
-                                />
-                              </td>
-                              <td>
-                                <a href="javascript:void(0);"
-                                  >William A. Johnson</a
-                                >
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/images/flags/french_flag.jpg"
-                                  alt=""
-                                  style={{width: "30px"}}
-                                />
-                              </td>
-                              <td>$490</td>
-                              <td>24</td>
-                              <td>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star-half text-warning"></i>
-                                <i
-                                  class="mdi mdi-star-outline text-warning"
-                                ></i>
-                              </td>
-                              <td>
-                                <div class="progress"  style={{height: "8px"}}>
-                                  <div
-                                    class="progress-bar bg-success"
-                                    role="progressbar"
-                                    aria-valuenow="38"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style={{width: "38%"}}
-                                  ></div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img
-                                  class="rounded-circle"
-                                  src="assets/images/users/avatar-4.jpg"
-                                  alt="user"
-                                  width="40"
-                                />
-                              </td>
-                              <td>
-                                <a href="javascript:void(0);">Bobby M. Gray</a>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/images/flags/spain_flag.jpg"
-                                  alt=""
-                                  style={{width: "30px"}}
-                                />
-                              </td>
-                              <td>$380</td>
-                              <td>19</td>
-                              <td>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star-half text-warning"></i>
-                                <i
-                                  class="mdi mdi-star-outline text-warning"
-                                ></i>
-                              </td>
-                              <td>
-                                <div class="progress"  style={{height: "8px"}} >
-                                  <div
-                                    class="progress-bar bg-dark"
-                                    role="progressbar"
-                                    aria-valuenow="65"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style={{width: "65%"}}
-                                  ></div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <img
-                                  class="rounded-circle"
-                                  src="assets/images/users/avatar-5.jpg"
-                                  alt="user"
-                                  width="40"
-                                />
-                              </td>
-                              <td>
-                                <a href="javascript:void(0);"
-                                  >Robert N. Carlile</a
-                                >
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/images/flags/russia_flag.jpg"
-                                  alt=""
-                                  style={{width: "30px"}}
-                                 
-                                />
-                              </td>
-                              <td>$450</td>
-                              <td>30</td>
-                              <td>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star text-warning"></i>
-                                <i class="mdi mdi-star-half text-warning"></i>
-                                <i
-                                  class="mdi mdi-star-outline text-warning"
-                                ></i>
-                              </td>
-                              <td>
-                                <div class="progress" style={{height: "8px"}}>
-                                  <div
-                                    class="progress-bar bg-danger"
-                                    role="progressbar"
-                                    aria-valuenow="88"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style={{width: "88%"}}
-                                  ></div>
-                                </div>
-                              </td>
-                            </tr>
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+                  <div className="card-body best-rated-books">
+  <h5 className="header-title mb-4 mt-0">Top-Rated Books</h5>
+  <div className="table-responsive">
+    <table className="table table-hover">
+      <thead>
+        <tr>
+          <th className="border-top-0" style={{ width: "60px" }}>Cover</th>
+          <th className="border-top-0">Title</th>
+          <th className="border-top-0">Author</th>
+          <th className="border-top-0">Genre</th>
+          <th className="border-top-0">Price</th>
+          <th className="border-top-0">Sales</th>
+          <th className="border-top-0">Rating</th>
+          <th className="border-top-0">Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img
+              className="rounded"
+              src="/assets/images/widgets/wather.jpg"
+              alt="book cover"
+              width="40"
+            />
+          </td>
+          <td><a href="#">The Great Gatsby</a></td>
+          <td>F. Scott Fitzgerald</td>
+          <td>Classic</td>
+          <td>$10</td>
+          <td>1,000</td>
+          <td>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star-half text-warning"></i>
+            <i className="mdi mdi-star-outline text-warning"></i>
+          </td>
+          <td>
+            <div className="progress" style={{ height: "8px" }}>
+              <div
+                className="progress-bar bg-primary"
+                role="progressbar"
+                aria-valuenow="94"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={{ width: "94%" }}
+              ></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              className="rounded"
+              src="/assets/images/widgets/wather.jpg"
+              alt="book cover"
+              width="40"
+            />
+          </td>
+          <td><a href="#">To Kill a Mockingbird</a></td>
+          <td>Harper Lee</td>
+          <td>Drama</td>
+          <td>$15</td>
+          <td>750</td>
+          <td>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star text-warning"></i>
+            <i className="mdi mdi-star-half text-warning"></i>
+          </td>
+          <td>
+            <div className="progress" style={{ height: "8px" }}>
+              <div
+                className="progress-bar bg-success"
+                role="progressbar"
+                aria-valuenow="88"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={{ width: "88%" }}
+              ></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
                   </div>
                 </div>
                 <div class="col-md-12 col-lg-12 col-xl-4">

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Topbar from "../../Components/Topbar/Topbar";
 import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
 import Tables from "../../Components/Tables/Tables";
+import Modal from "../../Components/Modal/Modal";
+import ModalEdit from "../../Components/Modal/ModalEdit";
 
 const ALLBooks = () => {
   const [books, setBooks] = useState([
@@ -34,12 +36,15 @@ const ALLBooks = () => {
     { label: "Published Date", field: "publishedDate" },
     { label: "Price", field: "price" },
   ];
+  
+  const [currentbook,setcurrentbook]=useState(null)
   const handleAddBook = () => {
     // Logic for adding a new book
   };
 
   const handleEditBook = (book) => {
     // Logic for editing the book
+    setcurrentbook(book)
   };
 
   const handleDeleteBook = (book) => {
@@ -70,6 +75,21 @@ const ALLBooks = () => {
           </div>
         </div>
       </div>
+      {/* return modal component  */}
+     
+      <Modal
+     actionType="Add"
+     entityName="Book"
+     fields={booksColumns}
+     onSave={handleAddBook}
+    />
+     <ModalEdit
+  actionType="Edit"
+  entityName="Book"
+  fields={booksColumns}
+  initialData={currentbook}
+  onSave={handleEditBook}
+/>
     </>
   );
 };

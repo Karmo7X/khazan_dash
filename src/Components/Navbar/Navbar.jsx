@@ -55,7 +55,22 @@ const Navbar = () => {
                     </span>
                 </Link>
               </li>
-
+              <li>
+                <Link to="/category" class="waves-effect">
+                  <i class="mdi mdi-view-list"></i>
+                  <span>
+                    Category
+                    </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/users" class="waves-effect">
+                  <i class="mdi mdi-account-multiple"></i>
+                  <span>
+                    Users
+                    </span>
+                </Link>
+              </li>
             </ul>
           </div>
           <div class="clearfix"></div>

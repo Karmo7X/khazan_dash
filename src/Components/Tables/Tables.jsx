@@ -1,4 +1,6 @@
 import React from 'react'
+import Modal from '../Modal/Modal';
+import ModalEdit from '../Modal/ModalEdit';
 
 const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete }) => {
     return (
@@ -14,7 +16,8 @@ const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete }) => {
   
                 {/* CRUD Action Buttons */}
                 <div className="mb-3">
-                  <button type="button" className="btn btn-primary" onClick={onAdd}>Add {entityType}</button>
+                  <button type="button" className="btn btn-primary" data-animation="rubberBand" data-toggle="modal" data-target="#exampleModalLong-1"  onClick={onAdd}>Add {entityType}</button>
+                  
                 </div>
   
                 {/* Dynamic DataTable */}
@@ -34,9 +37,9 @@ const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete }) => {
                           <td key={idx}>{item[col.field]}</td>
                         ))}
                         <td className="d-flex align-items-center justify-content-center" style={{ gap: '15px' }}>
-                          <button className="btn btn-sm btn-primary" onClick={() => onEdit(item)}>Edit</button>
+                          <button className="btn btn-sm btn-primary" data-animation="rubberBand" data-toggle="modal" data-target="#edit_modal" onClick={() => onEdit(item)}>Edit</button>
                           <button className="btn btn-sm btn-danger" onClick={() => onDelete(item)}>Delete</button>
-                        </td>
+                        </td> 
                       </tr>
                     ))}
                   </tbody>
@@ -45,6 +48,8 @@ const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete }) => {
             </div>
           </div>
         </div>
+
+        
       </>
     );
   };
