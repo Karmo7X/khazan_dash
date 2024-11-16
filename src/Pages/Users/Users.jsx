@@ -4,22 +4,23 @@ import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
 import Tables from "../../Components/Tables/Tables";
 import Modal from "../../Components/Modal/Modal";
 import ModalEdit from "../../Components/Modal/ModalEdit";
+import Nofiticate from "../../Components/Modal/Nofiticate";
 
 const Users = () => {
   const [userData, setuserData] = useState(
     [
       { name: "John Doe", email: "john@example.com", role: "Admin" },
       { name: "Jane Smith", email: "jane@example.com", role: "User" },
-      { name: "Emily Johnson", email: "emily@example.com", role: "Authour" },
+      { name: "Emily Johnson", email: "emily@example.com", role: "Author" },
       { name: "John Doe", email: "john@example.com", role: "Admin" },
       { name: "Jane Smith", email: "jane@example.com", role: "User" },
-      { name: "Emily Johnson", email: "emily@example.com", role: "Authour" },
+      { name: "Emily Johnson", email: "emily@example.com", role: "Author" },
       { name: "John Doe", email: "john@example.com", role: "Admin" },
       { name: "Jane Smith", email: "jane@example.com", role: "User" },
-      { name: "Emily Johnson", email: "emily@example.com", role: "Authour" },
+      { name: "Emily Johnson", email: "emily@example.com", role: "Author" },
       { name: "John Doe", email: "john@example.com", role: "Admin" },
       { name: "Jane Smith", email: "jane@example.com", role: "User" },
-      { name: "Emily Johnson", email: "emily@example.com", role: "Authour" },
+      { name: "Emily Johnson", email: "emily@example.com", role: "Author" },
     ]
   );
   const userColumns = [
@@ -42,6 +43,11 @@ const Users = () => {
   const handleDeleteUser = (user) => {
     setuserData(userData.filter((b) => b !== user));
   };
+
+  const handleSendNotification = (notificationData) => {
+    console.log("Notification Sent:", notificationData);
+    // Perform the notification action (e.g., API call to send notification)
+  };
   return (
     <>
       <div class="content-page">
@@ -62,7 +68,14 @@ const Users = () => {
                 onAdd={handleAddUser}
                 onEdit={handleEditUser}
                 onDelete={handleDeleteUser}
+                onNotify={handleSendNotification}
               />
+               <Nofiticate
+        actionType="Send"
+        entityName="Notification"
+        users={userData.filter(user => user.role === "Admin")}
+        onNotify={handleSendNotification}
+      />
               <Tables
                 entityType="Users"
                 data={userData.filter(user => user.role === "User")}
@@ -70,15 +83,29 @@ const Users = () => {
                 onAdd={handleAddUser}
                 onEdit={handleEditUser}
                 onDelete={handleDeleteUser}
+                onNotify={handleSendNotification}
               />
+               <Nofiticate
+        actionType="Send"
+        entityName="Notification"
+        users={userData.filter(user => user.role === "User")}
+        onNotify={handleSendNotification}
+      />
                <Tables
-                entityType="Authour"
-                data={userData.filter(user => user.role === "Authour")}
+                entityType="Author"
+                data={userData.filter(user => user.role === "Author")}
                 columns={userColumns}
                 onAdd={handleAddUser}
                 onEdit={handleEditUser}
                 onDelete={handleDeleteUser}
+                onNotify={handleSendNotification}
               />
+               <Nofiticate
+        actionType="Send"
+        entityName="Notification"
+        users={userData.filter(user => user.role === "Author")}
+        onNotify={handleSendNotification}
+      />
             </div>
           </div>
         </div>

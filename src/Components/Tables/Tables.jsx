@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from '../Modal/Modal';
 import ModalEdit from '../Modal/ModalEdit';
 
-const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete }) => {
+const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete,onNotify }) => {
     return (
       <>
         <div className="row">
@@ -38,6 +38,11 @@ const Tables = ({ entityType, data, columns, onAdd, onEdit, onDelete }) => {
                         ))}
                         <td className="d-flex align-items-center justify-content-center" style={{ gap: '15px' }}>
                           <button className="btn btn-sm btn-primary" data-animation="rubberBand" data-toggle="modal" data-target="#edit_modal" onClick={() => onEdit(item)}>Edit</button>
+                          {['users', 'admin', 'author'].includes(entityType.toLowerCase())&& (<>
+                            <button className="btn btn-sm btn-info" data-animation="rubberBand" data-toggle="modal" data-target="#notify_modal" onClick={()=>onNotify(item)}>notificate</button>
+                          
+                          </>)}
+                        
                           <button className="btn btn-sm btn-danger" onClick={() => onDelete(item)}>Delete</button>
                         </td> 
                       </tr>

@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Loader from "./Components/loader/loader";
 
-
 // auth routes
 const Login = lazy(() => import ("./Pages/auth/login"));
 const Forgetpass = lazy(() => import ("./Pages/auth/forgetpass"));
@@ -17,7 +16,10 @@ const ALLBooks = lazy(() => import ("./Pages/Books/ALLBooks"));
 const Users = lazy(() => import ("./Pages/Users/Users"));
 const Category = lazy(() => import ("./Pages/Category/Category"));
 const Profile = lazy(() => import ("./Pages/Profile/Profile"));
-
+const Subscription = lazy(() => import ("./Pages/Subscription/Subscription"));
+const Privacy = lazy(() => import ("./Pages/Privacy/Privacy"));
+const TermsAndConditions = lazy(() => import ("./Pages/TermsAndConditions/TermsAndConditions"));
+const BannerManagement = lazy(() => import ("./Pages/BannerManagement/BannerManagement"));
 function App() {
   return (
     <>
@@ -98,7 +100,40 @@ function App() {
                 </Suspense>
               }
             />
+            <Route
+              path="subscription"
+              element={
+                <Suspense fallback={<Loader/>}>
+                  <Subscription />
+                </Suspense>
+              }
+            />
+            <Route
+              path="privacy"
+              element={
+                <Suspense fallback={<Loader/>}>
+                  <Privacy />
+                </Suspense>
+              }
+            />
+             <Route
+              path="termsAndconditions"
+              element={
+                <Suspense fallback={<Loader/>}>
+                  <TermsAndConditions />
+                </Suspense>
+              }
+            />
+             <Route
+              path="bannermanagement"
+              element={
+                <Suspense fallback={<Loader/>}>
+                  <BannerManagement />
+                </Suspense>
+              }
+            />
           </Route>
+         
           
         </Routes>
       </BrowserRouter>

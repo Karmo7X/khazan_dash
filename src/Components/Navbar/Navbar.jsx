@@ -38,7 +38,14 @@ const Navbar = () => {
                     </span>
                 </Link>
               </li>
-
+              <li>
+                <Link to="/bannermanagement" class="waves-effect">
+                  <i class="mdi mdi-image"></i>
+                  <span>
+                  BannerManagement
+                    </span>
+                </Link>
+              </li>
               <li>
                 <Link to="/books" class="waves-effect">
                   <i class="mdi mdi-book-open"></i>
@@ -68,6 +75,30 @@ const Navbar = () => {
                   <i class="mdi mdi-account-multiple"></i>
                   <span>
                     Users
+                    </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/subscription" class="waves-effect">
+                  <i class="mdi mdi-crown"></i>
+                  <span>
+                  Subscription
+                    </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" class="waves-effect">
+                  <i class="mdi mdi-lock"></i>
+                  <span>
+                  Privacy
+                    </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/termsAndconditions" class="waves-effect">
+                  <i class="mdi mdi-file-document"></i>
+                  <span>
+                  Terms And Conditions
                     </span>
                 </Link>
               </li>
