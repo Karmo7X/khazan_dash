@@ -1,0 +1,190 @@
+{
+  "nav": {
+    "welcome": "أهلاً وسهلاً",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "languages": {
+      "en": "الإنجليزية",
+      "ar": "العربية",
+      "zh": "الصينية",
+      "id": "الإندونيسية"
+    }
+  },
+  "login": {
+    "welcomeBack": "أهلاً وسهلاً مجددًا!",
+    "phoneNumber": "رقم الهاتف",
+    "enterPassword": "أدخل كلمة المرور",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "login": "تسجيل الدخول",
+    "createAccount": "إنشاء حساب",
+    "or": "أو",
+    "continueWithGoogle": "متابعة باستخدام جوجل",
+    "continueWithFacebook": "متابعة باستخدام فيسبوك",
+    "acceptTerms": "أوافق على الشروط والأحكام"
+  },
+  "profile": {
+    "book_request": "طلب كتاب غير موجود",
+    "author_registration": "طلب تسجيل مؤلف",
+    "logout": "تسجيل الخروج",
+    "gender": {
+      "label": "اختر الجنس",
+      "male": "ذكر",
+      "female": "أنثى"
+    },
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "أدخل بريدك الإلكتروني"
+    },
+    "account_settings": "إعدادات الحساب",
+    "silver_plan": "انت علي الخطه الفضيه",
+    "gold_plan": "انت علي الخطه الذهبي",
+    "diamond_plan": "انت علي الخطه الماسي",
+    "upgrade_account": "ترقيه حسابي",
+    "my_library": "مكتبتي",
+    "my_account": "حسابي",
+
+    "changePassword": "تغيير كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "profile": {
+      "upgrade_account": "ترقية الحساب",
+      "edit_profile": "تعديل الحساب",
+      "on_subscription": "انت علي الاشتراك"
+    },
+    "address": {
+      "title": "العناوين",
+      "primaryAddress": "العنوان الأساسي",
+      "setDefault": "تحديد كعنوان أساسي",
+      "addNew": "إضافة عنوان جديد",
+      "placeholder": "العنوان",
+      "street": "الشارع",
+      "city": "المدينة",
+      "buildingNumber": "رقم المبنى",
+      "deleteAddress": {
+        "title": "هل أنت متأكد؟",
+        "description": "سيتم حذف العنوان نهائيًا. هل تريد المتابعة؟",
+        "close": "إغلاق",
+        "confirm": "نعم، احذفه"
+      }
+    },
+    "form": {
+      "name": "الاسم",
+      "phone_number": "رقم الهاتف",
+      "date_of_birth": "تاريخ الميلاد",
+      "city": "المدينة",
+      "categories": "الفئات المهتم بها",
+      "placeholder": "......"
+    },
+    "register_book": {
+      "form_title": "طلب كتاب",
+      "fields": {
+        "book_title": "عنوان الكتاب",
+        "author_name": "اسم المؤلف / المحقق",
+        "publisher": "دار النشر",
+        "library": "دار الكتب",
+        "publication_date": "تاريخ النشر",
+        "upload_image": "تحميل صوره"
+      },
+      "submit_button": "ارسال الطلب"
+    },
+    "register_author": {
+      "form_title": "تسجيل مؤلف جديد",
+      "fields": {
+        "author_name": "اسم المؤلف / المحقق",
+        "gender": "النوع",
+        "birth_date": "الميلاد",
+        "previous_works": "اعمال سابقه",
+        "notes": "ملاحظات"
+      },
+      "submit_button": "ارسال الطلب"
+    },
+    "subscription": {
+      "creative_title": "خطة الاشتراك الحصرية",
+      "title": "باقتي"
+    },
+    "order": {
+      "title": "طلباتي",
+      "total": "إجمالي الطلب",
+      "amount": "400.00 ريال",
+      "date": "31 أغسطس 2023",
+      "orderId": "رقم الطلب",
+      "orderNumber": "898522",
+      "product": "الدواء والدواء لابن القيم",
+      "coupon": "كوبون",
+      "delivery": "توصيل",
+      "more": "المزيد"
+    }
+  },
+  "notfoundmessage": {
+    "notFound": "لايوجد بيانات حاليا"
+  },
+  "validation_message": {
+    "name": {
+      "required": "الاسم مطلوب",
+      "minLength": "يجب أن يتكون الاسم من 3 أحرف على الأقل",
+      "maxLength": "يجب ألا يتجاوز الاسم 50 حرفًا"
+    },
+    "email": {
+      "required": "البريد الإلكتروني مطلوب",
+      "invalid": "البريد الإلكتروني غير صالح"
+    },
+    "address": {
+      "required": "العنوان مطلوب",
+      "minLength": "يجب أن يتكون العنوان من 5 أحرف على الأقل"
+    },
+    "gender": {
+      "required": "الجنس مطلوب"
+    },
+    "password": {
+      "required": "كلمة المرور مطلوبة",
+      "minLength": "كلمة المرور يجب أن تكون على الأقل 8 أحرف",
+      "maxLength": "كلمة المرور يجب أن لا تتجاوز 20 حرف"
+    },
+    "phone": {
+      "required": "رقم الهاتف مطلوب",
+      "minLength": "رقم الهاتف يجب أن يكون على الأقل 10 أرقام",
+      "maxLength": "رقم الهاتف يجب أن لا يتجاوز 15 رقم",
+      "pattern": "رقم الهاتف يجب أن يكون أرقام فقط"
+    },
+    "passwordConfirm": {
+      "required": "تأكيد كلمة المرور مطلوب",
+      "oneOf": "كلمة المرور وتأكيد كلمة المرور يجب أن يتطابقان"
+    },
+
+    "street": {
+      "required": "اسم الشارع مطلوب.",
+      "minLength": "يجب أن يكون اسم الشارع 3 أحرف على الأقل.",
+      "maxLength": "لا يمكن أن يتجاوز اسم الشارع 100 حرف.",
+      "pattern": "يحتوي اسم الشارع على أحرف غير صالحة."
+    },
+    "city": {
+      "required": "اسم المدينة مطلوب.",
+      "minLength": "يجب أن يكون اسم المدينة حرفين على الأقل.",
+      "maxLength": "لا يمكن أن يتجاوز اسم المدينة 50 حرفًا.",
+      "pattern": "يحتوي اسم المدينة على أحرف غير صالحة."
+    },
+    "buildNumber": {
+      "required": "رقم المبنى مطلوب.",
+      "pattern": "يجب أن يحتوي رقم المبنى على أرقام فقط."
+    },
+    "birthday": {
+      "required": "تاريخ الميلاد مطلوب",
+      "max": "تاريخ الميلاد يجب أن يكون في الماضي",
+      "minAge": "يجب أن يكون العمر 12 سنة على الأقل."
+    },
+    "interestedCategory": {
+      "required": "الفئات المهتم بها مطلوبة"
+    },
+    "genderRequired": {
+      "required": "النوع مطلوب"
+    },
+    "register_book": {
+      "title_required": "يجب أن يكون عنوان الكتاب 3 أحرف على الأقل.",
+      "author_invalid": "يجب أن يحتوي اسم المؤلف على أحرف ومسافات فقط.",
+      "publisher_invalid": "يجب أن يحتوي اسم الناشر على أحرف ومسافات فقط.",
+      "date_invalid": " التاريخ غير صحيح.  ",
+      "image_invalid": "تنسيق الصورة غير صحيح. استخدم .jpg أو .jpeg أو .png أو .gif.",
+      "image_required": "الصورة الشخصية مطلوبة"
+    }
+  }
+}

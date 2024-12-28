@@ -66,7 +66,7 @@ const Nofiticate = ({ users, actionType, entityName, onNotify }) => {
               </div>
               <div className="modal-body">
                 {/* User selection */}
-                {/* <div className="form-group">
+                <div className="form-group">
                   <label>Select User</label>
                   <select
                     className="form-control"
@@ -80,7 +80,7 @@ const Nofiticate = ({ users, actionType, entityName, onNotify }) => {
                       </option>
                     ))}
                   </select>
-                </div> */}
+                </div>
   
                 {/* Title input */}
                 <div className="form-group">
