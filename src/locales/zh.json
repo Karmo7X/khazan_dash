@@ -3,11 +3,46 @@
     "welcome": "欢迎",
     "profile": "个人资料",
     "logout": "登出",
+    "dashboard": "仪表板",
     "languages": {
       "en": "英语",
       "ar": "阿拉伯语",
       "zh": "中文",
       "id": "印尼语"
+    },
+    "menu": {
+      "users": {
+        "title": "用户",
+        "admins": "管理员",
+        "authors": "作者",
+        "all": "所有用户",
+        "create": "创建用户",
+        "update": "更新用户"
+      },
+      "banner_management": {
+        "title": "横幅管理",
+        "create": "创建横幅",
+        "update": "更新横幅"
+      },
+      "books": {
+        "title": "书籍",
+        "create": "创建书籍",
+        "update": "更新书籍"
+      },
+      "orders": {
+        "title": "订单",
+        "create": "创建订单"
+      },
+      "category": {
+        "title": "类别",
+        "create": "创建类别",
+        "update": "更新类别"
+      },
+      "subscription": {
+        "title": "订阅",
+        "create": "创建订阅",
+        "update": "更新订阅"
+      }
     }
   },
   "login": {
@@ -22,6 +57,26 @@
     "continueWithGoogle": "使用谷歌继续",
     "continueWithFacebook": "使用Facebook继续",
     "acceptTerms": "我接受您的条款和条件"
+  }, 
+  "register": {
+    "createAccount": "创建账户!",
+    "userName": "用户名",
+    "phoneNumber": "电话号码",
+    "dateOfBirth": "出生日期",
+    "categories": "感兴趣的类别",
+    "city": "城市",
+    "rememberMe": "记住我",
+    "forgotPassword": "忘记密码?",
+    "createAccountBtn": "创建账户",
+    "loginBtn": "登录",
+    "or": "或者",
+    "continueWithGoogle": "使用谷歌继续",
+    "continueWithFacebook": "使用Facebook继续",
+    "acceptTerms": "我接受条款和条件",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "submit": "提交"
+    
   },
   "profile": {
     "book_request": "请求不可用的书",
@@ -184,5 +239,131 @@
       "image_invalid": "图片格式无效。请使用 .jpg、.jpeg、.png 或 .gif。",
       "image_required": "个人头像是必需的"
     }
+  },
+  "table":{
+    "management": "管理",
+    "add": "添加",
+    "edit": "编辑",
+    "delete": "删除",
+    "notify": "通知",
+    "actions": "操作",
+    "crud_instruction": "使用下面的按钮管理 {{entityType}}。您可以根据需要添加、编辑或删除条目。",
+    "category":{
+      "category_id": "类别ID",
+      "title": "标题",
+      "image": "图片"
+    },
+    "close": "关闭",
+  "save_changes": "保存更改"
+    
+  },
+  "validation": {
+    "arTitle": {
+      "required": "阿拉伯语标题是必需的。",
+      "minLength": "阿拉伯语标题必须至少3个字符。"
+    },
+    "enTitle": {
+      "required": "英语标题是必需的。",
+      "minLength": "英语标题必须至少3个字符。"
+    },
+    "idTitle": {
+      "required": "印尼语标题是必需的。",
+      "minLength": "印尼语标题必须至少3个字符。"
+    },
+    "zhTitle": {
+      "required": "中文标题是必需的。",
+      "minLength": "中文标题必须至少3个字符。"
+    },
+    "arDescription": {
+      "required": "阿拉伯语描述为必填项。"
+    },
+    "enDescription": {
+      "required": "英文描述为必填项。"
+    },
+    "idDescription": {
+      "required": "印尼语描述为必填项。"
+    },
+    "zhDescription": {
+      "required": "中文描述为必填项。"
+    },
+    "pricePdf": {
+      "required": "PDF 价格为必填项。",
+      "invalid": "PDF 价格必须为正数。"
+    },
+    "category": {
+      "required": "类别为必填项。"
+    },
+    "isAvailablePdf": {
+      "required": "PDF 可用性为必填项。"
+    },
+    "isAvailablePaper": {
+      "required": "纸质版可用性为必填项。"
+    },
+    "author": {
+      "required": "作者名称为必填项。"
+    },
+    "pricePaper": {
+      "required": "纸质版价格为必填项。",
+      "invalid": "纸质版价格必须为正数。"
+    },
+    "stock": {
+      "required": "库存为必填项。",
+      "invalid": "库存必须为非负数。"
+    }
+  },
+  "delete": {
+    "title": "您确定吗？",
+    "description": "此操作将永久删除。您想继续吗？",
+    "close": "关闭",
+    "confirm": "是的，删除它"
+  },
+  "user":{
+    "users": "用户",
+  "name": "名称",
+  "email": "电子邮件",
+  "role": "角色",
+  "addUser": "添加用户",
+  "editUser": "编辑用户",
+  "deleteUser": "删除用户",
+  "sendNotification": "发送通知"
+  },
+  "admin": {
+    "pageTitle": "行政",
+    "addUser": "添加新用户",
+    "editUser": "编辑用户",
+    "deleteUser": "删除用户",
+    "table": {
+      "id": "ID",
+      "name": "姓名",
+      "email": "电子邮件",
+      "phone": "电话",
+      "role": "角色",
+      "image": "图片"
+    }
+  },
+  "books":{
+    "Books": "书籍",
+    "Title": "标题",
+    "Author": "作者",
+    "Category": "类别",
+    "Published Date": "出版日期",
+    "Price(PDF)": "价格 (PDF)",
+    "Price(Paper)": "价格 (纸质)",
+    "AvailableasPDF": "可用作 PDF",
+    "AvailableasPaper": "可用作纸质版",
+    "NumberofSales(PDF)": "销售数量 (PDF)",
+    "NumberofSales(Paper)": "销售数量 (纸质)",
+    "form": {
+      "Title": "标题",
+      "Description": "描述",
+      "Price PDF": "PDF价格",
+      "Category": "类别",
+      "Availability PDF": "可用性 (PDF)",
+      "Availability Paper": "可用性 (纸质)",
+      "Author": "作者",
+      "Price Paper": "纸质价格",
+      "Stock": "库存"
+    }
   }
+  
 }

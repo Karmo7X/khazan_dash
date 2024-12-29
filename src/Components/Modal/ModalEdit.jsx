@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
-
+import { useTranslation } from "react-i18next";
 const ModalEdit = ({ actionType, entityName, fields, initialData, onSave }) => {
-  const [formData, setFormData] = useState({});
+  const { t, i18n } = useTranslation();
+  const [formData, setFormData] = useState({
+    arTitle:'',
+    enTitle:'',
+    idTitle:'',
+    zhTitle:''
+  });
 
   // Populate formData with initial data on mount or when initialData changes
   useEffect(() => {
@@ -50,17 +56,28 @@ const ModalEdit = ({ actionType, entityName, fields, initialData, onSave }) => {
             <div className="modal-body">
               {/* Dynamic form fields */}
               {fields.map((field, index) => (
-                <div key={index} className="form-group">
-                  <label>{field.label}</label>
+              <div key={index} className="form-group">
+                <label>{t[field.label]}</label>
+
+                {field.type === "file" || field.field === "image" ? (
+                  <input
+                    type="file"
+                    className="form-control"
+                    placeholder=''
+                    value={formData[field.image]}
+                    onChange={(e) => handleChange(e, field.field)}
+                  />
+                ) : (
                   <input
                     type="text"
                     className="form-control"
                     value={formData[field.field] || ""}
-                    onChange={(e) => handleChange(e, field.name)}
-                    placeholder={`Enter ${field.label.toLowerCase()}`}
+                    onChange={(e) => handleChange(e, field.field)}
+                    placeholder={t[`enter_${field.label.toLowerCase()}`]}
                   />
-                </div>
-              ))}
+                )}
+              </div>
+            ))}
             </div>
             <div className="modal-footer">
               <button
@@ -68,14 +85,14 @@ const ModalEdit = ({ actionType, entityName, fields, initialData, onSave }) => {
                 className="btn btn-secondary"
                 data-dismiss="modal"
               >
-                Close
+               {t("global.table.close")}
               </button>
               <button
                 type="button"
                 className="btn btn-primary"
                 onClick={handleSave}
               >
-                Save changes
+               {t("global.table.save_changes")}
               </button>
             </div>
           </div>
@@ -86,3 +103,6 @@ const ModalEdit = ({ actionType, entityName, fields, initialData, onSave }) => {
 };
 
 export default ModalEdit;
+
+
+// ModalEdit

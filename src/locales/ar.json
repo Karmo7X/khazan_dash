@@ -3,11 +3,46 @@
     "welcome": "أهلاً وسهلاً",
     "profile": "الملف الشخصي",
     "logout": "تسجيل الخروج",
+    "dashboard": "لوحة القيادة",
     "languages": {
       "en": "الإنجليزية",
       "ar": "العربية",
       "zh": "الصينية",
       "id": "الإندونيسية"
+    },
+    "menu": {
+      "users": {
+        "title": "المستخدمون",
+        "admins": "المسؤولون",
+        "authors": "المؤلفون",
+        "all": "جميع المستخدمين",
+        "create": "إنشاء مستخدم",
+        "update": "تحديث المستخدم"
+      },
+      "banner_management": {
+        "title": " البانر",
+        "create": "إنشاء بانر",
+        "update": "تحديث البانر"
+      },
+      "books": {
+        "title": "الكتب",
+        "create": "إنشاء كتاب",
+        "update": "تحديث الكتاب"
+      },
+      "orders": {
+        "title": "الطلبات",
+        "create": "إنشاء طلب"
+      },
+      "category": {
+        "title": "الفئات",
+        "create": "إنشاء فئة",
+        "update": "تحديث الفئة"
+      },
+      "subscription": {
+        "title": "الاشتراك",
+        "create": "إنشاء اشتراك",
+        "update": "تحديث الاشتراك"
+      }
     }
   },
   "login": {
@@ -22,6 +57,25 @@
     "continueWithGoogle": "متابعة باستخدام جوجل",
     "continueWithFacebook": "متابعة باستخدام فيسبوك",
     "acceptTerms": "أوافق على الشروط والأحكام"
+  },
+  "register": {
+    "phoneNumber": "رقم الهاتف",
+    "createAccount": "إنشاء حساب!",
+    "userName": "اسم المستخدم",
+    "dateOfBirth": "تاريخ الميلاد",
+    "categories": "الفئات المهتم بها",
+    "city": "المدينة",
+    "rememberMe": "تذكرني",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "createAccountBtn": "إنشاء حساب",
+    "loginBtn": "تسجيل الدخول",
+    "or": "أو",
+    "continueWithGoogle": "متابعة باستخدام جوجل",
+    "continueWithFacebook": "متابعة باستخدام فيسبوك",
+    "acceptTerms": "أوافق على الشروط والأحكام",
+    "password": "الرقم السري",
+    "confirmPassword": "اعد كتابة الرقم السري",
+    "submit": "إرسال"
   },
   "profile": {
     "book_request": "طلب كتاب غير موجود",
@@ -185,6 +239,131 @@
       "date_invalid": " التاريخ غير صحيح.  ",
       "image_invalid": "تنسيق الصورة غير صحيح. استخدم .jpg أو .jpeg أو .png أو .gif.",
       "image_required": "الصورة الشخصية مطلوبة"
+    }
+  },
+  "table": {
+    "management": "الإدارة",
+    
+    "add": "أضف",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "notify": "إعلام",
+    "actions": "الإجراءات",
+    "crud_instruction": "استخدم الأزرار أدناه لإدارة {{entityType}}. يمكنك إضافة أو تعديل أو حذف الإدخالات حسب الحاجة.",
+    "category": {
+      "category_id": "معرف الفئة",
+      "title": "العنوان",
+      "image": "الصورة"
+    },
+    "close": "إغلاق",
+    "save_changes": "حفظ التغييرات"
+  },
+  "validation": {
+    "arTitle": {
+      "required": "عنوان باللغة العربية مطلوب.",
+      "minLength": "يجب أن يكون العنوان باللغة العربية مكونًا من 3 أحرف على الأقل."
+    },
+    "enTitle": {
+      "required": "العنوان باللغة الإنجليزية مطلوب.",
+      "minLength": "يجب أن يكون العنوان باللغة الإنجليزية مكونًا من 3 أحرف على الأقل."
+    },
+    "idTitle": {
+      "required": "العنوان باللغة الإندونيسية مطلوب.",
+      "minLength": "يجب أن يكون العنوان باللغة الإندونيسية مكونًا من 3 أحرف على الأقل."
+    },
+    "zhTitle": {
+      "required": "العنوان باللغة الصينية مطلوب.",
+      "minLength": "يجب أن يكون العنوان باللغة الصينية مكونًا من 3 أحرف على الأقل."
+    },
+    "arDescription": {
+        "required": "الوصف العربي مطلوب."
+      },
+      "enDescription": {
+        "required": "الوصف الإنجليزي مطلوب."
+      },
+      "idDescription": {
+        "required": "الوصف الإندونيسي مطلوب."
+      },
+      "zhDescription": {
+        "required": "الوصف الصيني مطلوب."
+      },
+      "pricePdf": {
+        "required": "سعر ملف PDF مطلوب.",
+        "invalid": "سعر ملف PDF يجب أن يكون رقمًا صحيحًا أكبر من الصفر."
+      },
+      "category": {
+        "required": "الفئة مطلوبة."
+      },
+      "isAvailablePdf": {
+        "required": "توفر ملف PDF مطلوب."
+      },
+      "isAvailablePaper": {
+        "required": "توفر النسخة الورقية مطلوب."
+      },
+      "author": {
+        "required": "اسم المؤلف مطلوب."
+      },
+      "pricePaper": {
+        "required": "سعر النسخة الورقية مطلوب.",
+        "invalid": "سعر النسخة الورقية يجب أن يكون رقمًا صحيحًا أكبر من الصفر."
+      },
+      "stock": {
+        "required": "المخزون مطلوب.",
+        "invalid": "المخزون يجب أن يكون رقمًا صحيحًا وغير سالب."
+      }
+  },
+  "delete": {
+    "title": "هل أنت متأكد؟",
+    "description": "سيتم حذف  نهائيًا. هل تريد المتابعة؟",
+    "close": "إغلاق",
+    "confirm": "نعم، احذفه"
+  },
+  "user":{
+    "users": "المستخدمين",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "role": "الدور",
+  "addUser": "إضافة مستخدم",
+  "editUser": "تعديل مستخدم",
+  "deleteUser": "حذف مستخدم",
+  "sendNotification": "إرسال إشعار"
+  },
+  "admin": {
+    "pageTitle": " المشرفين",
+    "addUser": "إضافة مستخدم جديد",
+    "editUser": "تعديل المستخدم",
+    "deleteUser": "حذف المستخدم",
+   "table": {
+      "id": "المعرف",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "role": "الدور",
+      "image": "الصورة"
+    }
+  },
+  "books":{
+    "Books": "الكتب",
+    "Title": "العنوان",
+    "Author": "المؤلف",
+    "Category": "الفئة",
+    "Published Date": "تاريخ النشر",
+    "Price(PDF)": "السعر (PDF)",
+    "Price(Paper)": "السعر (ورقي)",
+    "AvailableasPDF": "متوفر كـ PDF",
+    "AvailableasPaper": "متوفر كنسخة ورقية",
+    "NumberofSales(PDF)": "عدد المبيعات (PDF)",
+    "NumberofSales(Paper)": "عدد المبيعات (ورقي)",
+    "form": {
+      "Title": "العنوان",
+      "Description": "الوصف",
+      "Price PDF": "سعر PDF",
+      "Category": "الفئة",
+      "Availability PDF": "التوافر (PDF)",
+      "Availability Paper": "التوافر (ورقي)",
+      "Author": "المؤلف",
+      "Price Paper": "سعر (ورقي)",
+      "Stock": "المخزون"
     }
   }
 }

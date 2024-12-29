@@ -70,7 +70,7 @@ export const GetUserApi = createAsyncThunk("User/get", async () => {
 
   export const ChangeUserpassApi = createAsyncThunk("User/Changepass", async (updatepassword) => {
     try {
-      const res = await axios.patch(`${baseurl}/user/changePassword`,updatepassword, {
+      const res = await axios.patch(`${baseurl}/admin/changePassword`,updatepassword, {
         headers: {
           lang: lang,
           'Authorization':`Bearer ${token}`
@@ -84,133 +84,7 @@ export const GetUserApi = createAsyncThunk("User/get", async () => {
     }
   });
   
-  export const AddAddressApi = createAsyncThunk("User/AddAddress", async (addressdata) => {
-    try {
-      const res = await axios.post(`${baseurl}/user/address`,addressdata, {
-        headers: {
-          lang: lang,
-          'Authorization':`Bearer ${token}`
-        },
-      });
   
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-      return err.response.data
-    }
-  });
-   
-  export const AddmainAddressApi = createAsyncThunk("User/AddmainAddress", async (addressId) => {
-    try {
-      const res = await axios.post(
-        `${baseurl}/user/address/${addressId}`,
-        {}, // Body of the POST request (if needed)
-        {
-          headers: {
-            lang: lang,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-      return err.response.data
-    }
-  });
-  
-  export const deleteAddressApi = createAsyncThunk("User/deleteAddress", async (addressId) => {
-    try {
-      const res = await axios.delete(`${baseurl}/user/address/${addressId}`, {
-        headers: {
-          lang: lang,
-          'Authorization':`Bearer ${token}`
-        },
-      });
-  
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-      return err.response.data
-    }
-  });
-
-  export const GetUserwishlistApi = createAsyncThunk("User/wishlist", async () => {
-    try {
-      const res = await axios.get(`${baseurl}/userWishlist`, {
-        headers: {
-          lang: lang,
-          'Authorization':`Bearer ${token}`
-        },
-      });
-  
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  });
-
-  export const AddUserwishlistApi = createAsyncThunk("User/Addwishlist", async (data) => {
-    try {
-      const res = await axios.post(`${baseurl}/userWishlist`,data, {
-        headers: {
-          lang: lang,
-          'Authorization':`Bearer ${token}`
-        },
-      });
-  
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  });
-  export const RemoveUserwishlistApi = createAsyncThunk("User/Removewishlist", async (data) => {
-    
-    try {
-      const res = await axios.delete(`${baseurl}/userWishlist`, {
-        headers: {
-          lang: lang,
-          Authorization: `Bearer ${token}`
-        },
-        data: data // Pass `data` here
-      });
-      
-  
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  });
-
-  export const GetUserLibraryApi = createAsyncThunk("User/My-Library/get", async () => {
-    try {
-      const res = await axios.get(`${baseurl}/order/my?isDelivered=true&orderState=confirmed&isPaid=true`, {
-        headers: {
-          lang: lang,
-          'Authorization':`Bearer ${token}`
-        },
-      });
-  
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  });
-
-  export const GetUserOrderApi = createAsyncThunk("User/My-Library/get", async () => {
-    try {
-      const res = await axios.get(`${baseurl}/order/my`, {
-        headers: {
-          lang: lang,
-          'Authorization':`Bearer ${token}`
-        },
-      });
-  
-      return res.data;
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  });
 
 const Userslice = createSlice({
   name: "cate",
@@ -259,36 +133,7 @@ const Userslice = createSlice({
       .addCase(ChangeUserpassApi.rejected, (state) => {
         state.status = "failed";
       })
-      .addCase(AddAddressApi.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(AddAddressApi.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.data = action.payload;
-      })
-      .addCase(AddAddressApi.rejected, (state) => {
-        state.status = "failed";
-      })
-      .addCase(deleteAddressApi.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(deleteAddressApi.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.data = action.payload;
-      })
-      .addCase(deleteAddressApi.rejected, (state) => {
-        state.status = "failed";
-      })
-      .addCase(GetUserwishlistApi.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(GetUserwishlistApi.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.data = action.payload;
-      })
-      .addCase(GetUserwishlistApi.rejected, (state) => {
-        state.status = "failed";
-      })
+      
   },
 });
 

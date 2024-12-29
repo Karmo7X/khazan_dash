@@ -3,11 +3,46 @@
     "welcome": "Selamat datang",
     "profile": "Profil",
     "logout": "Logout",
+    "dashboard": "Dasbor",
     "languages": {
       "en": "Inggris",
       "ar": "Arab",
       "zh": "Cina",
       "id": "Indonesia"
+    },
+    "menu": {
+      "users": {
+        "title": "Pengguna",
+        "admins": "Administrator",
+        "authors": "Penulis",
+        "all": "Semua Pengguna",
+        "create": "Buat Pengguna",
+        "update": "Perbarui Pengguna"
+      },
+      "banner_management": {
+        "title": " Banner",
+        "create": "Buat Banner",
+        "update": "Perbarui Banner"
+      },
+      "books": {
+        "title": "Buku",
+        "create": "Buat Buku",
+        "update": "Perbarui Buku"
+      },
+      "orders": {
+        "title": "Pesanan",
+        "create": "Buat Pesanan"
+      },
+      "category": {
+        "title": "Kategori",
+        "create": "Buat Kategori",
+        "update": "Perbarui Kategori"
+      },
+      "subscription": {
+        "title": "Langganan",
+        "create": "Buat Langganan",
+        "update": "Perbarui Langganan"
+      }
     }
   },
   "login": {
@@ -22,6 +57,25 @@
     "continueWithGoogle": "Lanjutkan dengan Google",
     "continueWithFacebook": "Lanjutkan dengan Facebook",
     "acceptTerms": "Saya menerima Syarat & Ketentuan Anda"
+  },
+  "register": {
+    "createAccount": "Buat Akun!",
+    "userName": "Nama Pengguna",
+    "phoneNumber": "Nomor Telepon",
+    "dateOfBirth": "Tanggal Lahir",
+    "categories": "Kategori yang diminati",
+    "city": "Kota",
+    "rememberMe": "Ingat saya",
+    "forgotPassword": "Lupa Kata Sandi?",
+    "createAccountBtn": "Buat Akun",
+    "loginBtn": "Masuk",
+    "or": "Atau",
+    "continueWithGoogle": "Lanjutkan dengan Google",
+    "continueWithFacebook": "Lanjutkan dengan Facebook",
+    "acceptTerms": "Saya menerima Syarat & Ketentuan",
+    "password": "Kata Sandi",
+    "confirmPassword": "Konfirmasi Kata Sandi",
+    "submit": "Kirim"
   },
   "profile": {
     "book_request": "Minta buku yang tidak tersedia",
@@ -185,5 +239,130 @@
       "image_invalid": "Format gambar tidak valid. Gunakan .jpg, .jpeg, .png, atau .gif.",
       "image_required": "Gambar profil diperlukan"
     }
+  },
+  "table": {
+    "management": "Manajemen",
+    "add": "Tambah",
+    "edit": "Sunting",
+    "delete": "Hapus",
+    "notify": "Notifikasi",
+    "actions": "Tindakan",
+    "crud_instruction": "Gunakan tombol di bawah ini untuk mengelola {{entityType}}. Anda dapat menambah, mengedit, atau menghapus entri sesuai kebutuhan.",
+    "category": {
+      "category_id": "ID Kategori",
+      "title": "Judul",
+      "image": "Gambar"
+    },
+      "close": "Tutup",
+  "save_changes": "Simpan perubahan"
+  },
+  "validation": {
+    "arTitle": {
+      "required": "Judul dalam bahasa Arab wajib diisi.",
+      "minLength": "Judul dalam bahasa Arab harus minimal 3 karakter."
+    },
+    "enTitle": {
+      "required": "Judul dalam bahasa Inggris wajib diisi.",
+      "minLength": "Judul dalam bahasa Inggris harus minimal 3 karakter."
+    },
+    "idTitle": {
+      "required": "Judul dalam bahasa Indonesia wajib diisi.",
+      "minLength": "Judul dalam bahasa Indonesia harus minimal 3 karakter."
+    },
+    "zhTitle": {
+      "required": "Judul dalam bahasa Cina wajib diisi.",
+      "minLength": "Judul dalam bahasa Cina harus minimal 3 karakter."
+    },
+    "arDescription": {
+      "required": "Deskripsi Arab wajib diisi."
+    },
+    "enDescription": {
+      "required": "Deskripsi Inggris wajib diisi."
+    },
+    "idDescription": {
+      "required": "Deskripsi Indonesia wajib diisi."
+    },
+    "zhDescription": {
+      "required": "Deskripsi Cina wajib diisi."
+    },
+    "pricePdf": {
+      "required": "Harga PDF wajib diisi.",
+      "invalid": "Harga PDF harus berupa angka positif."
+    },
+    "category": {
+      "required": "Kategori wajib diisi."
+    },
+    "isAvailablePdf": {
+      "required": "Ketersediaan PDF wajib diisi."
+    },
+    "isAvailablePaper": {
+      "required": "Ketersediaan kertas wajib diisi."
+    },
+    "author": {
+      "required": "Nama penulis wajib diisi."
+    },
+    "pricePaper": {
+      "required": "Harga kertas wajib diisi.",
+      "invalid": "Harga kertas harus berupa angka positif."
+    },
+    "stock": {
+      "required": "Stok wajib diisi.",
+      "invalid": "Stok harus berupa angka non-negatif."
+    }
+  },
+  "delete": {
+    "title": "Apakah Anda Yakin?",
+    "description": "Tindakan ini akan menghapus  secara permanen. Apakah Anda ingin melanjutkan?",
+    "close": "Tutup",
+    "confirm": "Ya, hapus"
+  },
+  "user":{
+    "users": "Pengguna",
+  "name": "Nama",
+  "email": "Email",
+  "role": "Peran",
+  "addUser": "Tambah Pengguna",
+  "editUser": "Edit Pengguna",
+  "deleteUser": "Hapus Pengguna",
+  "sendNotification": "Kirim Notifikasi"
+  },
+  "admin": {
+    "pageTitle": " Admin",
+    "addUser": "Tambahkan Pengguna Baru",
+    "editUser": "Edit Pengguna",
+    "deleteUser": "Hapus Pengguna",
+    "table": {
+      "id": "ID",
+      "name": "Nama",
+      "email": "Email",
+      "phone": "Telepon",
+      "role": "Peran",
+      "image": "Gambar"
+    }
+  },
+  "books":{
+    "Books": "Buku",
+    "Title": "Judul",
+    "Author": "Penulis",
+    "Category": "Kategori",
+    "Published Date": "Tanggal Terbit",
+    "Price(PDF)": "Harga (PDF)",
+    "Price(Paper)": "Harga (Kertas)",
+    "AvailableasPDF": "Tersedia dalam PDF",
+    "AvailableasPaper": "Tersedia dalam Kertas",
+    "NumberofSales(PDF)": "Jumlah Penjualan (PDF)",
+    "NumberofSales(Paper)": "Jumlah Penjualan (Kertas)",
+    "form": {
+      "Title": "Judul",
+      "Description": "Deskripsi",
+      "Price PDF": "Harga PDF",
+      "Category": "Kategori",
+      "Availability PDF": "Ketersediaan (PDF)",
+      "Availability Paper": "Ketersediaan (Kertas)",
+      "Author": "Penulis",
+      "Price Paper": "Harga (Kertas)",
+      "Stock": "Stok"
+    }
   }
+  
 }

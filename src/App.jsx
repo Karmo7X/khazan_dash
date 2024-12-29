@@ -13,6 +13,12 @@ import Loader from "./Components/loader/loader";
 import Cookies from "js-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import AddAdmin from "./Pages/Users/AddAdmin";
+import AddAuthor from "./Pages/Users/AddAuthor";
+import UpdateAuthor from "./Pages/Users/UpdateAuthor";
+import UpdateAdmin from "./Pages/Users/UpdateAdmin";
+import Updatebook from "./Pages/Books/Updatebook";
+
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
 const Forgetpass = lazy(() => import("./Pages/auth/forgetpass"));
@@ -21,11 +27,16 @@ const Register = lazy(() => import("./Pages/auth/Register"));
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Orders = lazy(() => import("./Pages/Orders/Orders"));
 const ALLBooks = lazy(() => import("./Pages/Books/ALLBooks"));
+const Addbook = lazy(() => import("./Pages/Books/Addbook"));
 const Users = lazy(() => import("./Pages/Users/Users"));
+const Admins = lazy(() => import("./Pages/Users/Admins"));
+const Authors = lazy(() => import("./Pages/Users/Authors"));
 const Category = lazy(() => import("./Pages/Category/Category"));
 const Profile = lazy(() => import("./Pages/Profile/Profile"));
 const Subscription = lazy(() => import("./Pages/Subscription/Subscription"));
 const Privacy = lazy(() => import("./Pages/Privacy/Privacy"));
+const Addcategory = lazy(() => import("./Pages/Category/Addcategory"));
+const UpdateCategory = lazy(() => import("./Pages/Category/UpdateCategory"));
 const TermsAndConditions = lazy(() =>
   import("./Pages/TermsAndConditions/TermsAndConditions")
 );
@@ -90,11 +101,31 @@ function App() {
               }
             />
             <Route
-              path="books"
+              path="books/all"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>
                     <ALLBooks />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="books/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Addbook />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="books/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Updatebook />
                   </Suspense>
                 </ProtectedRoute>
               }
@@ -110,7 +141,7 @@ function App() {
               }
             />
             <Route
-              path="users"
+              path="users/all"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>
@@ -120,11 +151,91 @@ function App() {
               }
             />
             <Route
-              path="category"
+              path="users/admins"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Admins />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="admins/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Admins />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="admins/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateAdmin />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="users/authors"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Authors />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="authors/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <AddAuthor />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="authors/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateAuthor />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="category/all"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>
                     <Category />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="category/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Addcategory />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="category/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateCategory />
                   </Suspense>
                 </ProtectedRoute>
               }

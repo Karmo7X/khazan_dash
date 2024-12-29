@@ -11,7 +11,10 @@
    
 }
 
+.MuiDataGrid-cell{
+  display: inline-flex !important;
 
+}
 // overlay for update image in profile
  .profile-image {
     cursor: pointer;
@@ -48,4 +51,14 @@
   }
   .position-relative:hover .overlay {
     opacity: 1;
+  }
+
+
+  .nav-active > a {
+    font-weight: bold;
+    color: #007bff; /* Customize as needed */
+  }
+  
+  .nav-active {
+    background-color: #f8f9fa; /* Highlight active item background */
   }

@@ -3,11 +3,46 @@
     "welcome": "Welcome",
     "profile": "Profile",
     "logout": "Logout",
+    "dashboard": "Dashboard",
     "languages": {
       "en": "English",
       "ar": "Arabic",
       "zh": "Chinese",
       "id": "Indonesian"
+    },
+    "menu": {
+      "users": {
+        "title": "Users",
+        "admins": "Admins",
+        "authors": "Authors",
+        "all": "All Users",
+        "create": "Create User",
+        "update": "Update User"
+      },
+      "banner_management": {
+        "title": "Banner ",
+        "create": "Create Banner",
+        "update": "Update Banner"
+      },
+      "books": {
+        "title": "Books",
+        "create": "Create Book",
+        "update": "Update Book"
+      },
+      "orders": {
+        "title": "Order",
+        "create": "Create Order"
+      },
+      "category": {
+        "title": "Category",
+        "create": "Create Category",
+        "update": "Update Category"
+      },
+      "subscription": {
+        "title": "Subscription",
+        "create": "Create Subscription",
+        "update": "Update Subscription"
+      }
     }
   },
   "login": {
@@ -22,6 +57,25 @@
     "continueWithGoogle": "Continue With Google",
     "continueWithFacebook": "Continue With Facebook",
     "acceptTerms": "I Accept Your Terms & Conditions"
+  },
+  "register": {
+    "createAccount": "Create account!",
+    "phoneNumber": "Phone Number",
+    "userName": "User Name",
+    "dateOfBirth": "Date Of Birth",
+    "categories": "Categories interested in",
+    "city": "City",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Your password?",
+    "createAccountBtn": "Create Account",
+    "loginBtn": "Log in",
+    "or": "Or",
+    "continueWithGoogle": "Continue With Google",
+    "continueWithFacebook": "Continue With Facebook",
+    "acceptTerms": "I accept the Terms & Conditions",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Submit"
   },
   "profile": {
     "book_request": "Request a book not available",
@@ -185,5 +239,130 @@
       "image_invalid": "Invalid image format. Use .jpg, .jpeg, .png, or .gif.",
       "image_required": "Profile Image is required"
     }
+  },
+  "table": {
+    "management": "Management",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "notify": "Notify",
+    "actions": "Actions",
+    "crud_instruction": "Use the buttons below to manage {{entityType}}. You can add, edit, or delete entries as needed.",
+    "category": {
+      "category_id": "Category ID",
+      "title": "Title",
+      "image": "Image"
+    },
+    "close": "Close",
+    "save_changes": "Save changes"
+  },
+  "validation": {
+    "arTitle": {
+      "required": "Arabic title is required.",
+      "minLength": "Arabic title must be at least 3 characters."
+    },
+    "enTitle": {
+      "required": "English title is required.",
+      "minLength": "English title must be at least 3 characters."
+    },
+    "idTitle": {
+      "required": "Indonesian title is required.",
+      "minLength": "Indonesian title must be at least 3 characters."
+    },
+    "zhTitle": {
+      "required": "Chinese title is required.",
+      "minLength": "Chinese title must be at least 3 characters."
+    },
+    "arDescription": {
+        "required": "Arabic description is required."
+      },
+      "enDescription": {
+        "required": "English description is required."
+      },
+      "idDescription": {
+        "required": "Indonesian description is required."
+      },
+      "zhDescription": {
+        "required": "Chinese description is required."
+      },
+      "pricePdf": {
+        "required": "PDF price is required.",
+        "invalid": "PDF price must be a positive number."
+      },
+      "category": {
+        "required": "Category is required."
+      },
+      "isAvailablePdf": {
+        "required": "PDF availability is required."
+      },
+      "isAvailablePaper": {
+        "required": "Paper availability is required."
+      },
+      "author": {
+        "required": "Author name is required."
+      },
+      "pricePaper": {
+        "required": "Paper price is required.",
+        "invalid": "Paper price must be a positive number."
+      },
+      "stock": {
+        "required": "Stock is required.",
+        "invalid": "Stock must be a non-negative number."
+      }
+  },
+  "delete": {
+    "title": "Are You Sure?",
+    "description": "This action will permanently delete . Do you want to proceed?",
+    "close": "Close",
+    "confirm": "Yes, delete it"
+  },
+  "user": {
+    "users": "Users",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "sendNotification": "Send Notification"
+  },
+  "admin": {
+    "pageTitle": "Admin",
+    "addUser": "Add New User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "table": {
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "role": "Role",
+      "image": "Image"
+    }
+  },
+  "books":{
+    "Books": "Books",
+    "Title": "Title",
+    "Author": "Author",
+    "Category": "Category",
+    "Published Date": "Published Date",
+    "Price(PDF)": "Price (PDF)",
+    "Price(Paper)": "Price (Paper)",
+    "AvailableasPDF": "Available as PDF",
+    "AvailableasPaper": "Available as Paper",
+    "NumberofSales(PDF)": "Number of Sales (PDF)",
+    "NumberofSales(Paper)": "Number of Sales (Paper)",
+    "form": {
+      "Title": "Title",
+      "Description": "Description",
+      "Price PDF": "Price PDF",
+      "Category": "Category",
+      "Availability PDF": "Availability (PDF)",
+      "Availability Paper": "Availability (Paper)",
+      "Author": "Author",
+      "Price Paper": "Price (Paper)",
+      "Stock": "Stock"
+    }
+    
   }
 }

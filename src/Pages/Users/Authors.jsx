@@ -2,29 +2,23 @@ import React, { useState } from "react";
 import Topbar from "../../Components/Topbar/Topbar";
 import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
 import Tables from "../../Components/Tables/Tables";
-import Modal from "../../Components/Modal/Modal";
-import ModalEdit from "../../Components/Modal/ModalEdit";
-import Nofiticate from "../../Components/Modal/Nofiticate";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-const Users = () => {
-    const { t, i18n } = useTranslation();
-    const dispatch = useDispatch();
+const Authors = () => {
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
   const [userData, setuserData] = useState([]);
   const userColumns = [
     { label: "ID", field: "id" },
     { label: "Name", field: "name" },
-    { label: "Email", field: "email" },
     { label: "Phone", field: "phone" },
-    { label: "Role", field: "role" },
     { label: "Image", field: "image" },
   ];
 
   const [currentuser, setcurrentuser] = useState(null);
-  const navigate=useNavigate()
   const handleAddUser = () => {
-    navigate('')
+    // Logic for adding a new user
   };
 
   const handleEditUser = (user) => {
@@ -50,48 +44,25 @@ const Users = () => {
           <div class="page-content-wrapper">
             <div class="container-fluid">
               <div class="row">
-                <Breadcrumb page={t("global.user.users")} />
+                <Breadcrumb page={"Users"} />
               </div>
               {/* tables for data and user crud functionlity */}
-
-            
               <Tables
-                entityType={t("global.user.users")}
-                route="users"
+                entityType="Author"
+                route="author"
                 data={userData}
                 columns={userColumns}
-                // onAdd={handleAddUser}
+                onAdd={handleAddUser}
                 onEdit={handleEditUser}
                 onDelete={handleDeleteUser}
                 onNotify={handleSendNotification}
               />
-
-             
             </div>
           </div>
         </div>
       </div>
-      {/* <Nofiticate
-        actionType="Send"
-        entityName="Notification"
-        users={userData.filter(user => user.role === "Author")}
-        onNotify={handleSendNotification}
-      /> */}
-      {/* <Modal
-  actionType="Add"
-  entityName="User"
-  fields={userColumns}
-  onSave={handleAddUser}
-   /> 
-   <ModalEdit
-  actionType="Edit"
-  entityName="User"
-  fields={userColumns}
-  initialData={currentuser}
-  onSave={handleEditUser}
-/> */}
     </>
   );
 };
 
-export default Users;
+export default Authors;
