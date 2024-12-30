@@ -503,7 +503,7 @@ const Addbook = () => {
                     onChange={handleChange}
                   >
                     <option value="">
-                    {t("global.books.form.Category")}
+                    {t("global.books.form.Author")}
                     </option>
                     {authors.map((data,idx)=>{
                         return(
@@ -544,7 +544,7 @@ const Addbook = () => {
                 <div class="row d-flex align-items-center justify-content-center">
                   <div class="col-xl-6">
                     <div class="card m-b-30">
-                      <div class="card-body">
+                      <div class="card-body" >
                         <div>
                           <label className="fw-bold" htmlFor="">
                             {" "}
@@ -564,15 +564,15 @@ const Addbook = () => {
                   </div>
                   <div class="col-xl-6">
                     <div class="card m-b-30">
-                      <div class="card-body">
+                      <div class="card-body" >
                         <div>
                           <label className="fw-bold" htmlFor="">
-                            PDF file
+                          {t("global.books.form.pdf.file")}
                           </label>
                           <input
                             type="file"
                             class="dropify"
-                            data-height="400"
+                            data-height="300"
                             data-max-file-size="3M"
                            data-allowed-file-extensions="pdf"
                             onChange={handleFileChangepdf}

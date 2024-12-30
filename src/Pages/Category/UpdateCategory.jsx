@@ -23,19 +23,20 @@ const UpdateCategory = () => {
   const loading = useSelector((state) => state.category.status);
   const { id } = useParams();
   const [formData, setFormData] = useState({
-    categoryId:id,
+    categoryId: id,
     arTitle: "",
     enTitle: "",
     idTitle: "",
     zhTitle: "",
   });
-  
+
   const navigate = useNavigate();
   const [categoryimg, setCategoryimg] = useState(null);
+  const [categoryimgvalue, setCategoryimgvalue] = useState("");
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
-  console.log(errorvalid)
+  console.log(errorvalid);
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,18 +61,18 @@ const UpdateCategory = () => {
           idTitle: res.payload?.data?.category?.title?.id,
           zhTitle: res.payload?.data?.category?.title?.zh,
         });
-        setCategoryimg(res.payload?.data?.category?.image)
+        setCategoryimgvalue(res.payload?.data?.category?.image);
       }
     });
   }, [id]);
 
   useEffect(() => {
     // Initialize Dropify
-    $('.dropify').dropify();
+    $(".dropify").dropify();
 
     // Reinitialize Dropify if productImg or productPdf changes
     return () => {
-      $('.dropify').dropify('destroy');
+      $(".dropify").dropify("destroy");
     };
   }, [categoryimg]);
   const handleFileChange = (event) => {
@@ -117,7 +118,7 @@ const UpdateCategory = () => {
     e.preventDefault();
 
     // Combine formData and categoryimg for validation
-    const combinedFormData = { ...formData ,image: categoryimg };
+    const combinedFormData = { ...formData, image: categoryimg };
     const error_submit = validate(combinedFormData);
 
     if (Object.keys(error_submit).length === 0) {
@@ -133,7 +134,7 @@ const UpdateCategory = () => {
         formDataToSend.append("image", categoryimg);
       }
       setErrorvalid(null);
-      dispatch(UpdateCategoryApi(id,formDataToSend)).then((res) => {
+      dispatch(UpdateCategoryApi(id, formDataToSend)).then((res) => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           setErrorvalid(null);
@@ -147,8 +148,8 @@ const UpdateCategory = () => {
             zhTitle: "",
           });
           setCategoryimg(null); // Clear image
+          setCategoryimgvalue(null)
         } else {
-          
           setSuccessmessage(null);
           setErrormessg(res.payload?.message);
         }
@@ -169,7 +170,7 @@ const UpdateCategory = () => {
             <div class="container-fluid">
               <div class="row">
                 <Breadcrumb
-                  page={` ${t("global.table.add")} ${t(
+                  page={` ${t("global.table.edit")} ${t(
                     "global.nav.menu.category.title"
                   )}`}
                 />
@@ -290,8 +291,17 @@ const UpdateCategory = () => {
                             data-allowed-file-extensions="png jpg jpeg"
                             onChange={handleFileChange}
                             data-default-file={categoryimg}
-                            
                           />
+                          {categoryimgvalue && (
+                            <div className="d-flex align-items-center justify-content-center">
+                              {/* <p>Selected File: {selectedFile.name}</p> */}
+                              <img
+                                src={categoryimgvalue}
+                                alt="Preview"
+                                style={{ maxHeight: "300px" }}
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

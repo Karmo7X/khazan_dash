@@ -204,6 +204,9 @@
       "required": "Confirm Password is required",
       "oneOf": "Password and Confirm Password must match"
     },
+    "roles": {
+        "required": "At least one role must be selected."
+      },
     "birthday": {
       "required": "Birthday is required",
       "max": "Birthday must be in the past",
@@ -274,41 +277,43 @@
       "minLength": "Chinese title must be at least 3 characters."
     },
     "arDescription": {
-        "required": "Arabic description is required."
-      },
-      "enDescription": {
-        "required": "English description is required."
-      },
-      "idDescription": {
-        "required": "Indonesian description is required."
-      },
-      "zhDescription": {
-        "required": "Chinese description is required."
-      },
-      "pricePdf": {
-        "required": "PDF price is required.",
-        "invalid": "PDF price must be a positive number."
-      },
-      "category": {
-        "required": "Category is required."
-      },
-      "isAvailablePdf": {
-        "required": "PDF availability is required."
-      },
-      "isAvailablePaper": {
-        "required": "Paper availability is required."
-      },
-      "author": {
-        "required": "Author name is required."
-      },
-      "pricePaper": {
-        "required": "Paper price is required.",
-        "invalid": "Paper price must be a positive number."
-      },
-      "stock": {
-        "required": "Stock is required.",
-        "invalid": "Stock must be a non-negative number."
-      }
+      "required": "Arabic description is required."
+    },
+    "enDescription": {
+      "required": "English description is required."
+    },
+    "idDescription": {
+      "required": "Indonesian description is required."
+    },
+    "zhDescription": {
+      "required": "Chinese description is required."
+    },
+    "pricePdf": {
+      "required": "PDF price is required.",
+      "invalid": "PDF price must be a positive number."
+    },
+    "category": {
+      "required": "Category is required."
+    },
+    "isAvailablePdf": {
+      "required": "PDF availability is required."
+    },
+    "isAvailablePaper": {
+      "required": "Paper availability is required."
+    },
+    "author": {
+      "required": "Author name is required."
+    },
+    "pricePaper": {
+      "required": "Paper price is required.",
+      "invalid": "Paper price must be a positive number."
+    },
+    "stock": {
+      "required": "Stock is required.",
+      "invalid": "Stock must be a non-negative number."
+    },
+     "image_required": "Please upload a valid image file.",
+    "pdf_required": "Please upload a valid PDF file."
   },
   "delete": {
     "title": "Are You Sure?",
@@ -340,7 +345,7 @@
       "image": "Image"
     }
   },
-  "books":{
+  "books": {
     "Books": "Books",
     "Title": "Title",
     "Author": "Author",
@@ -361,8 +366,11 @@
       "Availability Paper": "Availability (Paper)",
       "Author": "Author",
       "Price Paper": "Price (Paper)",
-      "Stock": "Stock"
+      "Stock": "Stock",
+      "pdf": {
+        "file": "PDF File",
+        "view_or_download": "View or Download File"
+      }
     }
-    
   }
 }

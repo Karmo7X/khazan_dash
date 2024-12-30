@@ -29,7 +29,7 @@ export const GetProductdetailsApi = createAsyncThunk(
   "Product/getProductdetails",
   async (productId) => {
     try {
-      const res = await axios.get(`${baseurl}/product/${productId}?dashboard=true`, {
+      const res = await axios.get(`${baseurl}/product/admin/${productId}`, {
         headers: {
           lang: lang,
           Authorization: `Bearer ${token}`,
@@ -126,7 +126,7 @@ export const UpdateProductApi = createAsyncThunk(
   async (productId,data) => {
     
     try {
-      const res = await axios.patch(`${baseurl}/product/${categoryId}`, data, {
+      const res = await axios.patch(`${baseurl}/product/${productId}`, data, {
         headers: {
           lang: lang,
           Authorization: `Bearer ${token}`,
@@ -143,7 +143,44 @@ export const UpdateProductApi = createAsyncThunk(
     }
   }
 );
+export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge", async (productId,data) => {
+  try {
 
+    const res = await axios.patch(`${baseurl}/product/changeCoverImage/${productId}`,data, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+        'Accept':'*/*',
+        'Content-Type':'multipar/form-data',
+        'Access-Control-Allow-Origin':'*'
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
+export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", async (productId,data) => {
+  try {
+
+    const res = await axios.patch(`${baseurl}/product/changePDFFile/${productId}`,data, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+        'Accept':'*/*',
+        'Content-Type':'multipar/form-data',
+        'Access-Control-Allow-Origin':'*'
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
 const Productslice = createSlice({
   name: "product",
   initialState,
@@ -198,6 +235,26 @@ const Productslice = createSlice({
         state.data = action.payload;
       })
       .addCase(DeleteProductApi.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(UpdateProductimgeApi.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(UpdateProductimgeApi.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(UpdateProductimgeApi.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(UpdateProductpdfApi.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(UpdateProductpdfApi.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(UpdateProductpdfApi.rejected, (state) => {
         state.status = "failed";
       });
   },

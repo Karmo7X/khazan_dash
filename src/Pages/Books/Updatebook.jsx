@@ -17,7 +17,13 @@ import {
   GetCategorydetailsApi,
 } from "../../Api/Category/CategorySlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { AddProductApi, GetProductdetailsApi } from "../../Api/Product/Product";
+import {
+  AddProductApi,
+  GetProductdetailsApi,
+  UpdateProductApi,
+  UpdateProductimgeApi,
+  UpdateProductpdfApi,
+} from "../../Api/Product/Product";
 import { GetAuthorApi } from "../../Api/Authors/AuthorsSlice";
 
 const Updatebook = () => {
@@ -44,10 +50,12 @@ const Updatebook = () => {
     pricePaper: "",
     stock: "",
   });
- 
+
   const navigate = useNavigate();
   const [productimg, setproductimg] = useState(null);
+  const [productimgvalue, setproductimgvalue] = useState("");
   const [productpdf, setproductpdf] = useState(null);
+  const [productpdfvalue, setproductpdfvalue] = useState("");
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
@@ -75,20 +83,25 @@ const Updatebook = () => {
 
   useEffect(() => {
     // Initialize Dropify
-    $('.dropify').dropify();
+    $(".dropify").dropify();
 
     // Reinitialize Dropify if productImg or productPdf changes
     return () => {
-      $('.dropify').dropify('destroy');
+      $(".dropify").dropify("destroy");
     };
-  }, [productimg, productpdf]);
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setproductimg(file);
+  }, []);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]; // Get the selected file
+    if (e.target.name === "coverImage") {
+      setproductimg(file); // Set the file to the state
+    }
   };
-  const handleFileChangepdf = (event) => {
-    const file = event.target.files[0];
-    setproductpdf(file);
+  const handleFileChangepdf = (e) => {
+    const file = e.target.files[0]; // Get the selected file
+    if (e.target.name === "pdfFile") {
+      setproductpdf(file);
+    }
   };
   const validate = (value) => {
     const error = {};
@@ -189,28 +202,51 @@ const Updatebook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Combine formData and productimg for validation
-    const combinedFormData = { ...formData, coverImage: productimg ,pdfFile:productpdf };
-    const error_submit = validate(combinedFormData);
-
-    if (Object.keys(error_submit).length === 0) {
-      const formDataToSend = new FormData();
-
-      // Append text fields
-      Object.keys(formData).forEach((key) => {
-        formDataToSend.append(key, formData[key]);
-      });
-
+    const error_submit = validate(formData);
+    setErrormessg(null);
+    if (
+      Object.keys(error_submit).length === 0 &&
+      (productpdf !== null || productimg !== null)
+    ) {
+      const coverImage = new FormData();
+      const pdfFile = new FormData();
+      
       // Append image field
       if (productimg) {
-        formDataToSend.append("coverImage", productimg);
+        coverImage.append("coverImage", productimg);
+        // Log FormData contents
+        for (let pair of coverImage.entries()) {
+          console.log(pair[0] + ': ' + pair[1]);
+        }
+      
+        dispatch(UpdateProductimgeApi(id, coverImage)).then((res) => {
+          if (res.payload?.code === 200) {
+            setSuccessmessage(res.payload?.message);
+          }
+        });
+      } else {
+        console.error("No image file selected.");
       }
+      
+      // Append PDF field
       if (productpdf) {
-        formDataToSend.append("pdfFile", productpdf);
+        pdfFile.append("pdfFile", productpdf);
+        // Log FormData contents
+        for (let pair of pdfFile.entries()) {
+          console.log(pair[0] + ': ' + pair[1]);
+        }
+      
+        dispatch(UpdateProductpdfApi(id, pdfFile)).then((res) => {
+          if (res.payload?.code === 200) {
+            setSuccessmessage(res.payload?.message);
+          }
+        });
+      } else {
+        console.error("No PDF file selected.");
       }
-      setErrorvalid(null);
-      dispatch(AddProductApi(id, formDataToSend)).then((res) => {
-        if (res.payload?.code === 201) {
+      // setErrorvalid(null);
+      dispatch(UpdateProductApi(id, formData)).then((res) => {
+        if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           setErrorvalid(null);
           setErrormessg(null);
@@ -234,6 +270,9 @@ const Updatebook = () => {
             stock: "",
           });
           setproductimg(null); // Clear image
+          setproductpdfvalue(null);
+          setproductimgvalue(null);
+          setproductpdfvalue(null);
         } else {
           setSuccessmessage(null);
           setErrormessg(res.payload?.message);
@@ -257,15 +296,15 @@ const Updatebook = () => {
           idDescription: res.payload?.data?.product?.description?.id,
           zhDescription: res.payload?.data?.product?.description?.zh,
           pricePdf: res.payload?.data?.product?.pricePdf,
-          category:  res.payload?.data?.product?.category?.id,
+          category: res.payload?.data?.product?.category?.id,
           isAvailablePdf: res.payload?.data?.product?.isAvailablePdf,
           isAvailablePaper: res.payload?.data?.product?.isAvailablePaper,
-          author:  res.payload?.data?.product?.author?.id,
+          author: res.payload?.data?.product?.author?.id,
           pricePaper: res.payload?.data?.product?.pricePaper,
-          stock: "",
+          stock: res.payload?.data?.product?.stock,
         });
-        setproductimg(res.payload?.data?.product?.coverImage);
-        setproductpdf(res.payload?.data?.product?.pdfFile);
+        setproductimgvalue(res.payload?.data?.product?.coverImage);
+        setproductpdfvalue(res.payload?.data?.product?.pdfFile);
       }
     });
     dispatch(GetCategoryApi()).then((res) => {
@@ -290,7 +329,7 @@ const Updatebook = () => {
             <div class="container-fluid">
               <div class="row">
                 <Breadcrumb
-                  page={` ${t("global.table.add")} ${t(
+                  page={` ${t("global.table.edit")} ${t(
                     "global.nav.menu.category.title"
                   )}`}
                 />
@@ -561,49 +600,87 @@ const Updatebook = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div class="row d-flex align-items-center justify-content-center">
-                  <div class="col-xl-6">
-                    <div class="card m-b-30">
-                      <div class="card-body">
-                        <div>
-                          <label className="fw-bold" htmlFor="">
-                            {" "}
-                            {t("global.table.category.image")}
-                          </label>
-                          <input
-                            type="file"
-                            class="dropify"
-                            data-height="300"
-                            data-max-file-size="3M"
-                            data-allowed-file-extensions="png jpg jpeg"
-                            data-default-file={productimg}
-                            onChange={handleFileChange}
-                          />
+                <form encType="multipart/form-data">
+                  {" "}
+                  <div class="row d-flex align-items-center justify-content-center">
+                    <div class="col-xl-6">
+                      <div class="card m-b-30">
+                        <div
+                          class="card-body"
+                          style={{ height: "600px", maxHeight: "600px" }}
+                        >
+                          <div>
+                            <label className="fw-bold" htmlFor="">
+                              {" "}
+                              {t("global.table.category.image")}
+                            </label>
+                            <input
+                              type="file"
+                              class="dropify"
+                              name="coverImage"
+                              data-height="200"
+                              data-max-file-size="3M"
+                              data-allowed-file-extensions="png jpg jpeg"
+                              // data-default-file={productimg}
+                              onChange={handleFileChange}
+                            />
+                            {productimgvalue && (
+                              <div className="d-flex align-items-center mt-5 justify-content-center">
+                                {/* <p>Selected File: {selectedFile.name}</p> */}
+                                <img
+                                  src={productimgvalue}
+                                  alt="Preview"
+                                  style={{  maxHeight: "200px" }}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-6">
+                      <div class="card m-b-30">
+                        <div
+                          class="card-body"
+                          style={{ height: "600px", maxHeight: "600px" }}
+                        >
+                          <div>
+                            <label className="fw-bold" htmlFor="">
+                              {t("global.books.form.pdf.file")}
+                            </label>
+                            <input
+                              type="file"
+                              class="dropify"
+                              name="pdfFile"
+                              data-height="200"
+                              data-max-file-size="3M"
+                              data-allowed-file-extensions="pdf"
+                              // data-default-file={productpdf}
+                              onChange={handleFileChangepdf}
+                            />
+                            {productpdfvalue && (
+                              <>
+                                <div className="d-flex align-items-center mt-5 justify-content-center">
+                                  <a
+                                    href={productpdfvalue}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn-primary d-flex  mt-3"
+                                  >
+                                    {t(
+                                      "global.books.form.pdf.view_or_download"
+                                    )}
+                                  </a>
+                                </div>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-xl-6">
-                    <div class="card m-b-30">
-                      <div class="card-body">
-                        <div>
-                          <label className="fw-bold" htmlFor="">
-                            PDF file
-                          </label>
-                          <input
-                            type="file"
-                            class="dropify"
-                            data-height="400"
-                            data-max-file-size="3M"
-                            data-allowed-file-extensions="pdf"
-                            data-default-file={productpdf}
-                            onChange={handleFileChangepdf}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </form>
+
                 {errorvalid && (
                   <>
                     <div className="">
@@ -660,7 +737,10 @@ const Updatebook = () => {
                     </div>
                   </>
                 )}
-                <div class="form-group d-flex align-items-center  w-100 justify-content-center">
+                <div
+                  class="form-group d-flex align-items-center w-100 justify-content-center"
+                  style={{ marginTop: "4rem" }}
+                >
                   <button
                     type="button "
                     class="btn btn-primary w-50  waves-effect waves-light"

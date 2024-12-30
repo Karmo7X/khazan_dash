@@ -379,9 +379,7 @@ const Profile = () => {
                                             boxShadow: "none",
                                           }}
                                         >
-                                          <option selected value="">
-                                            ......
-                                          </option>
+                                          
                                           <option value={"male"}>
                                             {t("global.profile.gender.male")}
                                           </option>

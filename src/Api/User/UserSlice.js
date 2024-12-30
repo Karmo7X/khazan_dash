@@ -9,6 +9,7 @@ const initialState={
     data:null,
     status:false,
     statusupdate:false,
+    statusupdateimage:false,
     addresses:null
 }
  
@@ -113,16 +114,16 @@ const Userslice = createSlice({
       .addCase(UpdateUserApi.rejected, (state) => {
         state.status = "failed";
       })
-      .addCase(UpdateUserimgeApi.pending, (state) => {
-        state.statusupdate = "loading";
-      })
-      .addCase(UpdateUserimgeApi.fulfilled, (state, action) => {
-        state.statusupdate = "succeeded";
-        state.data = action.payload;
-      })
-      .addCase(UpdateUserimgeApi.rejected, (state) => {
-        state.statusupdate = "failed";
-      })
+      // .addCase(UpdateUserimgeApi.pending, (state) => {
+      //   state.statusupdateimage = "loading";
+      // })
+      // .addCase(UpdateUserimgeApi.fulfilled, (state, action) => {
+      //   state.statusupdateimage = "succeeded";
+      //   state.data = action.payload;
+      // })
+      // .addCase(UpdateUserimgeApi.rejected, (state) => {
+      //   state.statusupdateimage = "failed";
+      // })
       .addCase(ChangeUserpassApi.pending, (state) => {
         state.status = "loading";
       })

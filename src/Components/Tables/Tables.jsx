@@ -5,6 +5,7 @@ import { IoAlertCircle } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
+import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 const Tables = ({
   entityType,
   route,
@@ -23,9 +24,9 @@ const Tables = ({
     ...columns.map((col) => ({
       field: col.field,
       headerName: col.label,
-      width: col.field === "image" ? 150 : 180, // Custom width for image column
+      width: col.field === "image"  ? 150 : 280, // Custom width for image column
       renderCell: (params) =>
-        col.field === "image" ? (
+        col.field === "image" || col.field === "profileImg" ? (
           <img
             src={params.row[col.field]}
             alt="item image"
@@ -36,6 +37,26 @@ const Tables = ({
           params.value?.name
         ): col.field === "author" ? (
           params.value?.name
+        ):col.field === "roles" ? (
+          <FormControl fullWidth>
+          {/* <InputLabel id="roles-select-label">Roles</InputLabel> */}
+          <Select
+            labelId="roles-select-label"
+            value=""
+            displayEmpty
+            inputProps={{ "aria-label": "Without label" }}
+            renderValue={() => {
+              return params.row.roles ? params.row.roles[0] : "No roles";
+            }}
+            style={{textAlign:'center'}}
+          >
+            {params.row.roles?.map((role, index) => (
+              <MenuItem key={index} value={role}>
+                {role}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         ) : (
           params.value
         ),
@@ -94,8 +115,8 @@ const theme = createTheme({
                   variant="contained"
                   color="primary"
                   onClick={onAdd}
-                  data-bs-toggle="modal"
-                  data-bs-target="#addModal"
+                  // data-bs-toggle="modal"
+                  // data-bs-target="#addModal"
                 >
                   {t("global.table.add")} {entityType}
                 </Button>

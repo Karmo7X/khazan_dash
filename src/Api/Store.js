@@ -6,6 +6,7 @@ import CategoryReducer from './Category/CategorySlice'
 import UserReducer from './User/UserSlice'
 import ProductReducer from './Product/Product'
 import AuthorsReducer from './Authors/AuthorsSlice'
+import AdminReducer from './Alluser/AdminSlice'
 // import CartReducer from './Cart/CartSlice'
 const Store=configureStore({
 
@@ -18,6 +19,7 @@ const Store=configureStore({
         'product':ProductReducer,
         'authors':AuthorsReducer,
         // 'cart':CartReducer
+         'admin':AdminReducer
     }
 })
 

@@ -189,6 +189,9 @@
     "gender": {
       "required": "الجنس مطلوب"
     },
+    "roles": {
+        "required": "يجب تحديد دور واحد على الأقل."
+      },
     "password": {
       "required": "كلمة المرور مطلوبة",
       "minLength": "كلمة المرور يجب أن تكون على الأقل 8 أحرف",
@@ -243,7 +246,7 @@
   },
   "table": {
     "management": "الإدارة",
-    
+
     "add": "أضف",
     "edit": "تعديل",
     "delete": "حذف",
@@ -276,41 +279,43 @@
       "minLength": "يجب أن يكون العنوان باللغة الصينية مكونًا من 3 أحرف على الأقل."
     },
     "arDescription": {
-        "required": "الوصف العربي مطلوب."
-      },
-      "enDescription": {
-        "required": "الوصف الإنجليزي مطلوب."
-      },
-      "idDescription": {
-        "required": "الوصف الإندونيسي مطلوب."
-      },
-      "zhDescription": {
-        "required": "الوصف الصيني مطلوب."
-      },
-      "pricePdf": {
-        "required": "سعر ملف PDF مطلوب.",
-        "invalid": "سعر ملف PDF يجب أن يكون رقمًا صحيحًا أكبر من الصفر."
-      },
-      "category": {
-        "required": "الفئة مطلوبة."
-      },
-      "isAvailablePdf": {
-        "required": "توفر ملف PDF مطلوب."
-      },
-      "isAvailablePaper": {
-        "required": "توفر النسخة الورقية مطلوب."
-      },
-      "author": {
-        "required": "اسم المؤلف مطلوب."
-      },
-      "pricePaper": {
-        "required": "سعر النسخة الورقية مطلوب.",
-        "invalid": "سعر النسخة الورقية يجب أن يكون رقمًا صحيحًا أكبر من الصفر."
-      },
-      "stock": {
-        "required": "المخزون مطلوب.",
-        "invalid": "المخزون يجب أن يكون رقمًا صحيحًا وغير سالب."
-      }
+      "required": "الوصف العربي مطلوب."
+    },
+    "enDescription": {
+      "required": "الوصف الإنجليزي مطلوب."
+    },
+    "idDescription": {
+      "required": "الوصف الإندونيسي مطلوب."
+    },
+    "zhDescription": {
+      "required": "الوصف الصيني مطلوب."
+    },
+    "pricePdf": {
+      "required": "سعر ملف PDF مطلوب.",
+      "invalid": "سعر ملف PDF يجب أن يكون رقمًا صحيحًا أكبر من الصفر."
+    },
+    "category": {
+      "required": "الفئة مطلوبة."
+    },
+    "isAvailablePdf": {
+      "required": "توفر ملف PDF مطلوب."
+    },
+    "isAvailablePaper": {
+      "required": "توفر النسخة الورقية مطلوب."
+    },
+    "author": {
+      "required": "اسم المؤلف مطلوب."
+    },
+    "pricePaper": {
+      "required": "سعر النسخة الورقية مطلوب.",
+      "invalid": "سعر النسخة الورقية يجب أن يكون رقمًا صحيحًا أكبر من الصفر."
+    },
+    "stock": {
+      "required": "المخزون مطلوب.",
+      "invalid": "المخزون يجب أن يكون رقمًا صحيحًا وغير سالب."
+    },
+     "image_required": "يرجى تحميل ملف صورة صالح.",
+    "pdf_required": "يرجى تحميل ملف PDF صالح."
   },
   "delete": {
     "title": "هل أنت متأكد؟",
@@ -318,22 +323,22 @@
     "close": "إغلاق",
     "confirm": "نعم، احذفه"
   },
-  "user":{
+  "user": {
     "users": "المستخدمين",
-  "name": "الاسم",
-  "email": "البريد الإلكتروني",
-  "role": "الدور",
-  "addUser": "إضافة مستخدم",
-  "editUser": "تعديل مستخدم",
-  "deleteUser": "حذف مستخدم",
-  "sendNotification": "إرسال إشعار"
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "role": "الدور",
+    "addUser": "إضافة مستخدم",
+    "editUser": "تعديل مستخدم",
+    "deleteUser": "حذف مستخدم",
+    "sendNotification": "إرسال إشعار"
   },
   "admin": {
     "pageTitle": " المشرفين",
     "addUser": "إضافة مستخدم جديد",
     "editUser": "تعديل المستخدم",
     "deleteUser": "حذف المستخدم",
-   "table": {
+    "table": {
       "id": "المعرف",
       "name": "الاسم",
       "email": "البريد الإلكتروني",
@@ -342,7 +347,7 @@
       "image": "الصورة"
     }
   },
-  "books":{
+  "books": {
     "Books": "الكتب",
     "Title": "العنوان",
     "Author": "المؤلف",
@@ -363,7 +368,11 @@
       "Availability Paper": "التوافر (ورقي)",
       "Author": "المؤلف",
       "Price Paper": "سعر (ورقي)",
-      "Stock": "المخزون"
+      "Stock": "المخزون",
+      "pdf": {
+        "file": "ملف PDF",
+        "view_or_download": "عرض أو تنزيل الملف"
+      }
     }
   }
 }

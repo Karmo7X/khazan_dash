@@ -200,6 +200,9 @@
       "maxLength": "Nomor Telepon tidak boleh lebih dari 15 digit",
       "pattern": "Nomor Telepon hanya boleh berisi angka"
     },
+    "roles": {
+      "required": "Setidaknya satu peran harus dipilih."
+    },
     "passwordConfirm": {
       "required": "Konfirmasi Kata Sandi wajib diisi",
       "oneOf": "Kata Sandi dan Konfirmasi Kata Sandi harus sama"
@@ -253,8 +256,8 @@
       "title": "Judul",
       "image": "Gambar"
     },
-      "close": "Tutup",
-  "save_changes": "Simpan perubahan"
+    "close": "Tutup",
+    "save_changes": "Simpan perubahan"
   },
   "validation": {
     "arTitle": {
@@ -308,7 +311,9 @@
     "stock": {
       "required": "Stok wajib diisi.",
       "invalid": "Stok harus berupa angka non-negatif."
-    }
+    },
+    "image_required": "Harap unggah file gambar yang valid.",
+    "pdf_required": "Harap unggah file PDF yang valid."
   },
   "delete": {
     "title": "Apakah Anda Yakin?",
@@ -316,15 +321,15 @@
     "close": "Tutup",
     "confirm": "Ya, hapus"
   },
-  "user":{
+  "user": {
     "users": "Pengguna",
-  "name": "Nama",
-  "email": "Email",
-  "role": "Peran",
-  "addUser": "Tambah Pengguna",
-  "editUser": "Edit Pengguna",
-  "deleteUser": "Hapus Pengguna",
-  "sendNotification": "Kirim Notifikasi"
+    "name": "Nama",
+    "email": "Email",
+    "role": "Peran",
+    "addUser": "Tambah Pengguna",
+    "editUser": "Edit Pengguna",
+    "deleteUser": "Hapus Pengguna",
+    "sendNotification": "Kirim Notifikasi"
   },
   "admin": {
     "pageTitle": " Admin",
@@ -340,7 +345,7 @@
       "image": "Gambar"
     }
   },
-  "books":{
+  "books": {
     "Books": "Buku",
     "Title": "Judul",
     "Author": "Penulis",
@@ -361,8 +366,11 @@
       "Availability Paper": "Ketersediaan (Kertas)",
       "Author": "Penulis",
       "Price Paper": "Harga (Kertas)",
-      "Stock": "Stok"
+      "Stock": "Stok",
+      "pdf": {
+        "file": "File PDF",
+        "view_or_download": "Lihat atau Unduh File"
+      }
     }
   }
-  
 }

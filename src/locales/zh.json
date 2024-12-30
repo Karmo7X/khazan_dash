@@ -57,7 +57,7 @@
     "continueWithGoogle": "使用谷歌继续",
     "continueWithFacebook": "使用Facebook继续",
     "acceptTerms": "我接受您的条款和条件"
-  }, 
+  },
   "register": {
     "createAccount": "创建账户!",
     "userName": "用户名",
@@ -76,7 +76,6 @@
     "password": "密码",
     "confirmPassword": "确认密码",
     "submit": "提交"
-    
   },
   "profile": {
     "book_request": "请求不可用的书",
@@ -210,6 +209,9 @@
       "maxLength": "街道名称不能超过100个字符。",
       "pattern": "街道名称包含无效字符。"
     },
+    "roles": {
+      "required": "必须选择至少一个角色。"
+    },
     "city": {
       "required": "城市名称是必填项。",
       "minLength": "城市名称至少需要2个字符。",
@@ -240,7 +242,7 @@
       "image_required": "个人头像是必需的"
     }
   },
-  "table":{
+  "table": {
     "management": "管理",
     "add": "添加",
     "edit": "编辑",
@@ -248,14 +250,13 @@
     "notify": "通知",
     "actions": "操作",
     "crud_instruction": "使用下面的按钮管理 {{entityType}}。您可以根据需要添加、编辑或删除条目。",
-    "category":{
+    "category": {
       "category_id": "类别ID",
       "title": "标题",
       "image": "图片"
     },
     "close": "关闭",
-  "save_changes": "保存更改"
-    
+    "save_changes": "保存更改"
   },
   "validation": {
     "arTitle": {
@@ -309,7 +310,9 @@
     "stock": {
       "required": "库存为必填项。",
       "invalid": "库存必须为非负数。"
-    }
+    },
+     "image_required": "请上传有效的图像文件。",
+    "pdf_required": "请上传有效的PDF文件。"
   },
   "delete": {
     "title": "您确定吗？",
@@ -317,15 +320,15 @@
     "close": "关闭",
     "confirm": "是的，删除它"
   },
-  "user":{
+  "user": {
     "users": "用户",
-  "name": "名称",
-  "email": "电子邮件",
-  "role": "角色",
-  "addUser": "添加用户",
-  "editUser": "编辑用户",
-  "deleteUser": "删除用户",
-  "sendNotification": "发送通知"
+    "name": "名称",
+    "email": "电子邮件",
+    "role": "角色",
+    "addUser": "添加用户",
+    "editUser": "编辑用户",
+    "deleteUser": "删除用户",
+    "sendNotification": "发送通知"
   },
   "admin": {
     "pageTitle": "行政",
@@ -341,7 +344,7 @@
       "image": "图片"
     }
   },
-  "books":{
+  "books": {
     "Books": "书籍",
     "Title": "标题",
     "Author": "作者",
@@ -362,8 +365,11 @@
       "Availability Paper": "可用性 (纸质)",
       "Author": "作者",
       "Price Paper": "纸质价格",
-      "Stock": "库存"
+      "Stock": "库存",
+      "pdf": {
+        "file": "PDF 文件",
+        "view_or_download": "查看或下载文件"
+      }
     }
   }
-  
 }
