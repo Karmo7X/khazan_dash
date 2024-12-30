@@ -10,40 +10,72 @@
       "zh": "Cina",
       "id": "Indonesia"
     },
-    "menu": {
-      "users": {
-        "title": "Pengguna",
-        "admins": "Administrator",
-        "authors": "Penulis",
-        "all": "Semua Pengguna",
-        "create": "Buat Pengguna",
-        "update": "Perbarui Pengguna"
-      },
-      "banner_management": {
-        "title": " Banner",
-        "create": "Buat Banner",
-        "update": "Perbarui Banner"
-      },
-      "books": {
-        "title": "Buku",
-        "create": "Buat Buku",
-        "update": "Perbarui Buku"
-      },
-      "orders": {
-        "title": "Pesanan",
-        "create": "Buat Pesanan"
-      },
-      "category": {
-        "title": "Kategori",
-        "create": "Buat Kategori",
-        "update": "Perbarui Kategori"
-      },
-      "subscription": {
-        "title": "Langganan",
-        "create": "Buat Langganan",
-        "update": "Perbarui Langganan"
-      }
+  "menu": {
+    "users": {
+      "title": "用户",
+      "admins": "管理员",
+      "authors": "作者",
+      "all": "所有用户",
+      "create": "创建用户",
+      "update": "更新用户"
+    },
+    "banner_management": {
+      "title": "横幅管理",
+      "create": "创建横幅",
+      "update": "更新横幅"
+    },
+    "books": {
+      "title": "书籍",
+      "create": "创建书籍",
+      "update": "更新书籍"
+    },
+    "orders": {
+      "title": "订单",
+      "create": "创建订单"
+    },
+    "category": {
+      "title": "类别",
+      "create": "创建类别",
+      "update": "更新类别"
+    },
+    "subscription": {
+      "title": "订阅",
+      "create": "创建订阅",
+      "update": "更新订阅"
+    },
+    "privacy_policy": {
+      "title": "隐私政策",
+      "create": "创建隐私政策",
+      "update": "更新隐私政策"
+    },
+    "terms_and_conditions": {
+      "title": "条款和条件",
+      "create": "创建条款和条件",
+      "update": "更新条款和条件"
+    },
+    "city": {
+      "title": "城市",
+      "create": "创建城市",
+      "update": "更新城市"
+    },
+    "about_us": {
+      "title": "关于我们",
+      "create": "创建关于我们",
+      "update": "更新关于我们"
+    },
+    "new_feature": {
+      "title": "新功能",
+      "create": "创建新功能",
+      "update": "更新功能"
+    },
+    "settings": {
+      "title": "设置",
+      "general": "通用设置",
+      "security": "安全设置",
+      "notifications": "通知设置",
+      "language": "语言设置"
     }
+  }
   },
   "login": {
     "welcomeBack": "Selamat datang kembali!",
@@ -277,16 +309,24 @@
       "minLength": "Judul dalam bahasa Cina harus minimal 3 karakter."
     },
     "arDescription": {
-      "required": "Deskripsi Arab wajib diisi."
+      "required": "Deskripsi dalam bahasa Arab diperlukan.",
+      "minLength": "Deskripsi dalam bahasa Arab harus memiliki setidaknya 50 karakter.",
+      "maxLength": "Deskripsi dalam bahasa Arab tidak boleh lebih dari 500 karakter."
     },
     "enDescription": {
-      "required": "Deskripsi Inggris wajib diisi."
+      "required": "Deskripsi dalam bahasa Inggris diperlukan.",
+      "minLength": "Deskripsi dalam bahasa Inggris harus memiliki setidaknya 50 karakter.",
+      "maxLength": "Deskripsi dalam bahasa Inggris tidak boleh lebih dari 500 karakter."
     },
     "idDescription": {
-      "required": "Deskripsi Indonesia wajib diisi."
+      "required": "Deskripsi dalam bahasa Indonesia diperlukan.",
+      "minLength": "Deskripsi dalam bahasa Indonesia harus memiliki setidaknya 50 karakter.",
+      "maxLength": "Deskripsi dalam bahasa Indonesia tidak boleh lebih dari 500 karakter."
     },
     "zhDescription": {
-      "required": "Deskripsi Cina wajib diisi."
+      "required": "Deskripsi dalam bahasa Mandarin diperlukan.",
+      "minLength": "Deskripsi dalam bahasa Mandarin harus memiliki setidaknya 50 karakter.",
+      "maxLength": "Deskripsi dalam bahasa Mandarin tidak boleh lebih dari 500 karakter."
     },
     "pricePdf": {
       "required": "Harga PDF wajib diisi.",
@@ -313,7 +353,33 @@
       "invalid": "Stok harus berupa angka non-negatif."
     },
     "image_required": "Harap unggah file gambar yang valid.",
-    "pdf_required": "Harap unggah file PDF yang valid."
+    "pdf_required": "Harap unggah file PDF yang valid.",
+    "arName": {
+      "required": "Nama bahasa Arab diperlukan",
+      "minLength": "Nama bahasa Arab harus panjangnya minimal 3 karakter"
+    },
+    "enName": {
+      "required": "Nama bahasa Inggris diperlukan",
+      "minLength": "Nama bahasa Inggris harus panjangnya minimal 3 karakter"
+    },
+    "idName": {
+      "required": "Nama bahasa Indonesia diperlukan",
+      "minLength": "Nama bahasa Indonesia harus panjangnya minimal 3 karakter"
+    },
+    "zhName": {
+      "required": "Nama bahasa Mandarin diperlukan",
+      "minLength": "Nama bahasa Mandarin harus panjangnya minimal 1 karakter"
+    },
+    "price": {
+      "required": "Harga diperlukan",
+      "invalid": "Harga harus angka yang valid dan lebih besar dari 0"
+    },
+    "duration": {
+      "invalid": "Durasi harus angka yang valid dan lebih besar dari 0"
+    },
+    "coupon": {
+      "invalid": "Kupon harus angka yang valid dan lebih besar dari atau sama dengan 0"
+    }
   },
   "delete": {
     "title": "Apakah Anda Yakin?",
@@ -372,5 +438,28 @@
         "view_or_download": "Lihat atau Unduh File"
       }
     }
+  },
+  "orders": {
+    "title": "Pesanan",
+    "orderId": "ID Pesanan",
+    "customer": "Pelanggan",
+    "orderDate": "Tanggal Pesanan",
+    "shippingAddress": "Alamat Pengiriman",
+    "shippingPrice": "Harga Pengiriman",
+    "totalProductPrice": "Harga Produk Total",
+    "totalPrice": "Harga Total",
+    "paymentMethodType": "Jenis Metode Pembayaran",
+    "isPaid": "Dibayar",
+    "isDelivered": "Terkirim",
+    "orderState": "Status"
+  },
+  "subscriptionColumns": {
+    "title": "Langganan",
+    "id": "ID Langganan",
+    "name": "Nama Langganan",
+    "description": "Deskripsi",
+    "price": "Harga",
+    "coupon": "Kupon",
+    "duration": "Durasi"
   }
 }

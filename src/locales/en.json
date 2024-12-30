@@ -10,40 +10,72 @@
       "zh": "Chinese",
       "id": "Indonesian"
     },
-    "menu": {
-      "users": {
-        "title": "Users",
-        "admins": "Admins",
-        "authors": "Authors",
-        "all": "All Users",
-        "create": "Create User",
-        "update": "Update User"
-      },
-      "banner_management": {
-        "title": "Banner ",
-        "create": "Create Banner",
-        "update": "Update Banner"
-      },
-      "books": {
-        "title": "Books",
-        "create": "Create Book",
-        "update": "Update Book"
-      },
-      "orders": {
-        "title": "Order",
-        "create": "Create Order"
-      },
-      "category": {
-        "title": "Category",
-        "create": "Create Category",
-        "update": "Update Category"
-      },
-      "subscription": {
-        "title": "Subscription",
-        "create": "Create Subscription",
-        "update": "Update Subscription"
-      }
+   "menu": {
+    "users": {
+      "title": "Users",
+      "admins": "Admins",
+      "authors": "Authors",
+      "all": "All Users",
+      "create": "Create User",
+      "update": "Update User"
+    },
+    "banner_management": {
+      "title": "Banner Management",
+      "create": "Create Banner",
+      "update": "Update Banner"
+    },
+    "books": {
+      "title": "Books",
+      "create": "Create Book",
+      "update": "Update Book"
+    },
+    "orders": {
+      "title": "Orders",
+      "create": "Create Order"
+    },
+    "category": {
+      "title": "Categories",
+      "create": "Create Category",
+      "update": "Update Category"
+    },
+    "subscription": {
+      "title": "Subscriptions",
+      "create": "Create Subscription",
+      "update": "Update Subscription"
+    },
+    "privacy_policy": {
+      "title": "Privacy Policy",
+      "create": "Create Privacy Policy",
+      "update": "Update Privacy Policy"
+    },
+    "terms_and_conditions": {
+      "title": "Terms and Conditions",
+      "create": "Create Terms and Conditions",
+      "update": "Update Terms and Conditions"
+    },
+    "city": {
+      "title": "Cities",
+      "create": "Create City",
+      "update": "Update City"
+    },
+    "about_us": {
+      "title": "About Us",
+      "create": "Create About Us",
+      "update": "Update About Us"
+    },
+    "new_feature": {
+      "title": "New Feature",
+      "create": "Create New Feature",
+      "update": "Update Feature"
+    },
+    "settings": {
+      "title": "Settings",
+      "general": "General Settings",
+      "security": "Security Settings",
+      "notifications": "Notification Settings",
+      "language": "Language Settings"
     }
+  }
   },
   "login": {
     "welcomeBack": "Welcome back!",
@@ -276,18 +308,26 @@
       "required": "Chinese title is required.",
       "minLength": "Chinese title must be at least 3 characters."
     },
-    "arDescription": {
-      "required": "Arabic description is required."
-    },
-    "enDescription": {
-      "required": "English description is required."
-    },
-    "idDescription": {
-      "required": "Indonesian description is required."
-    },
-    "zhDescription": {
-      "required": "Chinese description is required."
-    },
+   "arDescription": {
+        "required": "Arabic description is required.",
+        "minLength": "Arabic description must be at least 50 characters long.",
+        "maxLength": "Arabic description must not exceed 500 characters."
+      },
+      "enDescription": {
+        "required": "English description is required.",
+        "minLength": "English description must be at least 50 characters long.",
+        "maxLength": "English description must not exceed 500 characters."
+      },
+      "idDescription": {
+        "required": "Indonesian description is required.",
+        "minLength": "Indonesian description must be at least 50 characters long.",
+        "maxLength": "Indonesian description must not exceed 500 characters."
+      },
+      "zhDescription": {
+        "required": "Chinese description is required.",
+        "minLength": "Chinese description must be at least 50 characters long.",
+        "maxLength": "Chinese description must not exceed 500 characters."
+      },
     "pricePdf": {
       "required": "PDF price is required.",
       "invalid": "PDF price must be a positive number."
@@ -313,7 +353,34 @@
       "invalid": "Stock must be a non-negative number."
     },
      "image_required": "Please upload a valid image file.",
-    "pdf_required": "Please upload a valid PDF file."
+    "pdf_required": "Please upload a valid PDF file.",
+    "arName": {
+        "required": "Arabic name is required",
+        "minLength": "Arabic name must be at least 3 characters long"
+      },
+      "enName": {
+        "required": "English name is required",
+        "minLength": "English name must be at least 3 characters long"
+      },
+      "idName": {
+        "required": "Indonesian name is required",
+        "minLength": "Indonesian name must be at least 3 characters long"
+      },
+      "zhName": {
+        "required": "Chinese name is required",
+        "minLength": "Chinese name must be at least 1 character long"
+      },
+    
+      "price": {
+        "required": "Price is required",
+        "invalid": "Price must be a valid number greater than 0"
+      },
+      "duration": {
+        "invalid": "Duration must be a valid number greater than 0"
+      },
+      "coupon": {
+        "invalid": "Coupon must be a valid number and greater than or equal to 0"
+      }
   },
   "delete": {
     "title": "Are You Sure?",
@@ -372,5 +439,28 @@
         "view_or_download": "View or Download File"
       }
     }
+  },
+  "orders": {
+    "title": "Order",
+    "orderId": "Order ID",
+    "customer": "Customer",
+    "orderDate": "Order Date",
+    "shippingAddress": "Shipping Address",
+    "shippingPrice": "Shipping Price",
+    "totalProductPrice": "Total Product Price",
+    "totalPrice": "Total Price",
+    "paymentMethodType": "Payment Method Type",
+    "isPaid": "Paid",
+    "isDelivered": "Delivered",
+    "orderState": "Status"
+  },
+  "subscriptionColumns": {
+    "title": "Subscription",
+    "id": "Subscription ID",
+    "name": "Subscription Name",
+    "description": "Description",
+    "price": "Price",
+    "coupon": "Coupon",
+    "duration": "Duration"
   }
 }

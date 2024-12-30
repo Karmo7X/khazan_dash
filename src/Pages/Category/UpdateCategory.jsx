@@ -215,7 +215,7 @@ const UpdateCategory = () => {
                     <TabPanel value="ar">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -231,7 +231,7 @@ const UpdateCategory = () => {
                     <TabPanel value="en">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -247,7 +247,7 @@ const UpdateCategory = () => {
                     <TabPanel value="id">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -263,7 +263,7 @@ const UpdateCategory = () => {
                     <TabPanel value="zh">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -282,6 +282,10 @@ const UpdateCategory = () => {
                   <div class="col-xl-6">
                     <div class="card m-b-30">
                       <div class="card-body">
+                      <label className="fw-bold p-2"  htmlFor="">
+                            {" "}
+                            {t("global.table.category.image")}
+                          </label>
                         <div>
                           <input
                             type="file"

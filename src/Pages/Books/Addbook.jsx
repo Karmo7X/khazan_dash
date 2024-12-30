@@ -43,7 +43,7 @@ const Addbook = () => {
     pricePaper: "",
     stock: "",
   });
-  console.log(formData)
+  console.log(formData);
   const navigate = useNavigate();
   const [productimg, setproductimg] = useState(null);
   const [productpdf, setproductpdf] = useState(null);
@@ -52,19 +52,18 @@ const Addbook = () => {
   const [successmessage, setSuccessmessage] = useState();
   // Handle input changes
   const handleChange = (e) => {
-    const { name, value,type ,checked } = e.target;
+    const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
-        setFormData({
-          ...formData,
-          [name]: checked,
-        });
-      } else {
-        setFormData({
-          ...formData,
-          [name]: value,
-        });
-      }
-    
+      setFormData({
+        ...formData,
+        [name]: checked,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
   const [value, setValue] = useState("ar");
 
@@ -114,24 +113,32 @@ const Addbook = () => {
       error.zhTitle = t("global.validation.zhTitle.minLength");
     }
 
-    // Arabic Description Validation
+    // Arabic Description Validation (Min Length > 50)
     if (!value.arDescription.trim()) {
       error.arDescription = t("global.validation.arDescription.required");
+    } else if (value.arDescription.length < 50) {
+      error.arDescription = t("global.validation.arDescription.minLength");
     }
 
-    // English Description Validation
+    // English Description Validation (Min Length > 50)
     if (!value.enDescription.trim()) {
       error.enDescription = t("global.validation.enDescription.required");
+    } else if (value.enDescription.length < 50) {
+      error.enDescription = t("global.validation.enDescription.minLength");
     }
 
-    // Indonesian Description Validation
+    // Indonesian Description Validation (Min Length > 50)
     if (!value.idDescription.trim()) {
       error.idDescription = t("global.validation.idDescription.required");
+    } else if (value.idDescription.length < 50) {
+      error.idDescription = t("global.validation.idDescription.minLength");
     }
 
-    // Chinese Description Validation
+    // Chinese Description Validation (Min Length > 50)
     if (!value.zhDescription.trim()) {
       error.zhDescription = t("global.validation.zhDescription.required");
+    } else if (value.zhDescription.length < 50) {
+      error.zhDescription = t("global.validation.zhDescription.minLength");
     }
 
     // Price PDF Validation
@@ -228,7 +235,6 @@ const Addbook = () => {
           });
           setproductimg(null); // Clear image
         } else {
-            
           setSuccessmessage(null);
           setErrormessg(res.payload?.message);
         }
@@ -237,18 +243,18 @@ const Addbook = () => {
       setErrorvalid(error_submit);
     }
   };
- useEffect(() => {
-        dispatch(GetCategoryApi()).then((res) => {
-          if (res.payload?.code === 200) {
-            setcates(res.payload?.data?.categories);
-          }
-        });
-        dispatch(GetAuthorApi()).then((res) => {
-            if (res.payload?.code === 200) {
-              setauthors(res.payload?.data?.authors);
-            }
-          });
-      }, []);
+  useEffect(() => {
+    dispatch(GetCategoryApi()).then((res) => {
+      if (res.payload?.code === 200) {
+        setcates(res.payload?.data?.categories);
+      }
+    });
+    dispatch(GetAuthorApi()).then((res) => {
+      if (res.payload?.code === 200) {
+        setauthors(res.payload?.data?.authors);
+      }
+    });
+  }, []);
   return (
     <>
       <div class="content-page">
@@ -267,7 +273,7 @@ const Addbook = () => {
               </div>
               {/* tables for data and cate crud functionlity */}
               <div style={{ minHeight: "100vh" }}>
-                <Box sx={{ width: "100%", typography: "body1" }}>
+                <Box sx={{ width: "100%" }}>
                   <TabContext value={value}>
                     <Box
                       sx={{
@@ -305,7 +311,9 @@ const Addbook = () => {
                     <TabPanel value="ar">
                       <form>
                         <div className="form-group">
-                          <label>{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -317,7 +325,9 @@ const Addbook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label>{t("global.books.form.Description")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
                           <textarea
                             className="form-control"
                             name="arDescription"
@@ -334,7 +344,9 @@ const Addbook = () => {
                     <TabPanel value="en">
                       <form>
                         <div className="form-group">
-                          <label>{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -346,7 +358,9 @@ const Addbook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label>{t("global.books.form.Description")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
                           <textarea
                             className="form-control"
                             name="enDescription"
@@ -363,7 +377,9 @@ const Addbook = () => {
                     <TabPanel value="id">
                       <form>
                         <div className="form-group">
-                          <label>{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -375,7 +391,9 @@ const Addbook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label>{t("global.books.form.Description")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
                           <textarea
                             className="form-control"
                             name="idDescription"
@@ -392,7 +410,9 @@ const Addbook = () => {
                     <TabPanel value="zh">
                       <form>
                         <div className="form-group">
-                          <label>{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -404,7 +424,9 @@ const Addbook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label>{t("global.books.form.Description")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
                           <textarea
                             className="form-control"
                             name="zhDescription"
@@ -420,7 +442,9 @@ const Addbook = () => {
                 </Box>
                 {/* Additional Fields */}
                 <div className="form-group">
-                  <label>{t("global.books.form.Price PDF")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Price PDF")}
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -432,27 +456,24 @@ const Addbook = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>{t("global.books.form.Category")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Category")}
+                  </label>
                   <select
                     className="form-select"
-                    
                     name="category"
                     value={formData.category}
                     required
                     onChange={handleChange}
                   >
-                    <option value="">
-                    {t("global.books.form.Category")}
-                    </option>
-                    {cates.map((data,idx)=>{
-                        return(
-                          <option key={idx} value={data?.id}>
+                    <option value="">{t("global.books.form.Category")}</option>
+                    {cates.map((data, idx) => {
+                      return (
+                        <option key={idx} value={data?.id}>
                           {data?.title}
-                    </option>  
-                        )
+                        </option>
+                      );
                     })}
-                    
-                    
                   </select>
                 </div>
                 <div className="row">
@@ -468,7 +489,7 @@ const Addbook = () => {
                         placeholder={t("global.books.form.Availability PDF")}
                         onChange={handleChange}
                       />
-                      <label className="mx-5">
+                      <label className="fw-bold mx-5">
                         {t("global.books.form.Availability PDF")}
                       </label>
                     </div>
@@ -485,7 +506,7 @@ const Addbook = () => {
                         placeholder={t("global.books.form.Availability Paper")}
                         onChange={handleChange}
                       />
-                      <label className="mx-5">
+                      <label className="fw-bold mx-5">
                         {t("global.books.form.Availability Paper")}
                       </label>
                     </div>
@@ -493,8 +514,10 @@ const Addbook = () => {
                 </div>
 
                 <div className="form-group">
-                  <label>{t("global.books.form.Author")}</label>
-                  
+                  <label className="fw-bold">
+                    {t("global.books.form.Author")}
+                  </label>
+
                   <select
                     className="form-select"
                     name="author"
@@ -502,23 +525,20 @@ const Addbook = () => {
                     required
                     onChange={handleChange}
                   >
-                    <option value="">
-                    {t("global.books.form.Author")}
-                    </option>
-                    {authors.map((data,idx)=>{
-                        return(
-                          <option key={idx} value={data?.id}>
+                    <option value="">{t("global.books.form.Author")}</option>
+                    {authors.map((data, idx) => {
+                      return (
+                        <option key={idx} value={data?.id}>
                           {data?.name}
-                    </option>  
-                        )
+                        </option>
+                      );
                     })}
-                    
-                    
                   </select>
-                  
                 </div>
                 <div className="form-group">
-                  <label>{t("global.books.form.Price Paper")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Price Paper")}
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -530,7 +550,9 @@ const Addbook = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>{t("global.books.form.Stock")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Stock")}
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -544,7 +566,7 @@ const Addbook = () => {
                 <div class="row d-flex align-items-center justify-content-center">
                   <div class="col-xl-6">
                     <div class="card m-b-30">
-                      <div class="card-body" >
+                      <div class="card-body">
                         <div>
                           <label className="fw-bold" htmlFor="">
                             {" "}
@@ -554,7 +576,7 @@ const Addbook = () => {
                             type="file"
                             class="dropify"
                             data-height="300"
-                            data-max-file-size="3M"
+                            data-max-file-size="10M"
                             data-allowed-file-extensions="png jpg jpeg"
                             onChange={handleFileChange}
                           />
@@ -564,17 +586,17 @@ const Addbook = () => {
                   </div>
                   <div class="col-xl-6">
                     <div class="card m-b-30">
-                      <div class="card-body" >
+                      <div class="card-body">
                         <div>
                           <label className="fw-bold" htmlFor="">
-                          {t("global.books.form.pdf.file")}
+                            {t("global.books.form.pdf.file")}
                           </label>
                           <input
                             type="file"
                             class="dropify"
                             data-height="300"
-                            data-max-file-size="3M"
-                           data-allowed-file-extensions="pdf"
+                            data-max-file-size="200M"
+                            data-allowed-file-extensions="pdf"
                             onChange={handleFileChangepdf}
                           />
                         </div>

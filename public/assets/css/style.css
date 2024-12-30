@@ -3207,7 +3207,7 @@ body.fixed-left .side-menu.left {
 #sidebar-menu ul ul a {
   color: rgba(45, 59, 72, 0.8);
   display: block;
-  padding: 12px 25px 12px 60px;
+  padding: 12px 25px 12px 20px;
   font-size: 14px;
 }
 

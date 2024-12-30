@@ -150,7 +150,7 @@ const Addcategory = () => {
               </div>
               {/* tables for data and cate crud functionlity */}
               <div style={{ minHeight: "100vh" }}>
-                <Box sx={{ width: "100%", typography: "body1" }}>
+                <Box sx={{ width: "100%" }}>
                   <TabContext value={value}>
                     <Box
                       sx={{
@@ -188,7 +188,7 @@ const Addcategory = () => {
                     <TabPanel value="ar">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -205,7 +205,7 @@ const Addcategory = () => {
                     <TabPanel value="en">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -222,7 +222,7 @@ const Addcategory = () => {
                     <TabPanel value="id">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -239,7 +239,7 @@ const Addcategory = () => {
                     <TabPanel value="zh">
                       <form class="" action="#">
                         <div class="form-group">
-                          <label> {t("global.table.category.title")}</label>
+                          <label className="fw-bold"> {t("global.table.category.title")}</label>
                           <input
                             type="text"
                             class="form-control"
@@ -258,8 +258,13 @@ const Addcategory = () => {
                 <div class="row d-flex align-items-center justify-content-center">
                   <div class="col-xl-6">
                     <div class="card m-b-30">
+                    <label className="fw-bold p-2"  htmlFor="">
+                            {" "}
+                            {t("global.table.category.image")}
+                          </label>
                       <div class="card-body">
                         <div>
+                          
                           <input
                             type="file"
                             class="dropify"

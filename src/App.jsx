@@ -37,6 +37,13 @@ const Subscription = lazy(() => import("./Pages/Subscription/Subscription"));
 const Privacy = lazy(() => import("./Pages/Privacy/Privacy"));
 const Addcategory = lazy(() => import("./Pages/Category/Addcategory"));
 const UpdateCategory = lazy(() => import("./Pages/Category/UpdateCategory"));
+const Settings = lazy(() => import("./Pages/settings/settings"));
+const AddSubscription = lazy(() =>
+  import("./Pages/Subscription/AddSubscription")
+);
+const UpdateSubscription = lazy(() =>
+  import("./Pages/Subscription/UpdateSubscription")
+);
 const TermsAndConditions = lazy(() =>
   import("./Pages/TermsAndConditions/TermsAndConditions")
 );
@@ -110,7 +117,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="books/create"
               element={
                 <ProtectedRoute>
@@ -120,7 +127,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="books/:id"
               element={
                 <ProtectedRoute>
@@ -131,7 +138,7 @@ function App() {
               }
             />
             <Route
-              path="orders"
+              path="orders/all"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>
@@ -190,7 +197,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="authors/create"
               element={
                 <ProtectedRoute>
@@ -200,7 +207,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="authors/:id"
               element={
                 <ProtectedRoute>
@@ -220,7 +227,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="category/create"
               element={
                 <ProtectedRoute>
@@ -251,7 +258,7 @@ function App() {
               }
             />
             <Route
-              path="subscription"
+              path="subscription/all"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>
@@ -261,7 +268,27 @@ function App() {
               }
             />
             <Route
-              path="privacy"
+              path="subscription/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <AddSubscription />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="subscription/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateSubscription />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="privacy/all"
               element={
                 <Suspense fallback={<Loader />}>
                   <Privacy />
@@ -269,7 +296,39 @@ function App() {
               }
             />
             <Route
-              path="termsAndconditions"
+              path="privacy/create"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <Privacy />
+                </Suspense>
+              }
+            />
+            <Route
+              path="privacy/update"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <Privacy />
+                </Suspense>
+              }
+            />
+            <Route
+              path="termsAndconditions/all"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <TermsAndConditions />
+                </Suspense>
+              }
+            />
+            <Route
+              path="termsAndconditions/create"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <TermsAndConditions />
+                </Suspense>
+              }
+            />
+            <Route
+              path="termsAndconditions/update"
               element={
                 <Suspense fallback={<Loader />}>
                   <TermsAndConditions />
@@ -281,6 +340,15 @@ function App() {
               element={
                 <Suspense fallback={<Loader />}>
                   <BannerManagement />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="settings/all"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <Settings />
                 </Suspense>
               }
             />

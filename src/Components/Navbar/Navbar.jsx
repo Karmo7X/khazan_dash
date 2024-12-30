@@ -45,7 +45,32 @@ const Navbar = () => {
                     <span>{t("global.nav.dashboard")}</span>
                   </Link>
                 </li>
-                
+                <li
+                  className={`has_sub ${
+                    activeLink.includes("/settings") ? "nav-active" : ""
+                  }`}
+                >
+                  <a
+                    href="/settings/all"
+                    className="waves-effect"
+                    onClick={() => handleLinkClick("/settings")}
+                  >
+                    <i className="mdi mdi-settings"></i>
+                    <span>{t("global.nav.menu.settings.title")}</span>
+                    <span className={`float-${isRtl ? "left" : "right"}`}>
+                      {/* <i
+                        className={`mdi mdi-chevron-${
+                           isRtl ? "left" : "right"
+                        } ${
+                          activeLink.includes("/settings")
+                            ? "mdi-chevron-down"
+                            : ""
+                        }`}
+                      ></i> */}
+                    </span>
+                  </a>
+                 
+                </li>
                 <li
                   className={`has_sub ${
                     activeLink.includes("/category") ? "nav-active" : ""
@@ -210,63 +235,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/bannermanagement") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/bannermanagement")}
-                  >
-                    <i className="mdi mdi-image"></i>
-                    <span>{t("global.nav.menu.banner_management.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                           isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/bannermanagement")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                    <li
-                      className={
-                        activeLink === "/bannermanagement/active"
-                          ? "nav-active"
-                          : ""
-                      }
-                      onClick={() =>
-                        handleLinkClick("/bannermanagement/active")
-                      }
-                    >
-                      <Link to="/bannermanagement/active">
-                        <i className="mdi mdi-image"></i>
-                        {t("global.nav.menu.banner_management.create")}
-                      </Link>
-                    </li>
-                    <li
-                      className={
-                        activeLink === "/bannermanagement/inactive"
-                          ? "nav-active"
-                          : ""
-                      }
-                      onClick={() =>
-                        handleLinkClick("/bannermanagement/inactive")
-                      }
-                    >
-                      <Link to="/bannermanagement/inactive">
-                        <i className="mdi mdi-image"></i>
-                        {t("global.nav.menu.banner_management.update")}
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
+               
                
 
                 <li

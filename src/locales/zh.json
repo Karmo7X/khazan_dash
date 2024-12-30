@@ -12,36 +12,68 @@
     },
     "menu": {
       "users": {
-        "title": "用户",
-        "admins": "管理员",
-        "authors": "作者",
-        "all": "所有用户",
-        "create": "创建用户",
-        "update": "更新用户"
+        "title": "المستخدمون",
+        "admins": "المسؤولون",
+        "authors": "المؤلفون",
+        "all": "جميع المستخدمين",
+        "create": "إنشاء مستخدم",
+        "update": "تحديث المستخدم"
       },
       "banner_management": {
-        "title": "横幅管理",
-        "create": "创建横幅",
-        "update": "更新横幅"
+        "title": "إدارة البنرات",
+        "create": "إنشاء بنر",
+        "update": "تحديث بنر"
       },
       "books": {
-        "title": "书籍",
-        "create": "创建书籍",
-        "update": "更新书籍"
+        "title": "الكتب",
+        "create": "إنشاء كتاب",
+        "update": "تحديث كتاب"
       },
       "orders": {
-        "title": "订单",
-        "create": "创建订单"
+        "title": "الطلبات",
+        "create": "إنشاء طلب"
       },
       "category": {
-        "title": "类别",
-        "create": "创建类别",
-        "update": "更新类别"
+        "title": "الفئات",
+        "create": "إنشاء فئة",
+        "update": "تحديث فئة"
       },
       "subscription": {
-        "title": "订阅",
-        "create": "创建订阅",
-        "update": "更新订阅"
+        "title": "الاشتراكات",
+        "create": "إنشاء اشتراك",
+        "update": "تحديث اشتراك"
+      },
+      "privacy_policy": {
+        "title": "سياسة الخصوصية",
+        "create": "إنشاء سياسة الخصوصية",
+        "update": "تحديث سياسة الخصوصية"
+      },
+      "terms_and_conditions": {
+        "title": "الشروط والأحكام",
+        "create": "إنشاء الشروط والأحكام",
+        "update": "تحديث الشروط والأحكام"
+      },
+      "city": {
+        "title": "المدن",
+        "create": "إنشاء مدينة",
+        "update": "تحديث مدينة"
+      },
+      "about_us": {
+        "title": "من نحن",
+        "create": "إنشاء صفحة من نحن",
+        "update": "تحديث صفحة من نحن"
+      },
+      "new_feature": {
+        "title": "ميزة جديدة",
+        "create": "إنشاء ميزة جديدة",
+        "update": "تحديث ميزة"
+      },
+      "settings": {
+        "title": "الإعدادات",
+        "general": "الإعدادات العامة",
+        "security": "إعدادات الأمان",
+        "notifications": "إعدادات الإشعارات",
+        "language": "إعدادات اللغة"
       }
     }
   },
@@ -276,16 +308,24 @@
       "minLength": "中文标题必须至少3个字符。"
     },
     "arDescription": {
-      "required": "阿拉伯语描述为必填项。"
+      "required": "阿拉伯语描述是必需的。",
+      "minLength": "阿拉伯语描述必须至少包含50个字符。",
+      "maxLength": "阿拉伯语描述不得超过500个字符。"
     },
     "enDescription": {
-      "required": "英文描述为必填项。"
+      "required": "英语描述是必需的。",
+      "minLength": "英语描述必须至少包含50个字符。",
+      "maxLength": "英语描述不得超过500个字符。"
     },
     "idDescription": {
-      "required": "印尼语描述为必填项。"
+      "required": "印尼语描述是必需的。",
+      "minLength": "印尼语描述必须至少包含50个字符。",
+      "maxLength": "印尼语描述不得超过500个字符。"
     },
     "zhDescription": {
-      "required": "中文描述为必填项。"
+      "required": "中文描述是必需的。",
+      "minLength": "中文描述必须至少包含50个字符。",
+      "maxLength": "中文描述不得超过500个字符。"
     },
     "pricePdf": {
       "required": "PDF 价格为必填项。",
@@ -311,8 +351,34 @@
       "required": "库存为必填项。",
       "invalid": "库存必须为非负数。"
     },
-     "image_required": "请上传有效的图像文件。",
-    "pdf_required": "请上传有效的PDF文件。"
+    "image_required": "请上传有效的图像文件。",
+    "pdf_required": "请上传有效的PDF文件。",
+    "arName": {
+      "required": "阿拉伯语名称是必需的",
+      "minLength": "阿拉伯语名称必须至少3个字符"
+    },
+    "enName": {
+      "required": "英语名称是必需的",
+      "minLength": "英语名称必须至少3个字符"
+    },
+    "idName": {
+      "required": "印尼语名称是必需的",
+      "minLength": "印尼语名称必须至少3个字符"
+    },
+    "zhName": {
+      "required": "中文名称是必需的",
+      "minLength": "中文名称必须至少1个字符"
+    },
+    "price": {
+      "required": "价格是必需的",
+      "invalid": "价格必须是有效数字且大于0"
+    },
+    "duration": {
+      "invalid": "持续时间必须是有效数字且大于0"
+    },
+    "coupon": {
+      "invalid": "优惠券必须是有效数字且大于或等于0"
+    }
   },
   "delete": {
     "title": "您确定吗？",
@@ -371,5 +437,28 @@
         "view_or_download": "查看或下载文件"
       }
     }
+  },
+  "orders": {
+    "title": "订单",
+    "orderId": "订单编号",
+    "customer": "客户",
+    "orderDate": "订单日期",
+    "shippingAddress": "送货地址",
+    "shippingPrice": "运费",
+    "totalProductPrice": "商品总价",
+    "totalPrice": "总价",
+    "paymentMethodType": "付款方式",
+    "isPaid": "已付款",
+    "isDelivered": "已交付",
+    "orderState": "状态"
+  },
+  "subscriptionColumns": {
+    "title": "订阅",
+    "id": "订阅 ID",
+    "name": "订阅名称",
+    "description": "描述",
+    "price": "价格",
+    "coupon": "优惠券",
+    "duration": "持续时间"
   }
 }

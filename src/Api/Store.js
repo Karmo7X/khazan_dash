@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import AuthReducer from './Auth/AuthSlice'
 import CategoryReducer from './Category/CategorySlice'
-// import SubscriptionReducer from './Subscription/Subscriptions'
+import SubscriptionReducer from './Subscription/Subscriptions'
 // import AppReducer from './App/App'
 import UserReducer from './User/UserSlice'
 import ProductReducer from './Product/Product'
@@ -13,7 +13,7 @@ const Store=configureStore({
     reducer:{
         'auth':AuthReducer,
         'category':CategoryReducer,
-        // 'subscription':SubscriptionReducer,
+        'subscription':SubscriptionReducer,
         // 'app':AppReducer,
         'user':UserReducer,
         'product':ProductReducer,
