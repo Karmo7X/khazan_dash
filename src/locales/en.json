@@ -10,72 +10,72 @@
       "zh": "Chinese",
       "id": "Indonesian"
     },
-   "menu": {
-    "users": {
-      "title": "Users",
-      "admins": "Admins",
-      "authors": "Authors",
-      "all": "All Users",
-      "create": "Create User",
-      "update": "Update User"
-    },
-    "banner_management": {
-      "title": "Banner Management",
-      "create": "Create Banner",
-      "update": "Update Banner"
-    },
-    "books": {
-      "title": "Books",
-      "create": "Create Book",
-      "update": "Update Book"
-    },
-    "orders": {
-      "title": "Orders",
-      "create": "Create Order"
-    },
-    "category": {
-      "title": "Categories",
-      "create": "Create Category",
-      "update": "Update Category"
-    },
-    "subscription": {
-      "title": "Subscriptions",
-      "create": "Create Subscription",
-      "update": "Update Subscription"
-    },
-    "privacy_policy": {
-      "title": "Privacy Policy",
-      "create": "Create Privacy Policy",
-      "update": "Update Privacy Policy"
-    },
-    "terms_and_conditions": {
-      "title": "Terms and Conditions",
-      "create": "Create Terms and Conditions",
-      "update": "Update Terms and Conditions"
-    },
-    "city": {
-      "title": "Cities",
-      "create": "Create City",
-      "update": "Update City"
-    },
-    "about_us": {
-      "title": "About Us",
-      "create": "Create About Us",
-      "update": "Update About Us"
-    },
-    "new_feature": {
-      "title": "New Feature",
-      "create": "Create New Feature",
-      "update": "Update Feature"
-    },
-    "settings": {
-      "title": "Settings",
-      "general": "General Settings",
-      "security": "Security Settings",
-      "notifications": "Notification Settings",
-      "language": "Language Settings"
+    "menu": {
+      "users": {
+        "title": "Users",
+        "admins": "Admins",
+        "authors": "Authors",
+        "all": "All Users",
+        "create": "Create User",
+        "update": "Update User"
+      },
+      "banner_management": {
+        "title": "Banner Management",
+        "create": "Create Banner",
+        "update": "Update Banner"
+      },
+      "books": {
+        "title": "Books",
+        "create": "Create Book",
+        "update": "Update Book"
+      },
+      "orders": {
+        "title": "Orders",
+        "create": "Create Order"
+      },
+      "category": {
+        "title": "Categories",
+        "create": "Create Category",
+        "update": "Update Category"
+      },
+      "subscription": {
+        "title": "Subscriptions",
+        "create": "Create Subscription",
+        "update": "Update Subscription"
+      },
+      "privacy_policy": {
+        "title": "Privacy Policy",
+        "create": "Create Privacy Policy",
+        "update": "Update Privacy Policy"
+      },
+      "terms_and_conditions": {
+        "title": "Terms and Conditions",
+        "create": "Create Terms and Conditions",
+        "update": "Update Terms and Conditions"
+      },
+      "city": {
+        "title": "Cities",
+        "create": "Create City",
+        "update": "Update City"
+      },
+      "about_us": {
+        "title": "About Us",
+        "create": "Create About Us",
+        "update": "Update About Us"
+      },
+      "new_feature": {
+        "title": "New Feature",
+        "create": "Create New Feature",
+        "update": "Update Feature"
+      },
+      "settings": {
+        "title": "Settings",
+        "general": "General Settings",
+        "security": "Security Settings",
+        "notifications": "Notification Settings",
+        "language": "Language Settings"
+      }
     }
-  }
   },
   "login": {
     "welcomeBack": "Welcome back!",
@@ -237,8 +237,8 @@
       "oneOf": "Password and Confirm Password must match"
     },
     "roles": {
-        "required": "At least one role must be selected."
-      },
+      "required": "At least one role must be selected."
+    },
     "birthday": {
       "required": "Birthday is required",
       "max": "Birthday must be in the past",
@@ -282,11 +282,34 @@
     "delete": "Delete",
     "notify": "Notify",
     "actions": "Actions",
+    "update": " Update",
     "crud_instruction": "Use the buttons below to manage {{entityType}}. You can add, edit, or delete entries as needed.",
     "category": {
       "category_id": "Category ID",
       "title": "Title",
       "image": "Image"
+    },
+    "form": {
+      "artitle": "Arabic Title",
+      "entitle": "English Title",
+      "idtitle": "Indonesian Title",
+      "zhtitle": "Chinese Title",
+      "title": "Enter the title here",
+      "arPrivacyPolicy": "Arabic Privacy Policy",
+      "enPrivacyPolicy": "English Privacy Policy",
+      "idPrivacyPolicy": "Indonesian Privacy Policy",
+      "zhPrivacyPolicy": "Chinese Privacy Policy",
+      "arTermsAndConditions": "Arabic Terms and Conditions",
+      "enTermsAndConditions": "English Terms and Conditions",
+      "idTermsAndConditions": "Indonesian Terms and Conditions",
+      "zhTermsAndConditions": "Chinese Terms and Conditions",
+      "arCity": "Arabic City",
+        "enCity": "English City",
+        "idCity": "Indonesian City",
+        "zhCity": "Chinese City",
+        "update": "Update",
+        "shippingPrice": "Shipping Price",
+        "shippingPricePlaceholder": "Enter the shipping price"
     },
     "close": "Close",
     "save_changes": "Save changes"
@@ -308,26 +331,26 @@
       "required": "Chinese title is required.",
       "minLength": "Chinese title must be at least 3 characters."
     },
-   "arDescription": {
-        "required": "Arabic description is required.",
-        "minLength": "Arabic description must be at least 50 characters long.",
-        "maxLength": "Arabic description must not exceed 500 characters."
-      },
-      "enDescription": {
-        "required": "English description is required.",
-        "minLength": "English description must be at least 50 characters long.",
-        "maxLength": "English description must not exceed 500 characters."
-      },
-      "idDescription": {
-        "required": "Indonesian description is required.",
-        "minLength": "Indonesian description must be at least 50 characters long.",
-        "maxLength": "Indonesian description must not exceed 500 characters."
-      },
-      "zhDescription": {
-        "required": "Chinese description is required.",
-        "minLength": "Chinese description must be at least 50 characters long.",
-        "maxLength": "Chinese description must not exceed 500 characters."
-      },
+    "arDescription": {
+      "required": "Arabic description is required.",
+      "minLength": "Arabic description must be at least 50 characters long.",
+      "maxLength": "Arabic description must not exceed 500 characters."
+    },
+    "enDescription": {
+      "required": "English description is required.",
+      "minLength": "English description must be at least 50 characters long.",
+      "maxLength": "English description must not exceed 500 characters."
+    },
+    "idDescription": {
+      "required": "Indonesian description is required.",
+      "minLength": "Indonesian description must be at least 50 characters long.",
+      "maxLength": "Indonesian description must not exceed 500 characters."
+    },
+    "zhDescription": {
+      "required": "Chinese description is required.",
+      "minLength": "Chinese description must be at least 50 characters long.",
+      "maxLength": "Chinese description must not exceed 500 characters."
+    },
     "pricePdf": {
       "required": "PDF price is required.",
       "invalid": "PDF price must be a positive number."
@@ -352,35 +375,84 @@
       "required": "Stock is required.",
       "invalid": "Stock must be a non-negative number."
     },
-     "image_required": "Please upload a valid image file.",
+    "image_required": "Please upload a valid image file.",
     "pdf_required": "Please upload a valid PDF file.",
     "arName": {
-        "required": "Arabic name is required",
-        "minLength": "Arabic name must be at least 3 characters long"
-      },
-      "enName": {
-        "required": "English name is required",
-        "minLength": "English name must be at least 3 characters long"
-      },
-      "idName": {
-        "required": "Indonesian name is required",
-        "minLength": "Indonesian name must be at least 3 characters long"
-      },
-      "zhName": {
-        "required": "Chinese name is required",
-        "minLength": "Chinese name must be at least 1 character long"
-      },
-    
-      "price": {
-        "required": "Price is required",
-        "invalid": "Price must be a valid number greater than 0"
-      },
-      "duration": {
-        "invalid": "Duration must be a valid number greater than 0"
-      },
-      "coupon": {
-        "invalid": "Coupon must be a valid number and greater than or equal to 0"
-      }
+      "required": "Arabic name is required",
+      "minLength": "Arabic name must be at least 3 characters long"
+    },
+    "enName": {
+      "required": "English name is required",
+      "minLength": "English name must be at least 3 characters long"
+    },
+    "idName": {
+      "required": "Indonesian name is required",
+      "minLength": "Indonesian name must be at least 3 characters long"
+    },
+    "zhName": {
+      "required": "Chinese name is required",
+      "minLength": "Chinese name must be at least 1 character long"
+    },
+
+    "price": {
+      "required": "Price is required",
+      "invalid": "Price must be a valid number greater than 0"
+    },
+    "duration": {
+      "invalid": "Duration must be a valid number greater than 0"
+    },
+    "coupon": {
+      "invalid": "Coupon must be a valid number and greater than or equal to 0"
+    },
+    "arPrivacyPolicy": {
+      "required": "Arabic Privacy Policy is required.",
+      "minLength": "Arabic Privacy Policy must be at least 20 characters long."
+    },
+    "enPrivacyPolicy": {
+      "required": "English Privacy Policy is required.",
+      "minLength": "English Privacy Policy must be at least 20 characters long."
+    },
+    "idPrivacyPolicy": {
+      "required": "Indonesian Privacy Policy is required.",
+      "minLength": "Indonesian Privacy Policy must be at least 20 characters long."
+    },
+    "zhPrivacyPolicy": {
+      "required": "Chinese Privacy Policy is required.",
+      "minLength": "Chinese Privacy Policy must be at least 20 characters long."
+    },
+    "arTermsAndConditions": {
+      "required": "Arabic Terms and Conditions are required.",
+      "minLength": "Arabic Terms and Conditions must be at least 20 characters."
+    },
+    "enTermsAndConditions": {
+      "required": "English Terms and Conditions are required.",
+      "minLength": "English Terms and Conditions must be at least 20 characters."
+    },
+    "idTermsAndConditions": {
+      "required": "Indonesian Terms and Conditions are required.",
+      "minLength": "Indonesian Terms and Conditions must be at least 20 characters."
+    },
+    "zhTermsAndConditions": {
+      "required": "Chinese Terms and Conditions are required.",
+      "minLength": "Chinese Terms and Conditions must be at least 20 characters."
+    },
+    "shippingPrice": {
+      "required": "Shipping price is required",
+      "invalid": "Shipping price must be a valid number",
+      "positive": "Shipping price must be greater than 0"
+    },
+    "arCity": {
+      "required": "Arabic City is required"
+    },
+    "enCity": {
+      "required": "English City is required"
+    },
+    "idCity": {
+      "required": "Indonesian City is required"
+    },
+    "zhCity": {
+      "required": "Chinese City is required"
+    }
   },
   "delete": {
     "title": "Are You Sure?",

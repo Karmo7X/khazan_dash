@@ -59,7 +59,7 @@ const Updatebook = () => {
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
-  console.log(productimg);
+ 
   // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -221,13 +221,17 @@ const Updatebook = () => {
       
       // Append image field
       if (productimg) {
-        coverImage.append("coverImage", productimg);
+        const data={
+          'id':id,
+          'coverImage':coverImage
+        }
+        coverImage.append("coverimage", productimg);
         // Log FormData contents
         for (let pair of coverImage.entries()) {
           console.log(pair[0] + ': ' + pair[1]);
         }
       
-        dispatch(UpdateProductimgeApi(id, coverImage)).then((res) => {
+        dispatch(UpdateProductimgeApi( data)).then((res) => {
           if (res.payload?.code === 200) {
             setSuccessmessage(res.payload?.message);
           }

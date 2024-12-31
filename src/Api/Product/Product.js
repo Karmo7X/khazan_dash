@@ -143,10 +143,10 @@ export const UpdateProductApi = createAsyncThunk(
     }
   }
 );
-export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge", async (productId,data) => {
+export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge", async (data) => {
   try {
 
-    const res = await axios.patch(`${baseurl}/product/changeCoverImage/${productId}`,data, {
+    const res = await axios.patch(`${baseurl}/product/changeCoverImage/${data?.id}`,data, {
       headers: {
         lang: lang,
         'Authorization':`Bearer ${token}`,

@@ -3,21 +3,20 @@ import { useTranslation } from "react-i18next";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AddpolicyApi, GetHomeApi, GetpolicyApi, UpdateHomeApi, UpdatepolicyApi } from "../../Api/App/App";
+import { AddTermApi, GetHomeApi, GetpolicyApi, GetTermApi, UpdateHomeApi, UpdatepolicyApi, UpdateTermApi } from "../../Api/App/App";
 import Topbar from "../../Components/Topbar/Topbar";
 import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
-import { AddProductApi } from "../../Api/Product/Product";
-const Addprivacy = () => {
+const AddTerms = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const loading = useSelector((state) => state.app.status);
   // State for form data
   const [formData, setFormData] = useState({
-    arPrivacyPolicy: "", // Arabic title
-    enPrivacyPolicy: "", // English title
-    idPrivacyPolicy: "", // Indonesian title
-    zhPrivacyPolicy: "", // Chinese title
+    arTermsAndConditions: "", // Arabic title
+    enTermsAndConditions: "", // English title
+    idTermsAndConditions: "", // Indonesian title
+    zhTermsAndConditions: "", // Chinese title
   });
   
 
@@ -44,31 +43,31 @@ const Addprivacy = () => {
     const error = {};
   
     // Arabic Title Validation
-    if (!value.arPrivacyPolicy.trim()) {
-      error.arPrivacyPolicy = t("global.validation.arPrivacyPolicy.required"); // Add a key for this message in your translation files
-    } else if (value.arPrivacyPolicy.length < 20) {
-      error.arPrivacyPolicy = t("global.validation.arPrivacyPolicy.minLength"); // Minimum length check
+    if (!value.arTermsAndConditions.trim()) {
+      error.arTermsAndConditions = t("global.validation.arTermsAndConditions.required"); // Add a key for this message in your translation files
+    } else if (value.arTermsAndConditions.length < 20) {
+      error.arTermsAndConditions = t("global.validation.arTermsAndConditions.minLength"); // Minimum length check
     }
   
     // English Title Validation
-    if (!value.enPrivacyPolicy.trim()) {
-      error.enPrivacyPolicy = t("global.validation.enPrivacyPolicy.required");
-    } else if (value.enPrivacyPolicy.length < 20) {
-      error.enPrivacyPolicy = t("global.validation.enPrivacyPolicy.minLength");
+    if (!value.enTermsAndConditions.trim()) {
+      error.enTermsAndConditions = t("global.validation.enTermsAndConditions.required");
+    } else if (value.enTermsAndConditions.length < 20) {
+      error.enTermsAndConditions = t("global.validation.enTermsAndConditions.minLength");
     }
   
     // Indonesian Title Validation
-    if (!value.idPrivacyPolicy.trim()) {
-      error.idPrivacyPolicy = t("validation.idPrivacyPolicy.required");
-    } else if (value.idPrivacyPolicy.length < 20) {
-      error.idPrivacyPolicy = t("global.validation.idPrivacyPolicy.minLength");
+    if (!value.idTermsAndConditions.trim()) {
+      error.idTermsAndConditions = t("validation.idTermsAndConditions.required");
+    } else if (value.idTermsAndConditions.length < 20) {
+      error.idTermsAndConditions = t("global.validation.idTermsAndConditions.minLength");
     }
   
     // Chinese Title Validation
-    if (!value.zhPrivacyPolicy.trim()) {
-      error.zhPrivacyPolicy = t("global.validation.zhPrivacyPolicy.required");
-    } else if (value.zhPrivacyPolicy.length < 20) {
-      error.zhPrivacyPolicy = t("global.validation.zhPrivacyPolicy.minLength");
+    if (!value.zhTermsAndConditions.trim()) {
+      error.zhTermsAndConditions = t("global.validation.zhTermsAndConditions.required");
+    } else if (value.zhTermsAndConditions.length < 20) {
+      error.zhTermsAndConditions = t("global.validation.zhTermsAndConditions.minLength");
     }
   
     return error;
@@ -80,20 +79,19 @@ const Addprivacy = () => {
     const error_submit = validate(formData); // Validate only `formData`
     if (Object.keys(error_submit).length === 0) {
       setErrorvalid(null);
-      dispatch(AddpolicyApi(formData)).then((res) => {
+      dispatch(AddTermApi(formData)).then((res) => {
         if (res && res.payload) {
           if (res.payload.code === 200) {
             setSuccessmessage(res.payload.message);
             setErrorvalid(null);
             setErrormessg(null);
             navigate('/settings/all')
-             
             // Reset the form (uncomment if needed)
             // setFormData({
-            //   arPrivacyPolicy: "",
-            //   enPrivacyPolicy: "",
-            //   idPrivacyPolicy: "",
-            //   zhPrivacyPolicy: "",
+            //   arTermsAndConditions: "",
+            //   enTermsAndConditions: "",
+            //   idTermsAndConditions: "",
+            //   zhTermsAndConditions: "",
             // });
             setBannerimg(null); // Clear image
             setBannerimgdata(null);
@@ -108,9 +106,10 @@ const Addprivacy = () => {
     }
   };
 
+
   return (
-    <>  
-    <div class="content-page">
+    <>
+     <div class="content-page">
     {/* <!-- Start content --> */}
     <div class="content">
       <Topbar />
@@ -118,61 +117,61 @@ const Addprivacy = () => {
       <div class="page-content-wrapper">
         <div class="container-fluid">
           <div class="row">
-            <Breadcrumb page={t("global.nav.menu.privacy_policy.create")} />
+            <Breadcrumb page={t("global.nav.menu.terms_and_conditions.create")} />
           </div>
           {/* tables for data and cate crud functionlity */}
           <form class="" action="#">
         <div class="form-group">
-          <label className="fw-bold"> {t("global.table.form.arPrivacyPolicy")}</label>
+          <label className="fw-bold"> {t("global.table.form.arTermsAndConditions")}</label>
           <textarea
             type="text"
             class="form-control"
             rows={10}
             style={{resize:'none'}}
-            name="arPrivacyPolicy"
-            value={formData.arPrivacyPolicy}
+            name="arTermsAndConditions"
+            value={formData.arTermsAndConditions}
             required
             placeholder={t("global.table.form.title")}
             onChange={(e) => handleChange(e)}
           />
         </div>
         <div class="form-group">
-          <label className="fw-bold"> {t("global.table.form.enPrivacyPolicy")}</label>
+          <label className="fw-bold"> {t("global.table.form.enTermsAndConditions")}</label>
           <textarea
             type="text"
             class="form-control"
             rows={10}
             style={{resize:'none'}}
-            name="enPrivacyPolicy"
-            value={formData.enPrivacyPolicy}
+            name="enTermsAndConditions"
+            value={formData.enTermsAndConditions}
             required
             placeholder={t("global.table.form.title")}
             onChange={(e) => handleChange(e)}
           />
         </div>
         <div class="form-group">
-          <label className="fw-bold"> {t("global.table.form.idPrivacyPolicy")}</label>
+          <label className="fw-bold"> {t("global.table.form.idTermsAndConditions")}</label>
           <textarea
             type="text"
             class="form-control"
             rows={10}
             style={{resize:'none'}}
-            name="idPrivacyPolicy"
-            value={formData.idPrivacyPolicy}
+            name="idTermsAndConditions"
+            value={formData.idTermsAndConditions}
             required
             placeholder={t("global.table.form.title")}
             onChange={(e) => handleChange(e)}
           />
         </div>
         <div class="form-group">
-          <label className="fw-bold"> {t("global.table.form.zhPrivacyPolicy")}</label>
+          <label className="fw-bold"> {t("global.table.form.zhTermsAndConditions")}</label>
           <textarea
             type="text"
             class="form-control"
             rows={10}
             style={{resize:'none'}}
-            name="zhPrivacyPolicy"
-            value={formData.zhPrivacyPolicy}
+            name="zhTermsAndConditions"
+            value={formData.zhTermsAndConditions}
             required
             placeholder={t("global.table.form.title")}
             onChange={(e) => handleChange(e)}
@@ -183,10 +182,10 @@ const Addprivacy = () => {
           <>
             <div className="d-flex align-items-center justify-content-center">
               <div class="alert alert-danger " role="alert">
-                {errorvalid?.arPrivacyPolicy ||
-                  errorvalid?.enPrivacyPolicy ||
-                  errorvalid?.idPrivacyPolicy ||
-                  errorvalid?.zhPrivacyPolicy}
+                {errorvalid?.arTermsAndConditions ||
+                  errorvalid?.enTermsAndConditions ||
+                  errorvalid?.idTermsAndConditions ||
+                  errorvalid?.zhTermsAndConditions}
                   
               </div>
             </div>
@@ -212,7 +211,7 @@ const Addprivacy = () => {
           <button
             type="button "
             class="btn btn-primary w-50 mt-5 waves-effect waves-light"
-            style={{ padding: "15px 30px"}}
+            style={{ padding: "15px 30px" }}
             onClick={(e) => handleSubmit(e)}
             // disabled={disable}
           >
@@ -231,8 +230,10 @@ const Addprivacy = () => {
         </div>
       </div>
     </div>
-  </div></>
-  )
-}
+  </div>
+     
+    </>
+  );
+};
 
-export default Addprivacy
+export default AddTerms;

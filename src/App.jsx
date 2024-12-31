@@ -18,6 +18,9 @@ import AddAuthor from "./Pages/Users/AddAuthor";
 import UpdateAuthor from "./Pages/Users/UpdateAuthor";
 import UpdateAdmin from "./Pages/Users/UpdateAdmin";
 import Updatebook from "./Pages/Books/Updatebook";
+import Addprivacy from "./Pages/Privacy/Addprivacy";
+import AddTerms from "./Pages/TermsAndConditions/AddTerms";
+import AddBanner from "./Pages/BannerManagement/AddBanner";
 
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
@@ -287,59 +290,28 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="privacy/all"
-              element={
-                <Suspense fallback={<Loader />}>
-                  <Privacy />
-                </Suspense>
-              }
-            />
+           
             <Route
               path="privacy/create"
               element={
                 <Suspense fallback={<Loader />}>
-                  <Privacy />
+                  <Addprivacy />
                 </Suspense>
               }
             />
-            <Route
-              path="privacy/update"
+           <Route
+              path="terms/create"
               element={
                 <Suspense fallback={<Loader />}>
-                  <Privacy />
+                  <AddTerms />
                 </Suspense>
               }
             />
-            <Route
-              path="termsAndconditions/all"
+           <Route
+              path="banner/create"
               element={
                 <Suspense fallback={<Loader />}>
-                  <TermsAndConditions />
-                </Suspense>
-              }
-            />
-            <Route
-              path="termsAndconditions/create"
-              element={
-                <Suspense fallback={<Loader />}>
-                  <TermsAndConditions />
-                </Suspense>
-              }
-            />
-            <Route
-              path="termsAndconditions/update"
-              element={
-                <Suspense fallback={<Loader />}>
-                  <TermsAndConditions />
-                </Suspense>
-              }
-            />
-            <Route
-              path="bannermanagement"
-              element={
-                <Suspense fallback={<Loader />}>
-                  <BannerManagement />
+                  <AddBanner />
                 </Suspense>
               }
             />

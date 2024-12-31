@@ -33,7 +33,7 @@ const ALLBooks = () => {
 
   const handleEditBook = (book) => {
     // Logic for editing the book
-    console.log(book?.id)
+    
     navigate(`/books/${book?.id}`)
   };
 

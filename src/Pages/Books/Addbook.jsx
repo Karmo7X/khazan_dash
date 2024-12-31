@@ -43,7 +43,7 @@ const Addbook = () => {
     pricePaper: "",
     stock: "",
   });
-  console.log(formData);
+  
   const navigate = useNavigate();
   const [productimg, setproductimg] = useState(null);
   const [productpdf, setproductpdf] = useState(null);

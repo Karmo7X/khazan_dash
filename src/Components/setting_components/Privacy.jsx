@@ -3,11 +3,8 @@ import { useTranslation } from "react-i18next";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AddpolicyApi, GetHomeApi, GetpolicyApi, UpdateHomeApi, UpdatepolicyApi } from "../../Api/App/App";
-import Topbar from "../../Components/Topbar/Topbar";
-import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
-import { AddProductApi } from "../../Api/Product/Product";
-const Addprivacy = () => {
+import { GetHomeApi, GetpolicyApi, UpdateHomeApi, UpdatepolicyApi } from "../../Api/App/App";
+const Privacy = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -79,15 +76,15 @@ const Addprivacy = () => {
     
     const error_submit = validate(formData); // Validate only `formData`
     if (Object.keys(error_submit).length === 0) {
-      setErrorvalid(null);
-      dispatch(AddpolicyApi(formData)).then((res) => {
+    
+      dispatch(UpdatepolicyApi(formData)).then((res) => {
         if (res && res.payload) {
           if (res.payload.code === 200) {
             setSuccessmessage(res.payload.message);
             setErrorvalid(null);
             setErrormessg(null);
-            navigate('/settings/all')
-             
+            
+             window.location.reload()
             // Reset the form (uncomment if needed)
             // setFormData({
             //   arPrivacyPolicy: "",
@@ -107,21 +104,30 @@ const Addprivacy = () => {
       setErrorvalid(error_submit);
     }
   };
+   
+  useEffect(()=>{
+    dispatch(GetpolicyApi()).then((res)=>{
+        if(res.payload?.code === 200 ){
+            setFormData((prev) => ({
+                ...prev,
+                arPrivacyPolicy: res.payload?.data?.privacyPolicy.ar, // Arabic title
+                enPrivacyPolicy: res.payload?.data?.privacyPolicy.en, // English title
+                idPrivacyPolicy: res.payload?.data?.privacyPolicy.id, // Indonesian title
+                zhPrivacyPolicy: res.payload?.data?.privacyPolicy.zh, // Chinese title
+              }));
+        }
+    })
+  },[])
 
   return (
-    <>  
-    <div class="content-page">
-    {/* <!-- Start content --> */}
-    <div class="content">
-      <Topbar />
+    <>
 
-      <div class="page-content-wrapper">
-        <div class="container-fluid">
-          <div class="row">
-            <Breadcrumb page={t("global.nav.menu.privacy_policy.create")} />
-          </div>
-          {/* tables for data and cate crud functionlity */}
-          <form class="" action="#">
+     <div className=" mb-3">
+     <a  className="btn btn-primary"href="/privacy/create">
+     {t("global.nav.menu.privacy_policy.create")}
+     </a>
+     </div>
+      <form class="" action="#">
         <div class="form-group">
           <label className="fw-bold"> {t("global.table.form.arPrivacyPolicy")}</label>
           <textarea
@@ -212,9 +218,9 @@ const Addprivacy = () => {
           <button
             type="button "
             class="btn btn-primary w-50 mt-5 waves-effect waves-light"
-            style={{ padding: "15px 30px"}}
+            style={{ padding: "15px 30px" ,background: disable === true ? '#898989' :""}}
             onClick={(e) => handleSubmit(e)}
-            // disabled={disable}
+            disabled={disable}
           >
             {loading === "loading" ? (
               <>
@@ -223,16 +229,13 @@ const Addprivacy = () => {
                 </div>
               </>
             ) : (
-              t("global.table.add")
+              t("global.table.update")
             )}
           </button>
         </div>
       </form>
-        </div>
-      </div>
-    </div>
-  </div></>
-  )
-}
+    </>
+  );
+};
 
-export default Addprivacy
+export default Privacy;

@@ -12,68 +12,68 @@
     },
     "menu": {
       "users": {
-        "title": "المستخدمون",
-        "admins": "المسؤولون",
-        "authors": "المؤلفون",
-        "all": "جميع المستخدمين",
-        "create": "إنشاء مستخدم",
-        "update": "تحديث المستخدم"
+        "title": "用户",
+        "admins": "管理员",
+        "authors": "作者",
+        "all": "所有用户",
+        "create": "创建用户",
+        "update": "更新用户"
       },
       "banner_management": {
-        "title": "إدارة البنرات",
-        "create": "إنشاء بنر",
-        "update": "تحديث بنر"
+        "title": "横幅管理",
+        "create": "创建横幅",
+        "update": "更新横幅"
       },
       "books": {
-        "title": "الكتب",
-        "create": "إنشاء كتاب",
-        "update": "تحديث كتاب"
+        "title": "书籍",
+        "create": "创建书籍",
+        "update": "更新书籍"
       },
       "orders": {
-        "title": "الطلبات",
-        "create": "إنشاء طلب"
+        "title": "订单",
+        "create": "创建订单"
       },
       "category": {
-        "title": "الفئات",
-        "create": "إنشاء فئة",
-        "update": "تحديث فئة"
+        "title": "类别",
+        "create": "创建类别",
+        "update": "更新类别"
       },
       "subscription": {
-        "title": "الاشتراكات",
-        "create": "إنشاء اشتراك",
-        "update": "تحديث اشتراك"
+        "title": "订阅",
+        "create": "创建订阅",
+        "update": "更新订阅"
       },
       "privacy_policy": {
-        "title": "سياسة الخصوصية",
-        "create": "إنشاء سياسة الخصوصية",
-        "update": "تحديث سياسة الخصوصية"
+        "title": "隐私政策",
+        "create": "创建隐私政策",
+        "update": "更新隐私政策"
       },
       "terms_and_conditions": {
-        "title": "الشروط والأحكام",
-        "create": "إنشاء الشروط والأحكام",
-        "update": "تحديث الشروط والأحكام"
+        "title": "条款和条件",
+        "create": "创建条款和条件",
+        "update": "更新条款和条件"
       },
       "city": {
-        "title": "المدن",
-        "create": "إنشاء مدينة",
-        "update": "تحديث مدينة"
+        "title": "城市",
+        "create": "创建城市",
+        "update": "更新城市"
       },
       "about_us": {
-        "title": "من نحن",
-        "create": "إنشاء صفحة من نحن",
-        "update": "تحديث صفحة من نحن"
+        "title": "关于我们",
+        "create": "创建关于我们",
+        "update": "更新关于我们"
       },
       "new_feature": {
-        "title": "ميزة جديدة",
-        "create": "إنشاء ميزة جديدة",
-        "update": "تحديث ميزة"
+        "title": "新功能",
+        "create": "创建新功能",
+        "update": "更新功能"
       },
       "settings": {
-        "title": "الإعدادات",
-        "general": "الإعدادات العامة",
-        "security": "إعدادات الأمان",
-        "notifications": "إعدادات الإشعارات",
-        "language": "إعدادات اللغة"
+        "title": "设置",
+        "general": "通用设置",
+        "security": "安全设置",
+        "notifications": "通知设置",
+        "language": "语言设置"
       }
     }
   },
@@ -281,11 +281,33 @@
     "delete": "删除",
     "notify": "通知",
     "actions": "操作",
+    "update": " 更新",
     "crud_instruction": "使用下面的按钮管理 {{entityType}}。您可以根据需要添加、编辑或删除条目。",
     "category": {
       "category_id": "类别ID",
       "title": "标题",
       "image": "图片"
+    },
+    "form": {
+      "artitle": "阿拉伯语标题",
+      "entitle": "英语标题",
+      "idtitle": "印度尼西亚语标题",
+      "zhtitle": "中文标题",
+      "title": "在此处输入标题",
+      "arPrivacyPolicy": "阿拉伯语隐私政策",
+      "enPrivacyPolicy": "英语隐私政策",
+      "idPrivacyPolicy": "印度尼西亚隐私政策",
+      "zhPrivacyPolicy": "中文隐私政策",
+      "arTermsAndConditions": "阿拉伯语条款和条件",
+      "enTermsAndConditions": "英语条款和条件",
+      "idTermsAndConditions": "印尼语条款和条件",
+      "zhTermsAndConditions": "中文条款和条件",
+        "shippingPrice": "运费",
+        "shippingPricePlaceholder": "请输入运费",
+      "arCity": "阿拉伯城市",
+      "enCity": "英语城市",
+      "idCity": "印尼城市",
+      "zhCity": "中文城市"
     },
     "close": "关闭",
     "save_changes": "保存更改"
@@ -378,6 +400,55 @@
     },
     "coupon": {
       "invalid": "优惠券必须是有效数字且大于或等于0"
+    },
+    "arPrivacyPolicy": {
+      "required": "阿拉伯语隐私政策是必需的。",
+      "minLength": "阿拉伯语隐私政策必须至少包含20个字符。"
+    },
+    "enPrivacyPolicy": {
+      "required": "英语隐私政策是必需的。",
+      "minLength": "英语隐私政策必须至少包含20个字符。"
+    },
+    "idPrivacyPolicy": {
+      "required": "印尼语隐私政策是必需的。",
+      "minLength": "印尼语隐私政策必须至少包含20个字符。"
+    },
+    "zhPrivacyPolicy": {
+      "required": "中文隐私政策是必需的。",
+      "minLength": "中文隐私政策必须至少包含20个字符。"
+    },
+    "arTermsAndConditions": {
+      "required": "阿拉伯语的条款和条件是必需的。",
+      "minLength": "阿拉伯语的条款和条件必须至少为20个字符。"
+    },
+    "enTermsAndConditions": {
+      "required": "英语条款和条件是必需的。",
+      "minLength": "英语条款和条件必须至少为20个字符。"
+    },
+    "idTermsAndConditions": {
+      "required": "印尼语的条款和条件是必需的。",
+      "minLength": "印尼语的条款和条件必须至少为20个字符。"
+    },
+    "zhTermsAndConditions": {
+      "required": "中文条款和条件是必需的。",
+      "minLength": "中文条款和条件必须至少为20个字符。"
+    },
+    "shippingPrice": {
+          "required": "运费是必填项",
+          "invalid": "运费必须是有效的数字",
+          "positive": "运费必须大于0"
+        },
+    "arCity": {
+      "required": "阿拉伯城市是必填项"
+    },
+    "enCity": {
+      "required": "英语城市是必填项"
+    },
+    "idCity": {
+      "required": "印尼城市是必填项"
+    },
+    "zhCity": {
+      "required": "中文城市是必填项"
     }
   },
   "delete": {

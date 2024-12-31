@@ -10,72 +10,72 @@
       "zh": "Cina",
       "id": "Indonesia"
     },
-  "menu": {
-    "users": {
-      "title": "用户",
-      "admins": "管理员",
-      "authors": "作者",
-      "all": "所有用户",
-      "create": "创建用户",
-      "update": "更新用户"
-    },
-    "banner_management": {
-      "title": "横幅管理",
-      "create": "创建横幅",
-      "update": "更新横幅"
-    },
-    "books": {
-      "title": "书籍",
-      "create": "创建书籍",
-      "update": "更新书籍"
-    },
-    "orders": {
-      "title": "订单",
-      "create": "创建订单"
-    },
-    "category": {
-      "title": "类别",
-      "create": "创建类别",
-      "update": "更新类别"
-    },
-    "subscription": {
-      "title": "订阅",
-      "create": "创建订阅",
-      "update": "更新订阅"
-    },
-    "privacy_policy": {
-      "title": "隐私政策",
-      "create": "创建隐私政策",
-      "update": "更新隐私政策"
-    },
-    "terms_and_conditions": {
-      "title": "条款和条件",
-      "create": "创建条款和条件",
-      "update": "更新条款和条件"
-    },
-    "city": {
-      "title": "城市",
-      "create": "创建城市",
-      "update": "更新城市"
-    },
-    "about_us": {
-      "title": "关于我们",
-      "create": "创建关于我们",
-      "update": "更新关于我们"
-    },
-    "new_feature": {
-      "title": "新功能",
-      "create": "创建新功能",
-      "update": "更新功能"
-    },
-    "settings": {
-      "title": "设置",
-      "general": "通用设置",
-      "security": "安全设置",
-      "notifications": "通知设置",
-      "language": "语言设置"
+    "menu": {
+      "users": {
+        "title": "Pengguna",
+        "admins": "Administrator",
+        "authors": "Penulis",
+        "all": "Semua Pengguna",
+        "create": "Buat Pengguna",
+        "update": "Perbarui Pengguna"
+      },
+      "banner_management": {
+        "title": "Manajemen Banner",
+        "create": "Buat Banner",
+        "update": "Perbarui Banner"
+      },
+      "books": {
+        "title": "Buku",
+        "create": "Buat Buku",
+        "update": "Perbarui Buku"
+      },
+      "orders": {
+        "title": "Pesanan",
+        "create": "Buat Pesanan"
+      },
+      "category": {
+        "title": "Kategori",
+        "create": "Buat Kategori",
+        "update": "Perbarui Kategori"
+      },
+      "subscription": {
+        "title": "Langganan",
+        "create": "Buat Langganan",
+        "update": "Perbarui Langganan"
+      },
+      "privacy_policy": {
+        "title": "Kebijakan Privasi",
+        "create": "Buat Kebijakan Privasi",
+        "update": "Perbarui Kebijakan Privasi"
+      },
+      "terms_and_conditions": {
+        "title": "Syarat dan Ketentuan",
+        "create": "Buat Syarat dan Ketentuan",
+        "update": "Perbarui Syarat dan Ketentuan"
+      },
+      "city": {
+        "title": "Kota",
+        "create": "Buat Kota",
+        "update": "Perbarui Kota"
+      },
+      "about_us": {
+        "title": "Tentang Kami",
+        "create": "Buat Halaman Tentang Kami",
+        "update": "Perbarui Halaman Tentang Kami"
+      },
+      "new_feature": {
+        "title": "Fitur Baru",
+        "create": "Buat Fitur Baru",
+        "update": "Perbarui Fitur"
+      },
+      "settings": {
+        "title": "Pengaturan",
+        "general": "Pengaturan Umum",
+        "security": "Pengaturan Keamanan",
+        "notifications": "Pengaturan Pemberitahuan",
+        "language": "Pengaturan Bahasa"
+      }
     }
-  }
   },
   "login": {
     "welcomeBack": "Selamat datang kembali!",
@@ -281,12 +281,34 @@
     "edit": "Sunting",
     "delete": "Hapus",
     "notify": "Notifikasi",
+    "update": " memperbarui",
     "actions": "Tindakan",
     "crud_instruction": "Gunakan tombol di bawah ini untuk mengelola {{entityType}}. Anda dapat menambah, mengedit, atau menghapus entri sesuai kebutuhan.",
     "category": {
       "category_id": "ID Kategori",
       "title": "Judul",
       "image": "Gambar"
+    },
+    "form": {
+      "artitle": "Judul Arab",
+      "entitle": "Judul Inggris",
+      "idtitle": "Judul Indonesia",
+      "zhtitle": "Judul Cina",
+      "title": "Masukkan judul di sini",
+      "arPrivacyPolicy": "Kebijakan Privasi Arab",
+      "enPrivacyPolicy": "Kebijakan Privasi Inggris",
+      "idPrivacyPolicy": "Kebijakan Privasi Indonesia",
+      "zhPrivacyPolicy": "Kebijakan Privasi Cina",
+      "arTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Arab",
+        "enTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Inggris",
+        "idTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Indonesia",
+        "zhTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Mandarin",
+        "arCity": "Kota Arab",
+        "enCity": "Kota Inggris",
+        "idCity": "Kota Indonesia",
+        "zhCity": "Kota Cina",
+        "shippingPrice": "Harga Pengiriman",
+        "shippingPricePlaceholder": "Masukkan harga pengiriman"
     },
     "close": "Tutup",
     "save_changes": "Simpan perubahan"
@@ -379,6 +401,55 @@
     },
     "coupon": {
       "invalid": "Kupon harus angka yang valid dan lebih besar dari atau sama dengan 0"
+    },
+    "arPrivacyPolicy": {
+      "required": "Kebijakan Privasi dalam Bahasa Arab diperlukan.",
+      "minLength": "Kebijakan Privasi dalam Bahasa Arab harus minimal 20 karakter."
+    },
+    "enPrivacyPolicy": {
+      "required": "Kebijakan Privasi dalam Bahasa Inggris diperlukan.",
+      "minLength": "Kebijakan Privasi dalam Bahasa Inggris harus minimal 20 karakter."
+    },
+    "idPrivacyPolicy": {
+      "required": "Kebijakan Privasi dalam Bahasa Indonesia diperlukan.",
+      "minLength": "Kebijakan Privasi dalam Bahasa Indonesia harus minimal 20 karakter."
+    },
+    "zhPrivacyPolicy": {
+      "required": "Kebijakan Privasi dalam Bahasa Mandarin diperlukan.",
+      "minLength": "Kebijakan Privasi dalam Bahasa Mandarin harus minimal 20 karakter."
+    },
+    "arTermsAndConditions": {
+      "required": "Syarat dan Ketentuan dalam bahasa Arab diperlukan.",
+      "minLength": "Syarat dan Ketentuan dalam bahasa Arab harus setidaknya 20 karakter."
+    },
+    "enTermsAndConditions": {
+      "required": "Syarat dan Ketentuan dalam bahasa Inggris diperlukan.",
+      "minLength": "Syarat dan Ketentuan dalam bahasa Inggris harus setidaknya 20 karakter."
+    },
+    "idTermsAndConditions": {
+      "required": "Syarat dan Ketentuan dalam bahasa Indonesia diperlukan.",
+      "minLength": "Syarat dan Ketentuan dalam bahasa Indonesia harus setidaknya 20 karakter."
+    },
+    "zhTermsAndConditions": {
+      "required": "Syarat dan Ketentuan dalam bahasa Mandarin diperlukan.",
+      "minLength": "Syarat dan Ketentuan dalam bahasa Mandarin harus setidaknya 20 karakter."
+    },
+    "shippingPrice": {
+          "required": "Harga pengiriman wajib diisi",
+          "invalid": "Harga pengiriman harus berupa angka yang valid",
+          "positive": "Harga pengiriman harus lebih besar dari 0"
+        },
+    "arCity": {
+      "required": "Kota Arab wajib diisi"
+    },
+    "enCity": {
+      "required": "Kota Inggris wajib diisi"
+    },
+    "idCity": {
+      "required": "Kota Indonesia wajib diisi"
+    },
+    "zhCity": {
+      "required": "Kota Cina wajib diisi"
     }
   },
   "delete": {
