@@ -113,40 +113,43 @@ const Addbook = () => {
       error.zhTitle = t("global.validation.zhTitle.minLength");
     }
 
-    // Arabic Description Validation (Min Length > 50)
+    // Arabic Description Validation (Min Length > 10)
     if (!value.arDescription.trim()) {
       error.arDescription = t("global.validation.arDescription.required");
-    } else if (value.arDescription.length < 50) {
+    } else if (value.arDescription.length < 10) {
       error.arDescription = t("global.validation.arDescription.minLength");
     }
 
-    // English Description Validation (Min Length > 50)
+    // English Description Validation (Min Length > 10)
     if (!value.enDescription.trim()) {
       error.enDescription = t("global.validation.enDescription.required");
-    } else if (value.enDescription.length < 50) {
+    } else if (value.enDescription.length < 10) {
       error.enDescription = t("global.validation.enDescription.minLength");
     }
 
-    // Indonesian Description Validation (Min Length > 50)
+    // Indonesian Description Validation (Min Length > 10)
     if (!value.idDescription.trim()) {
       error.idDescription = t("global.validation.idDescription.required");
-    } else if (value.idDescription.length < 50) {
+    } else if (value.idDescription.length < 10) {
       error.idDescription = t("global.validation.idDescription.minLength");
     }
 
-    // Chinese Description Validation (Min Length > 50)
+    // Chinese Description Validation (Min Length > 10)
     if (!value.zhDescription.trim()) {
       error.zhDescription = t("global.validation.zhDescription.required");
-    } else if (value.zhDescription.length < 50) {
+    } else if (value.zhDescription.length < 10) {
       error.zhDescription = t("global.validation.zhDescription.minLength");
     }
 
     // Price PDF Validation
-    if (!value.pricePdf) {
-      error.pricePdf = t("global.validation.pricePdf.required");
-    } else if (isNaN(value.pricePdf) || value.pricePdf <= 0) {
-      error.pricePdf = t("global.validation.pricePdf.invalid");
-    }
+    if(value.isAvailablePdf){
+      if (!value.pricePdf) {
+        error.pricePdf = t("global.validation.pricePdf.required");
+      } else if (isNaN(value.pricePdf) || value.pricePdf <= 0) {
+        error.pricePdf = t("global.validation.pricePdf.invalid");
+      }
+   }
+    
 
     // Category Validation
     if (!value.category.trim()) {
@@ -154,14 +157,14 @@ const Addbook = () => {
     }
 
     // Availability PDF Validation
-    if (value.isAvailablePdf === "") {
-      error.isAvailablePdf = t("global.validation.isAvailablePdf.required");
-    }
+    // if (value.isAvailablePdf === "") {
+    //   error.isAvailablePdf = t("global.validation.isAvailablePdf.required");
+    // }
 
     // Availability Paper Validation
-    if (value.isAvailablePaper === "") {
-      error.isAvailablePaper = t("global.validation.isAvailablePaper.required");
-    }
+    // if (value.isAvailablePaper === "") {
+    //   error.isAvailablePaper = t("global.validation.isAvailablePaper.required");
+    // }
 
     // Author Validation
     if (!value.author.trim()) {
@@ -169,11 +172,14 @@ const Addbook = () => {
     }
 
     // Price Paper Validation
-    if (!value.pricePaper) {
+    if(value.isAvailablePaper){
+       if (!value.pricePaper) {
       error.pricePaper = t("global.validation.pricePaper.required");
     } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
       error.pricePaper = t("global.validation.pricePaper.invalid");
     }
+    }
+   
 
     // Stock Validation
     if (!value.stock) {
@@ -328,7 +334,7 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea
+                          <textarea rows={10} style={{resize:'none'}}
                             className="form-control"
                             name="arDescription"
                             value={formData.arDescription}
@@ -361,7 +367,7 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea
+                          <textarea rows={10} style={{resize:'none'}}
                             className="form-control"
                             name="enDescription"
                             value={formData.enDescription}
@@ -394,7 +400,7 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea
+                          <textarea rows={10} style={{resize:'none'}}
                             className="form-control"
                             name="idDescription"
                             value={formData.idDescription}
@@ -427,7 +433,7 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea
+                          <textarea rows={10} style={{resize:'none'}}
                             className="form-control"
                             name="zhDescription"
                             value={formData.zhDescription}
@@ -441,20 +447,7 @@ const Addbook = () => {
                   </TabContext>
                 </Box>
                 {/* Additional Fields */}
-                <div className="form-group">
-                  <label className="fw-bold">
-                    {t("global.books.form.Price PDF")}
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="pricePdf"
-                    value={formData.pricePdf}
-                    required
-                    placeholder={t("global.books.form.Price PDF")}
-                    onChange={handleChange}
-                  />
-                </div>
+               
                 <div className="form-group">
                   <label className="fw-bold">
                     {t("global.books.form.Category")}
@@ -512,7 +505,8 @@ const Addbook = () => {
                     </div>
                   </div>
                 </div>
-
+                
+              
                 <div className="form-group">
                   <label className="fw-bold">
                     {t("global.books.form.Author")}
@@ -534,20 +528,6 @@ const Addbook = () => {
                       );
                     })}
                   </select>
-                </div>
-                <div className="form-group">
-                  <label className="fw-bold">
-                    {t("global.books.form.Price Paper")}
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="pricePaper"
-                    value={formData.pricePaper}
-                    required
-                    placeholder={t("global.books.form.Price Paper")}
-                    onChange={handleChange}
-                  />
                 </div>
                 <div className="form-group">
                   <label className="fw-bold">
@@ -663,7 +643,7 @@ const Addbook = () => {
                 <div class="form-group d-flex align-items-center  w-100 justify-content-center">
                   <button
                     type="button "
-                    class="btn btn-primary w-50  waves-effect waves-light"
+                    class="btn btn-primary w-10  waves-effect waves-light"
                     style={{ padding: "15px 30px" }}
                     onClick={(e) => handleSubmit(e)}
                   >
