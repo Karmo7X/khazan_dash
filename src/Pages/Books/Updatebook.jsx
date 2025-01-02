@@ -34,6 +34,7 @@ const Updatebook = () => {
   const [cates, setcates] = useState([]);
   const [authors, setauthors] = useState([]);
   const [formData, setFormData] = useState({
+    productId:id,
     arTitle: "",
     enTitle: "",
     idTitle: "",
@@ -59,7 +60,7 @@ const Updatebook = () => {
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
- 
+  
   // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -163,14 +164,13 @@ const Updatebook = () => {
     }
 
     // Price PDF Validation
-    if(value.isAvailablePdf){
+    if (value.isAvailablePdf) {
       if (!value.pricePdf) {
         error.pricePdf = t("global.validation.pricePdf.required");
       } else if (isNaN(value.pricePdf) || value.pricePdf <= 0) {
         error.pricePdf = t("global.validation.pricePdf.invalid");
       }
-   }
-    
+    }
 
     // Category Validation
     if (!value.category.trim()) {
@@ -193,14 +193,13 @@ const Updatebook = () => {
     }
 
     // Price Paper Validation
-    if(value.isAvailablePaper){
-       if (!value.pricePaper) {
-      error.pricePaper = t("global.validation.pricePaper.required");
-    } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
-      error.pricePaper = t("global.validation.pricePaper.invalid");
+    if (value.isAvailablePaper) {
+      if (!value.pricePaper) {
+        error.pricePaper = t("global.validation.pricePaper.required");
+      } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
+        error.pricePaper = t("global.validation.pricePaper.invalid");
+      }
     }
-    }
-   
 
     // Stock Validation
     if (!value.stock) {
@@ -219,25 +218,23 @@ const Updatebook = () => {
     const error_submit = validate(formData);
     setErrormessg(null);
     if (
-      Object.keys(error_submit).length === 0 &&
-      (productpdf !== null || productimg !== null)
-    ) {
+      Object.keys(error_submit).length === 0) {
       const coverImage = new FormData();
       const pdfFile = new FormData();
-      
+
       // Append image field
       if (productimg) {
-        const data={
-          'id':id,
-          'coverImage':coverImage
-        }
+        const data = {
+          id: id,
+          coverImage: coverImage,
+        };
         coverImage.append("coverimage", productimg);
         // Log FormData contents
         for (let pair of coverImage.entries()) {
-          console.log(pair[0] + ': ' + pair[1]);
+          console.log(pair[0] + ": " + pair[1]);
         }
-      
-        dispatch(UpdateProductimgeApi( data)).then((res) => {
+
+        dispatch(UpdateProductimgeApi(data)).then((res) => {
           if (res.payload?.code === 200) {
             setSuccessmessage(res.payload?.message);
           }
@@ -245,15 +242,15 @@ const Updatebook = () => {
       } else {
         console.error("No image file selected.");
       }
-      
+
       // Append PDF field
       if (productpdf) {
         pdfFile.append("pdfFile", productpdf);
         // Log FormData contents
         for (let pair of pdfFile.entries()) {
-          console.log(pair[0] + ': ' + pair[1]);
+          console.log(pair[0] + ": " + pair[1]);
         }
-      
+
         dispatch(UpdateProductpdfApi(id, pdfFile)).then((res) => {
           if (res.payload?.code === 200) {
             setSuccessmessage(res.payload?.message);
@@ -263,7 +260,7 @@ const Updatebook = () => {
         console.error("No PDF file selected.");
       }
       // setErrorvalid(null);
-      dispatch(UpdateProductApi(id, formData)).then((res) => {
+      dispatch(UpdateProductApi(formData)).then((res) => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           setErrorvalid(null);
@@ -392,7 +389,9 @@ const Updatebook = () => {
                     <TabPanel value="ar">
                       <form>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -404,8 +403,12 @@ const Updatebook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Description")}</label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="arDescription"
                             value={formData.arDescription}
@@ -421,7 +424,9 @@ const Updatebook = () => {
                     <TabPanel value="en">
                       <form>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -433,8 +438,12 @@ const Updatebook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Description")}</label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="enDescription"
                             value={formData.enDescription}
@@ -450,7 +459,9 @@ const Updatebook = () => {
                     <TabPanel value="id">
                       <form>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -462,8 +473,12 @@ const Updatebook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Description")}</label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="idDescription"
                             value={formData.idDescription}
@@ -479,7 +494,9 @@ const Updatebook = () => {
                     <TabPanel value="zh">
                       <form>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Title")}</label>
+                          <label className="fw-bold">
+                            {t("global.books.form.Title")}
+                          </label>
                           <input
                             type="text"
                             className="form-control"
@@ -491,8 +508,12 @@ const Updatebook = () => {
                           />
                         </div>
                         <div className="form-group">
-                          <label className="fw-bold">{t("global.books.form.Description")}</label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <label className="fw-bold">
+                            {t("global.books.form.Description")}
+                          </label>
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="zhDescription"
                             value={formData.zhDescription}
@@ -506,9 +527,11 @@ const Updatebook = () => {
                   </TabContext>
                 </Box>
                 {/* Additional Fields */}
-                
+
                 <div className="form-group">
-                  <label className="fw-bold">{t("global.books.form.Category")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Category")}
+                  </label>
                   <select
                     className="form-select"
                     name="category"
@@ -539,7 +562,7 @@ const Updatebook = () => {
                         placeholder={t("global.books.form.Availability PDF")}
                         onChange={handleChange}
                       />
-                      <label className="fw-bold mx-5" >
+                      <label className="fw-bold mx-5">
                         {t("global.books.form.Availability PDF")}
                       </label>
                     </div>
@@ -556,7 +579,7 @@ const Updatebook = () => {
                         placeholder={t("global.books.form.Availability Paper")}
                         onChange={handleChange}
                       />
-                      <label  className="mx-5 fw-bold">
+                      <label className="mx-5 fw-bold">
                         {t("global.books.form.Availability Paper")}
                       </label>
                     </div>
@@ -572,12 +595,12 @@ const Updatebook = () => {
                     name="pricePdf"
                     value={formData.pricePdf}
                     required
-                    disabled={formData.isAvailablePdf !== true ?true:false}
+                    disabled={formData.isAvailablePdf !== true ? true : false}
                     placeholder={t("global.books.form.Price PDF")}
                     onChange={handleChange}
                   />
                 </div>
-               
+
                 <div className="form-group">
                   <label className="fw-bold">
                     {t("global.books.form.Price Paper")}
@@ -587,14 +610,16 @@ const Updatebook = () => {
                     className="form-control"
                     name="pricePaper"
                     value={formData.pricePaper}
-                    disabled={formData.isAvailablePaper !== true ?true:false}
+                    disabled={formData.isAvailablePaper !== true ? true : false}
                     required
                     placeholder={t("global.books.form.Price Paper")}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
-                  <label className="fw-bold">{t("global.books.form.Author")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Author")}
+                  </label>
 
                   <select
                     className="form-select"
@@ -613,9 +638,11 @@ const Updatebook = () => {
                     })}
                   </select>
                 </div>
-                
+
                 <div className="form-group">
-                  <label className="fw-bold">{t("global.books.form.Stock")}</label>
+                  <label className="fw-bold">
+                    {t("global.books.form.Stock")}
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -636,7 +663,7 @@ const Updatebook = () => {
                           style={{ height: "600px", maxHeight: "600px" }}
                         >
                           <div>
-                            <label className="fw-bold"  htmlFor="">
+                            <label className="fw-bold" htmlFor="">
                               {" "}
                               {t("global.table.category.image")}
                             </label>
@@ -656,7 +683,7 @@ const Updatebook = () => {
                                 <img
                                   src={productimgvalue}
                                   alt="Preview"
-                                  style={{  maxHeight: "200px" }}
+                                  style={{ maxHeight: "200px" }}
                                 />
                               </div>
                             )}
@@ -671,7 +698,7 @@ const Updatebook = () => {
                           style={{ height: "600px", maxHeight: "600px" }}
                         >
                           <div>
-                            <label className="fw-bold"  htmlFor="">
+                            <label className="fw-bold" htmlFor="">
                               {t("global.books.form.pdf.file")}
                             </label>
                             <input
@@ -707,7 +734,7 @@ const Updatebook = () => {
                   </div>
                 </form>
 
-                {errorvalid && (
+                {/* {errorvalid && (
                   <>
                     <div className="">
                       <div
@@ -746,7 +773,7 @@ const Updatebook = () => {
                       </div>
                     </div>
                   </>
-                )}
+                )} */}
 
                 {successmessage && (
                   <>

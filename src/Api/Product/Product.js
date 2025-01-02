@@ -123,16 +123,12 @@ export const DeleteProductApi = createAsyncThunk(
 
 export const UpdateProductApi = createAsyncThunk(
   "Product/Update",
-  async (productId,data) => {
-    
+  async (data) => {
     try {
-      const res = await axios.patch(`${baseurl}/product/${productId}`, data, {
+      const res = await axios.patch(`${baseurl}/product/${data?.productId}`, data, {
         headers: {
           lang: lang,
           Authorization: `Bearer ${token}`,
-          Accept: "*/*",
-
-          "Access-Control-Allow-Origin": "*",
         },
       });
 
@@ -151,8 +147,8 @@ export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge"
         lang: lang,
         'Authorization':`Bearer ${token}`,
         'Accept':'*/*',
-        'Content-Type':'multipar/form-data',
-        'Access-Control-Allow-Origin':'*'
+        // 'Content-Type':'multipar/form-data',
+        'Access-Control-Allow-Origin':''
       },
     });
 
@@ -170,7 +166,7 @@ export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", 
         lang: lang,
         'Authorization':`Bearer ${token}`,
         'Accept':'*/*',
-        'Content-Type':'multipar/form-data',
+        // 'Content-Type':'multipar/form-data',
         'Access-Control-Allow-Origin':'*'
       },
     });
