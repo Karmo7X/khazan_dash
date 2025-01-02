@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
+    AddaboutUsApi,
   GetAboutApi,
   GetHomeApi,
   UpdateaboutUsApi,
@@ -13,7 +14,9 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-const About = () => {
+import Breadcrumb from "../breadcrumb/Breadcrumb";
+import Topbar from "../Topbar/Topbar";
+const AddAbout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -208,14 +211,14 @@ const About = () => {
 
     const error_submit = validate(formData); // Validate only `formData`
     if (Object.keys(error_submit).length === 0) {
-      dispatch(UpdateaboutUsApi(formData)).then((res) => {
+      dispatch(AddaboutUsApi(formData)).then((res) => {
         if (res && res.payload) {
-          if (res.payload.code === 200) {
+          if (res.payload.code === 201) {
             setSuccessmessage(res.payload.message);
             setErrorvalid(null);
             setErrormessg(null);
-
-             window.location.reload()
+            navigate('/settings/all')
+            //  window.location.reload()
             // Reset the form (uncomment if needed)
             // setFormData({
             //   arPrivacyPolicy: "",
@@ -233,45 +236,20 @@ const About = () => {
       setErrorvalid(error_submit);
     }
   };
-  useEffect(() => {
-    dispatch(GetAboutApi()).then((res) => {
-      if (res.payload?.code === 200) {
-        setFormData((prev) => ({
-          ...prev,
-          arTitle: res.payload?.data?.aboutUs?.title?.ar, // Arabic title
-          enTitle: res.payload?.data?.aboutUs?.title?.en, // English title
-          idTitle: res.payload?.data?.aboutUs?.title?.id, // Indonesian title
-          zhTitle: res.payload?.data?.aboutUs?.title?.zh, // Chinese title
-          arDescription: res.payload?.data?.aboutUs?.description?.ar,
-          enDescription: res.payload?.data?.aboutUs?.description?.en,
-          idDescription: res.payload?.data?.aboutUs?.description?.id,
-          zhDescription: res.payload?.data?.aboutUs?.description?.zh,
-          arFooterDescription:
-            res.payload?.data?.aboutUs?.footerDescription?.ar,
-          enFooterDescription:
-            res.payload?.data?.aboutUs?.footerDescription?.en,
-          idFooterDescription:
-            res.payload?.data?.aboutUs?.footerDescription?.id,
-          zhFooterDescription:
-            res.payload?.data?.aboutUs?.footerDescription?.zh,
-          linkVideo: res.payload?.data?.aboutUs?.linkVideo,
-          email: res.payload?.data?.aboutUs?.email,
-          phone: res.payload?.data?.aboutUs?.phone,
-          address: res.payload?.data?.aboutUs?.location?.address,
-          from: res.payload?.data?.aboutUs?.workDate?.from,
-          to: res.payload?.data?.aboutUs?.workDate?.to,
-        }));
-      }
-    });
-  }, []);
+  
   return (
     <>
-      <div className=" mb-3">
-        <a className="btn btn-primary" href="/about/create">
-          {t("global.nav.menu.about_us.create")}
-        </a>
-      </div>
-      <form class="" action="#">
+       <div class="content-page">
+        {/* <!-- Start content --> */}
+        <div class="content">
+          <Topbar />
+
+          <div class="page-content-wrapper">
+            <div class="container-fluid">
+              <div class="row">
+                <Breadcrumb page={t("global.nav.menu.about_us.create")} />
+              </div>
+              <form class="" action="#">
         {/* ar */}
         <h4 className="mb-3 fw-bold"> {t("global.nav.languages.ar")}</h4>
         <div class="form-group">
@@ -539,9 +517,9 @@ const About = () => {
                   type="number"
                   class="form-control"
                   rows={10}
-                  min={0}
                   style={{ resize: "none" }}
                   name="from"
+                  min={0}
                   value={formData.from}
                   required
                   placeholder={t("global.table.form.from")}
@@ -646,8 +624,13 @@ const About = () => {
           </button>
         </div>
       </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     
     </>
   );
 };
 
-export default About;
+export default AddAbout;

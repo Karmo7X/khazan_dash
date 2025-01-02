@@ -285,15 +285,35 @@
     "update": " Update",
     "crud_instruction": "Use the buttons below to manage {{entityType}}. You can add, edit, or delete entries as needed.",
     "category": {
-      "category_id": "Category ID",
+      "category_id": "ID",
       "title": "Title",
       "image": "Image"
     },
     "form": {
+      "location": "Location",
+      "linkVideo": "Link Video",
+      "email": "Email",
+      "phone": "Phone",
+      "from": "From",
+      "to": "To",
+      "workTime": "Work Time",
       "artitle": "Arabic Title",
       "entitle": "English Title",
       "idtitle": "Indonesian Title",
       "zhtitle": "Chinese Title",
+      "arsubtitle": "Arabic subtitle",
+      "ensubtitle": "English subtitle",
+      "idsubtitle": "Indonesian subtitle",
+      "zhsubtitle": "Chinese subtitle",
+      "enDescription": "Description in English.",
+      "arDescription": "Description in Arabic.",
+      "idDescription": "Description in Indonesian.",
+      "zhDescription": "Description in Chinese.",
+
+      "enfooterDescription": "Footer description in English.",
+      "arfooterDescription": "Footer description in Arabic.",
+      "idfooterDescription": "Footer description in Indonesian.",
+      "zhfooterDescription": "Footer description in Chinese.",
       "title": "Enter the title here",
       "arPrivacyPolicy": "Arabic Privacy Policy",
       "enPrivacyPolicy": "English Privacy Policy",
@@ -304,12 +324,12 @@
       "idTermsAndConditions": "Indonesian Terms and Conditions",
       "zhTermsAndConditions": "Chinese Terms and Conditions",
       "arCity": "Arabic City",
-        "enCity": "English City",
-        "idCity": "Indonesian City",
-        "zhCity": "Chinese City",
-        "update": "Update",
-        "shippingPrice": "Shipping Price",
-        "shippingPricePlaceholder": "Enter the shipping price"
+      "enCity": "English City",
+      "idCity": "Indonesian City",
+      "zhCity": "Chinese City",
+      "update": "Update",
+      "shippingPrice": "Shipping Price",
+      "shippingPricePlaceholder": "Enter the shipping price"
     },
     "close": "Close",
     "save_changes": "Save changes"
@@ -331,6 +351,22 @@
       "required": "Chinese title is required.",
       "minLength": "Chinese title must be at least 3 characters."
     },
+    "arsubTitle": {
+      "required": "Arabic subtitle is required.",
+      "minLength": "Arabic subtitle must be at least 3 characters."
+    },
+    "ensubTitle": {
+      "required": "English subtitle is required.",
+      "minLength": "English subtitle must be at least 3 characters."
+    },
+    "idsubTitle": {
+      "required": "Indonesian subtitle is required.",
+      "minLength": "Indonesian subtitle must be at least 3 characters."
+    },
+    "zhsubTitle": {
+      "required": "Chinese subtitle is required.",
+      "minLength": "Chinese subtitle must be at least 3 characters."
+    },
     "arDescription": {
       "required": "Arabic description is required.",
       "minLength": "Arabic description must be at least 50 characters long.",
@@ -350,6 +386,44 @@
       "required": "Chinese description is required.",
       "minLength": "Chinese description must be at least 50 characters long.",
       "maxLength": "Chinese description must not exceed 500 characters."
+    },
+    "arFooterDescription": {
+      "required": "Arabic Footer Description is required.",
+      "minLength": "Arabic Footer Description must be at least 10 characters long."
+    },
+    "enFooterDescription": {
+      "required": "English Footer Description is required.",
+      "minLength": "English Footer Description must be at least 10 characters long."
+    },
+    "idFooterDescription": {
+      "required": "Indonesian Footer Description is required.",
+      "minLength": "Indonesian Footer Description must be at least 10 characters long."
+    },
+    "zhFooterDescription": {
+      "required": "Chinese Footer Description is required.",
+      "minLength": "Chinese Footer Description must be at least 10 characters long."
+    },
+    "linkVideo": {
+      "required": "Video Link is required.",
+      "url": "Please provide a valid URL."
+    },
+    "email": {
+      "required": "Email is required.",
+      "emailFormat": "Please provide a valid email address."
+    },
+    "phone": {
+      "required": "Phone number is required.",
+      "phoneFormat": "Please provide a valid phone number."
+    },
+    "address": {
+      "required": "Address is required.",
+      "minLength": "Address must be at least 5 characters long."
+    },
+    "from": {
+      "required": "Start date is required."
+    },
+    "to": {
+      "required": "End date is required."
     },
     "pricePdf": {
       "required": "PDF price is required.",

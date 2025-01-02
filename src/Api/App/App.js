@@ -111,7 +111,7 @@ export const GetAboutApi = createAsyncThunk("About/get", async () => {
 
 export const GetCityApi = createAsyncThunk("City/get", async () => {
   try {
-    const res = await axios.get(`${baseurl}/app/city?dashboard=true`, {
+    const res = await axios.get(`${baseurl}/app/city`, {
       headers: {
         lang: lang,
       },
@@ -198,8 +198,140 @@ export const AddHomeApi = createAsyncThunk("Home/Add", async (data) => {
     console.error(err.response.data);
   }
 });
+export const GetaboutUsApi = createAsyncThunk("aboutUs/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/app/aboutUs?dashboard=true`, {
+      headers: {
+        lang: lang,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const UpdateaboutUsApi = createAsyncThunk("aboutUs/Update", async (data) => {
+  try {
+    const res = await axios.patch(`${baseurl}/app/aboutUs`,data, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+       
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const AddaboutUsApi = createAsyncThunk("aboutUs/Add", async (data) => {
+  try {
+    const res = await axios.post(`${baseurl}/app/aboutUs`,data, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+        
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+
+export const GetFeatureApidetails = createAsyncThunk("Feature/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/app/featureItem?dashboard=true`, {
+      headers: {
+        lang: lang,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const GetFeatureApi = createAsyncThunk("Feature/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/app/featureItem`, {
+      headers: {
+        lang: lang,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+// export const UpdatFeatureApi = createAsyncThunk("Feature/Update", async (data) => {
+//   try {
+//     const res = await axios.patch(`${baseurl}/app/homeBanner`,data, {
+//       headers: {
+//         lang: lang,
+//         Authorization: `Bearer ${token}`,
+//         "Content-Type": "multipart/form-data"
+//       },
+//     });
+
+//     return res.data;
+//   } catch (err) {
+//     console.error(err.response.data);
+//   }
+// });
+export const DeleteFeatureApi = createAsyncThunk("Feature/Delete", async (featureId) => {
+  try {
+    const res = await axios.delete(`${baseurl}/app/featureItem/${featureId}`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const AddFeatureApi = createAsyncThunk("Feature/Add", async (data) => {
+  try {
+    const res = await axios.post(`${baseurl}/app/featureItem`,data, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+        'Accept':'*/*',
+          'Content-Type':'multipar/form-data',
+          'Access-Control-Allow-Origin':'*'
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+
+export const GetdashboardApi = createAsyncThunk("dashboard/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/dashboard/analysis`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+
 const Appslice = createSlice({
-  name: "subscription",
+  name: "app",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -242,6 +374,16 @@ const Appslice = createSlice({
         state.data = action.payload;
       })
       .addCase(AddHomeApi.rejected, (state) => {
+        state.status = "failed";
+      })
+       .addCase(UpdateaboutUsApi.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(UpdateaboutUsApi.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(UpdateaboutUsApi.rejected, (state) => {
         state.status = "failed";
       });
   },

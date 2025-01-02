@@ -21,6 +21,10 @@ import Updatebook from "./Pages/Books/Updatebook";
 import Addprivacy from "./Pages/Privacy/Addprivacy";
 import AddTerms from "./Pages/TermsAndConditions/AddTerms";
 import AddBanner from "./Pages/BannerManagement/AddBanner";
+import AddFeature from "./Components/Addpages/AddFeature";
+import UpdateFeature from "./Components/Addpages/UpdateFeature";
+import AddCity from "./Components/Addpages/AddCity";
+import AddAbout from "./Components/Addpages/AddAbout";
 
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
@@ -315,6 +319,58 @@ function App() {
                 </Suspense>
               }
             />
+             
+            <Route
+              path="feature/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <AddFeature />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path="feature/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateFeature />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            /> */}
+
+             <Route
+              path="city/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <AddCity />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="about/create"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <AddAbout />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path="city/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateFeature />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            /> */}
 
             <Route
               path="settings/all"

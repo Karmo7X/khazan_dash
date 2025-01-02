@@ -290,25 +290,45 @@
       "image": "Gambar"
     },
     "form": {
+      "location": "Lokasi",
+    "linkVideo": "Tautan Video",
+    "email": "Email",
+    "phone": "Telepon",
+    "from": "Dari",
+    "to": "Ke",
+    "workTime": "Waktu Kerja",
       "artitle": "Judul Arab",
       "entitle": "Judul Inggris",
       "idtitle": "Judul Indonesia",
       "zhtitle": "Judul Cina",
+      "arsubtitle": "Subjudul Arab",
+      "ensubtitle": "Subjudul Inggris",
+      "idsubtitle": "Subjudul Indonesia",
+      "zhsubtitle": "Subjudul Cina",
+      "enDescription": "Deskripsi dalam Bahasa Inggris.",
+      "arDescription": "Deskripsi dalam Bahasa Arab.",
+      "idDescription": "Deskripsi dalam Bahasa Indonesia.",
+      "zhDescription": "Deskripsi dalam Bahasa Cina.",
+
+      "enfooterDescription": "Deskripsi footer dalam Bahasa Inggris.",
+      "arfooterDescription": "Deskripsi footer dalam Bahasa Arab.",
+      "idfooterDescription": "Deskripsi footer dalam Bahasa Indonesia.",
+      "zhfooterDescription": "Deskripsi footer dalam Bahasa Cina.",
       "title": "Masukkan judul di sini",
       "arPrivacyPolicy": "Kebijakan Privasi Arab",
       "enPrivacyPolicy": "Kebijakan Privasi Inggris",
       "idPrivacyPolicy": "Kebijakan Privasi Indonesia",
       "zhPrivacyPolicy": "Kebijakan Privasi Cina",
       "arTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Arab",
-        "enTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Inggris",
-        "idTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Indonesia",
-        "zhTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Mandarin",
-        "arCity": "Kota Arab",
-        "enCity": "Kota Inggris",
-        "idCity": "Kota Indonesia",
-        "zhCity": "Kota Cina",
-        "shippingPrice": "Harga Pengiriman",
-        "shippingPricePlaceholder": "Masukkan harga pengiriman"
+      "enTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Inggris",
+      "idTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Indonesia",
+      "zhTermsAndConditions": "Syarat dan Ketentuan dalam Bahasa Mandarin",
+      "arCity": "Kota Arab",
+      "enCity": "Kota Inggris",
+      "idCity": "Kota Indonesia",
+      "zhCity": "Kota Cina",
+      "shippingPrice": "Harga Pengiriman",
+      "shippingPricePlaceholder": "Masukkan harga pengiriman"
     },
     "close": "Tutup",
     "save_changes": "Simpan perubahan"
@@ -330,6 +350,22 @@
       "required": "Judul dalam bahasa Cina wajib diisi.",
       "minLength": "Judul dalam bahasa Cina harus minimal 3 karakter."
     },
+    "arsubTitle": {
+      "required": "Subtitle bahasa Arab diperlukan.",
+      "minLength": "Subtitle bahasa Arab harus terdiri dari minimal 3 karakter."
+    },
+    "ensubTitle": {
+      "required": "Subtitle bahasa Inggris diperlukan.",
+      "minLength": "Subtitle bahasa Inggris harus terdiri dari minimal 3 karakter."
+    },
+    "idsubTitle": {
+      "required": "Subtitle bahasa Indonesia diperlukan.",
+      "minLength": "Subtitle bahasa Indonesia harus terdiri dari minimal 3 karakter."
+    },
+    "zhsubTitle": {
+      "required": "Subtitle bahasa Cina diperlukan.",
+      "minLength": "Subtitle bahasa Cina harus terdiri dari minimal 3 karakter."
+    },
     "arDescription": {
       "required": "Deskripsi dalam bahasa Arab diperlukan.",
       "minLength": "Deskripsi dalam bahasa Arab harus memiliki setidaknya 50 karakter.",
@@ -349,6 +385,44 @@
       "required": "Deskripsi dalam bahasa Mandarin diperlukan.",
       "minLength": "Deskripsi dalam bahasa Mandarin harus memiliki setidaknya 50 karakter.",
       "maxLength": "Deskripsi dalam bahasa Mandarin tidak boleh lebih dari 500 karakter."
+    },
+    "arFooterDescription": {
+      "required": "Deskripsi footer dalam bahasa Arab diperlukan.",
+      "minLength": "Deskripsi footer dalam bahasa Arab harus memiliki panjang minimal 10 karakter."
+    },
+    "enFooterDescription": {
+      "required": "Deskripsi footer dalam bahasa Inggris diperlukan.",
+      "minLength": "Deskripsi footer dalam bahasa Inggris harus memiliki panjang minimal 10 karakter."
+    },
+    "idFooterDescription": {
+      "required": "Deskripsi footer dalam bahasa Indonesia diperlukan.",
+      "minLength": "Deskripsi footer dalam bahasa Indonesia harus memiliki panjang minimal 10 karakter."
+    },
+    "zhFooterDescription": {
+      "required": "Deskripsi footer dalam bahasa Cina diperlukan.",
+      "minLength": "Deskripsi footer dalam bahasa Cina harus memiliki panjang minimal 10 karakter."
+    },
+    "linkVideo": {
+      "required": "Link video diperlukan.",
+      "url": "Silakan berikan URL yang valid."
+    },
+    "email": {
+      "required": "Email diperlukan.",
+      "emailFormat": "Silakan berikan alamat email yang valid."
+    },
+    "phone": {
+      "required": "Nomor telepon diperlukan.",
+      "phoneFormat": "Silakan berikan nomor telepon yang valid."
+    },
+    "address": {
+      "required": "Alamat diperlukan.",
+      "minLength": "Alamat harus memiliki panjang minimal 5 karakter."
+    },
+    "from": {
+      "required": "Tanggal mulai diperlukan."
+    },
+    "to": {
+      "required": "Tanggal selesai diperlukan."
     },
     "pricePdf": {
       "required": "Harga PDF wajib diisi.",
@@ -435,10 +509,10 @@
       "minLength": "Syarat dan Ketentuan dalam bahasa Mandarin harus setidaknya 20 karakter."
     },
     "shippingPrice": {
-          "required": "Harga pengiriman wajib diisi",
-          "invalid": "Harga pengiriman harus berupa angka yang valid",
-          "positive": "Harga pengiriman harus lebih besar dari 0"
-        },
+      "required": "Harga pengiriman wajib diisi",
+      "invalid": "Harga pengiriman harus berupa angka yang valid",
+      "positive": "Harga pengiriman harus lebih besar dari 0"
+    },
     "arCity": {
       "required": "Kota Arab wajib diisi"
     },

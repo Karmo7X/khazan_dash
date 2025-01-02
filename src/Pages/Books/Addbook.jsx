@@ -37,8 +37,8 @@ const Addbook = () => {
     zhDescription: "",
     pricePdf: "",
     category: "",
-    isAvailablePdf: "",
-    isAvailablePaper: "",
+    isAvailablePdf: false,
+    isAvailablePaper: false,
     author: "",
     pricePaper: "",
     stock: "",
@@ -50,6 +50,7 @@ const Addbook = () => {
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
+  console.log(errorvalid);
   // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -505,7 +506,37 @@ const Addbook = () => {
                     </div>
                   </div>
                 </div>
-                
+                <div className="form-group">
+                  <label className="fw-bold">
+                    {t("global.books.form.Price PDF")}
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="pricePdf"
+                    value={formData.pricePdf}
+                    required
+                    disabled={formData.isAvailablePdf !== true ?true:false}
+                    placeholder={t("global.books.form.Price PDF")}
+                    onChange={handleChange}
+                  />
+                </div>
+               
+                <div className="form-group">
+                  <label className="fw-bold">
+                    {t("global.books.form.Price Paper")}
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="pricePaper"
+                    value={formData.pricePaper}
+                    disabled={formData.isAvailablePaper !== true ?true:false}
+                    required
+                    placeholder={t("global.books.form.Price Paper")}
+                    onChange={handleChange}
+                  />
+                </div>
               
                 <div className="form-group">
                   <label className="fw-bold">

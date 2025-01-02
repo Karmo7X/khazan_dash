@@ -120,7 +120,8 @@ const Tables = ({
           className="d-flex align-items-center justify-content-center mt-2"
           style={{ gap: "15px" }}
         >
-          <Button
+          {onEdit && (
+            <Button
             variant="contained"
             color="primary"
             size="small"
@@ -130,6 +131,8 @@ const Tables = ({
           >
             {t("global.table.edit")}
           </Button>
+          )}
+         
           {/* <Button
             variant="contained"
             color="secondary"

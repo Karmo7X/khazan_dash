@@ -289,10 +289,30 @@
       "image": "图片"
     },
     "form": {
+      "location": "位置",
+    "linkVideo": "视频链接",
+    "email": "电子邮件",
+    "phone": "电话",
+    "from": "从",
+    "to": "到",
+    "workTime": "工作时间",
       "artitle": "阿拉伯语标题",
       "entitle": "英语标题",
       "idtitle": "印度尼西亚语标题",
       "zhtitle": "中文标题",
+      "arsubtitle": "阿拉伯语字幕",
+      "ensubtitle": "英语字幕",
+      "idsubtitle": "印尼语字幕",
+      "zhsubtitle": "中文字幕",
+      "enDescription": "英文描述。",
+      "arDescription": "阿拉伯语描述。",
+      "idDescription": "印尼语描述。",
+      "zhDescription": "中文描述。",
+
+      "enfooterDescription": "英文页脚描述。",
+      "arfooterDescription": "阿拉伯语页脚描述。",
+      "idfooterDescription": "印尼语页脚描述。",
+      "zhfooterDescription": "中文页脚描述。",
       "title": "在此处输入标题",
       "arPrivacyPolicy": "阿拉伯语隐私政策",
       "enPrivacyPolicy": "英语隐私政策",
@@ -302,8 +322,8 @@
       "enTermsAndConditions": "英语条款和条件",
       "idTermsAndConditions": "印尼语条款和条件",
       "zhTermsAndConditions": "中文条款和条件",
-        "shippingPrice": "运费",
-        "shippingPricePlaceholder": "请输入运费",
+      "shippingPrice": "运费",
+      "shippingPricePlaceholder": "请输入运费",
       "arCity": "阿拉伯城市",
       "enCity": "英语城市",
       "idCity": "印尼城市",
@@ -329,6 +349,22 @@
       "required": "中文标题是必需的。",
       "minLength": "中文标题必须至少3个字符。"
     },
+    "arsubTitle": {
+      "required": "阿拉伯语字幕是必需的。",
+      "minLength": "阿拉伯语字幕必须至少包含 3 个字符。"
+    },
+    "ensubTitle": {
+      "required": "英语字幕是必需的。",
+      "minLength": "英语字幕必须至少包含 3 个字符。"
+    },
+    "idsubTitle": {
+      "required": "印度尼西亚语字幕是必需的。",
+      "minLength": "印度尼西亚语字幕必须至少包含 3 个字符。"
+    },
+    "zhsubTitle": {
+      "required": "中文字幕是必需的。",
+      "minLength": "中文字幕必须至少包含 3 个字符。"
+    },
     "arDescription": {
       "required": "阿拉伯语描述是必需的。",
       "minLength": "阿拉伯语描述必须至少包含50个字符。",
@@ -348,6 +384,44 @@
       "required": "中文描述是必需的。",
       "minLength": "中文描述必须至少包含50个字符。",
       "maxLength": "中文描述不得超过500个字符。"
+    },
+    "arFooterDescription": {
+      "required": "阿拉伯语的页脚描述是必需的。",
+      "minLength": "阿拉伯语的页脚描述必须至少为 10 个字符。"
+    },
+    "enFooterDescription": {
+      "required": "英文页脚描述是必需的。",
+      "minLength": "英文页脚描述必须至少为 10 个字符。"
+    },
+    "idFooterDescription": {
+      "required": "印尼语的页脚描述是必需的。",
+      "minLength": "印尼语的页脚描述必须至少为 10 个字符。"
+    },
+    "zhFooterDescription": {
+      "required": "中文页脚描述是必需的。",
+      "minLength": "中文页脚描述必须至少为 10 个字符。"
+    },
+    "linkVideo": {
+      "required": "视频链接是必需的。",
+      "url": "请提供有效的 URL。"
+    },
+    "email": {
+      "required": "电子邮件是必需的。",
+      "emailFormat": "请提供有效的电子邮件地址。"
+    },
+    "phone": {
+      "required": "电话号码是必需的。",
+      "phoneFormat": "请提供有效的电话号码。"
+    },
+    "address": {
+      "required": "地址是必需的。",
+      "minLength": "地址必须至少为 5 个字符。"
+    },
+    "from": {
+      "required": "开始日期是必需的。"
+    },
+    "to": {
+      "required": "结束日期是必需的。"
     },
     "pricePdf": {
       "required": "PDF 价格为必填项。",
@@ -434,10 +508,10 @@
       "minLength": "中文条款和条件必须至少为20个字符。"
     },
     "shippingPrice": {
-          "required": "运费是必填项",
-          "invalid": "运费必须是有效的数字",
-          "positive": "运费必须大于0"
-        },
+      "required": "运费是必填项",
+      "invalid": "运费必须是有效的数字",
+      "positive": "运费必须大于0"
+    },
     "arCity": {
       "required": "阿拉伯城市是必填项"
     },
