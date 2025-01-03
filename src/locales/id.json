@@ -11,6 +11,16 @@
       "id": "Indonesia"
     },
     "menu": {
+      "book_requests": {
+        "title": "Permintaan Buku",
+        "create": "Buat Permintaan Buku",
+        "update": "Perbarui Permintaan Buku"
+      },
+      "author_requests": {
+        "title": "Permintaan Penulis",
+        "create": "Buat Permintaan Penulis",
+        "update": "Perbarui Permintaan Penulis"
+      },
       "users": {
         "title": "Pengguna",
         "admins": "Administrator",
@@ -281,6 +291,7 @@
     "edit": "Sunting",
     "delete": "Hapus",
     "notify": "Notifikasi",
+    "block": "memblokir",
     "update": " memperbarui",
     "actions": "Tindakan",
     "crud_instruction": "Gunakan tombol di bawah ini untuk mengelola {{entityType}}. Anda dapat menambah, mengedit, atau menghapus entri sesuai kebutuhan.",
@@ -606,5 +617,33 @@
     "price": "Harga",
     "coupon": "Kupon",
     "duration": "Durasi"
+  },
+  "dash":{
+    "categories": "Kategori",
+    "new_users": "Pengguna Baru",
+    "new_orders": "Pesanan Baru",
+    "products": "Produk",
+    "author": "Penulis",
+    "admins": "Admin",
+    "overview": "Ikhtisar",
+    "revenue_by_country": "Pendapatan Berdasarkan Negara",
+    "top_rated_books": "Buku Peringkat Teratas",
+    "cover": "Sampul",
+    "title": "Judul",
+    "author_name": "Nama Penulis",
+    "category": "Kategori",
+    "price": "Harga ",
+    "sales": "Penjualan (PDF)",
+    "rating": "Peringkat"
+  },
+  "notificationModal": {
+    "title": "Notifikasi",
+    "notificationTitleLabel": "Judul Notifikasi",
+    "notificationTitlePlaceholder": "Masukkan judul notifikasi",
+    "notificationBodyLabel": "Isi Notifikasi",
+    "notificationBodyPlaceholder": "Masukkan isi notifikasi",
+    "closeButton": "Tutup",
+    "sendButton": "Kirim Notifikasi",
+    "error": "Harap isi semua kolom."
   }
 }

@@ -339,19 +339,104 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </li>
-
-                {/* <li>
-                  <Link to="/privacy" class="waves-effect">
-                    <i class="mdi mdi-lock"></i>
-                    <span>Privacy</span>
-                  </Link>
+                <li
+                  className={`has_sub ${
+                    activeLink.includes("/requestbook") ? "nav-active" : ""
+                  }`}
+                >
+                  <a
+                    href="javascript:void(0);"
+                    className="waves-effect"
+                    onClick={() => handleLinkClick("/requestbook")}
+                  >
+                    <i className="mdi mdi-crown"></i>
+                    <span>{t("global.nav.menu.book_requests.title")}</span>
+                    <span className={`float-${isRtl ? "left" : "right"}`}>
+                      <i
+                        className={`mdi mdi-chevron-${
+                         isRtl ? "left" : "right"
+                        } ${
+                          activeLink.includes("/requestbook")
+                            ? "mdi-chevron-down"
+                            : ""
+                        }`}
+                      ></i>
+                    </span>
+                  </a>
+                  <ul className="list-unstyled">
+                    <li
+                      className={
+                        activeLink === "/requestsbooks" ? "nav-active" : ""
+                      }
+                      onClick={() => handleLinkClick("/requestsbooks")}
+                    >
+                      <Link to="/requestsbooks">
+                        <i className="mdi mdi-crown"></i>
+                        {t("global.nav.menu.book_requests.title")}
+                      </Link>
+                    </li>
+                    {/* <li
+                      className={
+                        activeLink === "/subscription/create" ? "nav-active" : ""
+                      }
+                      onClick={() => handleLinkClick("/subscription/create")}
+                    >
+                      <Link to="/subscription/create">
+                        <i className="mdi mdi-crown"></i>
+                        {t("global.nav.menu.subscription.create")}
+                      </Link>
+                    </li> */}
+                  </ul>
                 </li>
-                <li>
-                  <Link to="/termsAndconditions" class="waves-effect">
-                    <i class="mdi mdi-file-document"></i>
-                    <span>Terms And Conditions</span>
-                  </Link>
-                </li> */}
+                <li
+                  className={`has_sub ${
+                    activeLink.includes("/requestbook") ? "nav-active" : ""
+                  }`}
+                >
+                  <a
+                    href="javascript:void(0);"
+                    className="waves-effect"
+                    onClick={() => handleLinkClick("/requestauthors")}
+                  >
+                    <i className="mdi mdi-crown"></i>
+                    <span>{t("global.nav.menu.author_requests.title")}</span>
+                    <span className={`float-${isRtl ? "left" : "right"}`}>
+                      <i
+                        className={`mdi mdi-chevron-${
+                         isRtl ? "left" : "right"
+                        } ${
+                          activeLink.includes("/requestauthors")
+                            ? "mdi-chevron-down"
+                            : ""
+                        }`}
+                      ></i>
+                    </span>
+                  </a>
+                  <ul className="list-unstyled">
+                    <li
+                      className={
+                        activeLink === "/requestsbooks" ? "nav-active" : ""
+                      }
+                      onClick={() => handleLinkClick("/requestsbooks")}
+                    >
+                      <Link to="/requestsauthors">
+                        <i className="mdi mdi-crown"></i>
+                        {t("global.nav.menu.author_requests.title")}
+                      </Link>
+                    </li>
+                    {/* <li
+                      className={
+                        activeLink === "/subscription/create" ? "nav-active" : ""
+                      }
+                      onClick={() => handleLinkClick("/subscription/create")}
+                    >
+                      <Link to="/subscription/create">
+                        <i className="mdi mdi-crown"></i>
+                        {t("global.nav.menu.subscription.create")}
+                      </Link>
+                    </li> */}
+                  </ul>
+                </li>
               </ul>
             </div>
             <div class="clearfix"></div>

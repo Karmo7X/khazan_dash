@@ -25,6 +25,9 @@ import AddFeature from "./Components/Addpages/AddFeature";
 import UpdateFeature from "./Components/Addpages/UpdateFeature";
 import AddCity from "./Components/Addpages/AddCity";
 import AddAbout from "./Components/Addpages/AddAbout";
+import UpdateUser from "./Pages/Users/UpdateUser";
+import BookRequests from "./Pages/Requestbook/BookRequests";
+import AuthorRequests from "./Pages/AuthorRequest/AuthorRequests";
 
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
@@ -165,6 +168,16 @@ function App() {
               }
             />
             <Route
+              path="users/:id"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <UpdateUser />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="users/admins"
               element={
                 <ProtectedRoute>
@@ -294,6 +307,26 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="requestsbooks"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <BookRequests />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+             <Route
+              path="requestsauthors"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <AuthorRequests />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            /> 
            
             <Route
               path="privacy/create"

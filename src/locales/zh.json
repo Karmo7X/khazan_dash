@@ -11,6 +11,16 @@
       "id": "印尼语"
     },
     "menu": {
+      "book_requests": {
+        "title": "图书请求",
+        "create": "创建图书请求",
+        "update": "更新图书请求"
+      },
+      "author_requests": {
+        "title": "作者请求",
+        "create": "创建作者请求",
+        "update": "更新作者请求"
+      },
       "users": {
         "title": "用户",
         "admins": "管理员",
@@ -280,6 +290,7 @@
     "edit": "编辑",
     "delete": "删除",
     "notify": "通知",
+    "block": "堵塞",
     "actions": "操作",
     "update": " 更新",
     "crud_instruction": "使用下面的按钮管理 {{entityType}}。您可以根据需要添加、编辑或删除条目。",
@@ -605,5 +616,33 @@
     "price": "价格",
     "coupon": "优惠券",
     "duration": "持续时间"
+  },
+  "dash":{
+    "categories": "类别",
+    "new_users": "新用户",
+    "new_orders": "新订单",
+    "products": "产品",
+    "author": "作者",
+    "admins": "管理员",
+    "overview": "概览",
+    "revenue_by_country": "按国家收入",
+    "top_rated_books": "最高评分书籍",
+    "cover": "封面",
+    "title": "标题",
+    "author_name": "作者名",
+    "category": "类别",
+    "price": "价格 ",
+    "sales": "销售 (PDF)",
+    "rating": "评分"
+  },
+  "notificationModal": {
+    "title": "通知",
+    "notificationTitleLabel": "通知标题",
+    "notificationTitlePlaceholder": "输入通知标题",
+    "notificationBodyLabel": "通知正文",
+    "notificationBodyPlaceholder": "输入通知正文",
+    "closeButton": "关闭",
+    "sendButton": "发送通知",
+    "error": "请填写所有字段。"
   }
 }

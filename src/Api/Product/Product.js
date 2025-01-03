@@ -25,6 +25,40 @@ export const GetProductApi = createAsyncThunk("Product/get", async () => {
     console.error(err.response.data);
   }
 });
+export const GetRequestBookApi = createAsyncThunk("Productrequest/get", async () => {
+  try {
+   
+  
+    const res = await axios.get(`${baseurl}/requestBook`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`
+      },
+    });
+
+    
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const DeleteRequestBookApi = createAsyncThunk(
+  "RequestBook/Delete",
+  async (bookid) => {
+    try {
+      const res = await axios.delete(`${baseurl}/requestBook/${bookid}`, {
+        headers: {
+          lang: lang,
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      console.error(err.response.data);
+    }
+  }
+);
 export const GetProductdetailsApi = createAsyncThunk(
   "Product/getProductdetails",
   async (productId) => {

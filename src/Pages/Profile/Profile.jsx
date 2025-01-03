@@ -103,7 +103,7 @@ const Profile = () => {
 
     // Gender validation
     if (!value.gender) {
-      error.gender = t("global.validation_message.gender.required");
+      error.gender = t("global.validation_message.genderRequired");
     }
 
     return error;
@@ -399,7 +399,7 @@ const Profile = () => {
                                     <div className="col-lg-8 col-md-6 col-sm-12">
                                       <div className="mb-3">
                                         <label className="form-label">
-                                          {t("global.profile.form.categories")}
+                                          {t("global.user.role")}
                                         </label>
 
                                         <Select

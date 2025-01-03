@@ -11,6 +11,16 @@
       "id": "الإندونيسية"
     },
     "menu": {
+      "book_requests": {
+        "title": "طلبات الكتب",
+        "create": "إنشاء طلب كتاب",
+        "update": "تحديث طلب كتاب"
+      },
+      "author_requests": {
+        "title": "طلبات المؤلفين",
+        "create": "إنشاء طلب مؤلف",
+        "update": "تحديث طلب مؤلف"
+      },
       "users": {
         "title": "المستخدمون",
         "admins": "المسؤولون",
@@ -283,6 +293,7 @@
     "edit": "تعديل",
     "delete": "حذف",
     "notify": "إعلام",
+    "block": "منع",
     "actions": "الإجراءات",
     "update": "تحديث ",
     "crud_instruction": "استخدم الأزرار أدناه لإدارة {{entityType}}. يمكنك إضافة أو تعديل أو حذف الإدخالات حسب الحاجة.",
@@ -526,6 +537,7 @@
     "zhCity": {
       "required": "المدينة الصينية مطلوبة"
     }
+    
   },
   "delete": {
     "title": "هل أنت متأكد؟",
@@ -607,5 +619,34 @@
     "price": "السعر",
     "coupon": "القسيمة",
     "duration": "مدة"
+  },
+  "dash":{
+    "categories": "الفئات",
+    "new_users": "المستخدمين الجدد",
+    "new_orders": "الطلبات الجديدة",
+    "products": "المنتجات",
+    "author": "المؤلف",
+    "admins": "المشرفين",
+    "overview": "نظرة عامة",
+    "revenue_by_country": "الإيرادات حسب البلد",
+    "top_rated_books": "أفضل الكتب تقييمًا",
+    "cover": "الغلاف",
+    "title": "العنوان",
+    "author_name": "اسم المؤلف",
+    "category": "الفئة",
+    "price": "السعر ",
+    "sales": "المبيعات (PDF)",
+    "rating": "التقييم"
+  },
+  "notificationModal": {
+    "title": "إشعار",
+    "notificationTitleLabel": "عنوان الإشعار",
+    "notificationTitlePlaceholder": "أدخل عنوان الإشعار",
+    "notificationBodyLabel": "نص الإشعار",
+    "notificationBodyPlaceholder": "أدخل نص الإشعار",
+    "closeButton": "إغلاق",
+    "sendButton": "إرسال الإشعار",
+    "error": "يرجى ملء جميع الحقول."
   }
+  
 }

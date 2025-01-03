@@ -17,6 +17,7 @@ const Tables = ({
   onEdit,
   onDelete,
   onNotify,
+  onBlock
 }) => {
   const { t } = useTranslation();
   const [id, setid] = useState();
@@ -114,7 +115,7 @@ const Tables = ({
     {
       field: "actions",
       headerName: t("global.table.actions"),
-      width: 200,
+      width: 400,
       renderCell: (params) => (
         <div
           className="d-flex align-items-center justify-content-center mt-2"
@@ -132,16 +133,20 @@ const Tables = ({
             {t("global.table.edit")}
           </Button>
           )}
+           {onNotify  && (
+          <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={() => onNotify && onNotify(params.row)}
+           data-bs-toggle="modal"
+            data-bs-target="#notify_modal"
+        >
+          {t("global.table.notify")}
+        </Button>
+          )}
          
-          {/* <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            onClick={() => onNotify && onNotify(params.row)}
-          >
-            {t("global.table.notify")}
-          </Button> */}
-
+         
           {onDelete && (
             <Button
               variant="contained"
@@ -152,6 +157,18 @@ const Tables = ({
               onClick={setid(params.row?.id)}
             >
               {t("global.table.delete")}
+            </Button>
+          )}
+          {onBlock && data?.haveBlock !== true && (
+            <Button
+              variant="contained"
+              color="error"
+              size="small"
+              // data-bs-toggle="modal"
+              // data-bs-target="#delete"
+              onClick={onBlock(params.row?.id)}
+            >
+              {t("global.table.block")}
             </Button>
           )}
         </div>

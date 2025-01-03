@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { DeleteAdminApi, GetAdminsApi } from "../../Api/Alluser/AdminSlice";
+import Nofiticate from "../../Components/Modal/Nofiticate";
 
 const Admins = () => {
   const { t, i18n } = useTranslation();
@@ -28,7 +29,7 @@ const Admins = () => {
   };
 
   const handleEditUser = (user) => {
-    // Logic for editing the user
+    navigate(`/admins/${user?.id}`)
   };
 
   const handleDeleteUser = (user) => {
@@ -44,9 +45,8 @@ const Admins = () => {
     });
   };
 
-  const handleSendNotification = (notificationData) => {
-    console.log("Notification Sent:", notificationData);
-    // Perform the notification action (e.g., API call to send notification)
+  const handleSendNotification = (user) => {
+    setcurrentuser(user?.id);
   };
 
   useEffect(() => {
@@ -79,12 +79,12 @@ const Admins = () => {
                 onDelete={handleDeleteUser}
                 onNotify={handleSendNotification}
               />
-              {/* <Nofiticate
-    actionType="Send"
-    entityName="Notification"
-    users={usersData.filter(user => user.role === "Admin")}
-    onNotify={handleSendNotification}
-  /> */}
+              <Nofiticate
+                actionType="Send"
+                entityName="Notification"
+                users={currentuser}
+                onNotify={handleSendNotification}
+              />
             </div>
           </div>
         </div>

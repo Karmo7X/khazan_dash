@@ -329,7 +329,20 @@ export const GetdashboardApi = createAsyncThunk("dashboard/get", async () => {
     console.error(err.response.data);
   }
 });
+export const GetdashboarddigramApi = createAsyncThunk("dashboarddigram/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/dashboard/diagram`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
 const Appslice = createSlice({
   name: "app",
   initialState,

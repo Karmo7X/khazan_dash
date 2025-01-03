@@ -11,6 +11,16 @@
       "id": "Indonesian"
     },
     "menu": {
+      "book_requests": {
+        "title": "Book Requests",
+        "create": "Create Book Request",
+        "update": "Update Book Request"
+      },
+      "author_requests": {
+        "title": "Author Requests",
+        "create": "Create Author Request",
+        "update": "Update Author Request"
+      },
       "users": {
         "title": "Users",
         "admins": "Admins",
@@ -280,6 +290,7 @@
     "add": "Add",
     "edit": "Edit",
     "delete": "Delete",
+    "block": "Block",
     "notify": "Notify",
     "actions": "Actions",
     "update": " Update",
@@ -608,5 +619,33 @@
     "price": "Price",
     "coupon": "Coupon",
     "duration": "Duration"
+  },
+  "dash":{
+    "categories": "Categories",
+  "new_users": "New Users",
+  "new_orders": "New Orders",
+  "products": "Products",
+  "author": "Author",
+  "admins": "Admins",
+  "overview": "Overview",
+  "revenue_by_country": "Revenue By Country",
+  "top_rated_books": "Top-Rated Books",
+  "cover": "Cover",
+  "title": "Title",
+  "author_name": "Author Name",
+  "category": "Category",
+  "price": "Price ",
+  "sales": "Sales (PDF)",
+  "rating": "Rating"
+  },
+  "notificationModal": {
+    "title": "Notification",
+    "notificationTitleLabel": "Notification Title",
+    "notificationTitlePlaceholder": "Enter notification title",
+    "notificationBodyLabel": "Notification Body",
+    "notificationBodyPlaceholder": "Enter notification body",
+    "closeButton": "Close",
+    "sendButton": "Send Notification",
+    "error": "Please fill in all fields."
   }
 }

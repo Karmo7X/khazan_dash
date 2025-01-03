@@ -22,7 +22,80 @@ export const GetAdminsApi = createAsyncThunk("Admins/get", async () => {
     console.error(err.response.data);
   }
 });
+export const GetUsersApi = createAsyncThunk("users/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/user`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const GetUserApi = createAsyncThunk("users/get", async (id) => {
+  try {
+    const res = await axios.get(`${baseurl}/user/${id}`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const GetUserdetailsApi = createAsyncThunk("users/get", async (id) => {
+  try {
+    const res = await axios.get(`${baseurl}/admin/${id}`, {
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const AdminUpdateUserApi = createAsyncThunk("users/update", async (data) => {
+  try {
+    const res = await axios.patch(`${baseurl}/user/${data?.id}`,data,{
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const AddAdminApi = createAsyncThunk("admin/add", async (data) => {
+  try {
+    const res = await axios.post(`${baseurl}/admin`,data,{
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+        Accept: "*/*",
+        "Content-Type": "multipar/form-data",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
 // export const GetCategorydetailsApi = createAsyncThunk("Catgory/getCategorydetails", async (categoryId) => {
 //   try {
 //     const res = await axios.get(`${baseurl}/category/${categoryId}?dashboard=true`, {
@@ -78,7 +151,22 @@ export const GetAdminsApi = createAsyncThunk("Admins/get", async () => {
 //     }
 //   }
 // );
+export const UpdateAdminApi = createAsyncThunk("Admin/update", async (data) => {
+  console.log(data)
+  try {
+    const res = await axios.patch(`${baseurl}/admin/${data?.id}`,data,{
+      headers: {
+        lang: lang,
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
 export const DeleteAdminApi = createAsyncThunk(
   "Admin/Delete",
   async (adminId) => {
@@ -97,23 +185,59 @@ export const DeleteAdminApi = createAsyncThunk(
   }
 );
 
+export const AdminnoftificateApi = createAsyncThunk(
+  "Admin/noftificate",
+  async (data) => {
+    try {
+      const res = await axios.post(`${baseurl}/notification`,data,{
+        headers: {
+          lang: lang,
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      console.error(err.response.data);
+    }
+  }
+);
+export const AdminblockuserApi = createAsyncThunk(
+  "Admin/block",
+  async (id) => {
+    try {
+      const res = await axios.patch(`${baseurl}/user/blockUser/${id}`,{},{
+        headers: {
+          lang: lang,
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      console.error(err.response.data);
+    }
+  }
+);
+
+
 const Adminslice = createSlice({
   name: "admin",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-    //   .addCase(GetCategoryApi.pending, (state) => {
-    //     state.status = "loading";
-    //   })
-    //   .addCase(GetCategoryApi.fulfilled, (state, action) => {
-    //     state.status = "succeeded";
-    //     state.data = action.payload;
-    //   })
-    //   .addCase(GetCategoryApi.rejected, (state) => {
-    //     state.status = "failed";
-    //   })
-    //  ;
+      .addCase(AddAdminApi.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(AddAdminApi.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(AddAdminApi.rejected, (state) => {
+        state.status = "failed";
+      })
+     ;
   },
 });
 

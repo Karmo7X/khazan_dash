@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Topbar from "../../Components/Topbar/Topbar";
 import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
 import Tables from "../../Components/Tables/Tables";
@@ -8,38 +8,53 @@ import Nofiticate from "../../Components/Modal/Nofiticate";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { AdminblockuserApi, GetUsersApi } from "../../Api/Alluser/AdminSlice";
 const Users = () => {
-    const { t, i18n } = useTranslation();
-    const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
   const [userData, setuserData] = useState([]);
   const userColumns = [
     { label: "ID", field: "id" },
-    { label: "Name", field: "name" },
-    { label: "Email", field: "email" },
-    { label: "Phone", field: "phone" },
-    { label: "Role", field: "role" },
-    { label: "Image", field: "image" },
+    { label: t("global.profile.form.name"), field: "name" },
+    // { label:t("global.table.form.email"), field: "email" },
+    { label: t("global.profile.form.phone_number"), field: "phone" },
+    {
+      label: t("global.profile.register_author.fields.gender"),
+      field: "gender",
+    },
+    { label: "Image", field: "profileImg" },
   ];
 
   const [currentuser, setcurrentuser] = useState(null);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleAddUser = () => {
-    navigate('')
+    navigate("");
   };
 
   const handleEditUser = (user) => {
     // Logic for editing the user
-    setcurrentuser(user);
+    // setcurrentuser(user);
+    navigate(`/users/${user.id}`);
   };
 
   const handleDeleteUser = (user) => {
     setuserData(userData.filter((b) => b !== user));
   };
 
-  const handleSendNotification = (notificationData) => {
-    console.log("Notification Sent:", notificationData);
-    // Perform the notification action (e.g., API call to send notification)
+  const handleSendNotification = (user) => {
+    setcurrentuser(user?.id);
   };
+  const handleblockuser = (user) => {
+    dispatch(AdminblockuserApi(user))
+  };
+
+  useEffect(() => {
+    dispatch(GetUsersApi()).then((res) => {
+      if (res.payload?.code === 200) {
+        setuserData(res.payload?.data?.users);
+      }
+    });
+  }, []);
   return (
     <>
       <div class="content-page">
@@ -54,7 +69,6 @@ const Users = () => {
               </div>
               {/* tables for data and user crud functionlity */}
 
-            
               <Tables
                 entityType={t("global.user.users")}
                 route="users"
@@ -62,21 +76,20 @@ const Users = () => {
                 columns={userColumns}
                 // onAdd={handleAddUser}
                 onEdit={handleEditUser}
-                onDelete={handleDeleteUser}
+                // onDelete={handleDeleteUser}
                 onNotify={handleSendNotification}
+                onBlock={handleblockuser}
               />
-
-             
             </div>
           </div>
         </div>
       </div>
-      {/* <Nofiticate
+      <Nofiticate
         actionType="Send"
         entityName="Notification"
-        users={userData.filter(user => user.role === "Author")}
+        user={currentuser}
         onNotify={handleSendNotification}
-      /> */}
+      />
       {/* <Modal
   actionType="Add"
   entityName="User"
