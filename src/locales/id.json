@@ -168,7 +168,8 @@
       "date_of_birth": "Tanggal Lahir",
       "city": "Kota",
       "categories": "Kategori yang diminati",
-      "placeholder": "......"
+      "placeholder": "......",
+      "bio": "Bio"
     },
     "register_book": {
       "form_title": "Permintaan Buku",
@@ -231,6 +232,10 @@
     "gender": {
       "required": "Jenis kelamin diperlukan"
     },
+    "bio": {
+        "required": "Bio diperlukan.",
+        "minLength": "Bio harus terdiri dari minimal 10 karakter."
+      },
     "password": {
       "required": "Kata Sandi wajib diisi",
       "minLength": "Kata Sandi harus minimal 8 karakter",
@@ -645,5 +650,50 @@
     "closeButton": "Tutup",
     "sendButton": "Kirim Notifikasi",
     "error": "Harap isi semua kolom."
+  },
+  "authors": {
+    "page_title": "Penulis",
+    "table": {
+      "id": "ID",
+      "name": "Nama",
+      "bio": "Bio",
+      "phone": "Telepon",
+      "image": "Gambar",
+      "balance": "Saldo"
+    },
+    "entity": "Penulis",
+    "notify_action": "Kirim Notifikasi",
+    "notification": "Notifikasi"
+  },
+  "forget": {
+    "labels": {
+      "phone": "Telepon"
+    },
+    "placeholders": {
+      "phone": "Masukkan nomor telepon Anda"
+    },
+    "buttons": {
+      "sendPhone": "Kirim Telepon"
+    },
+    "messages": {
+      "instructions": "Masukkan nomor telepon Anda dan OTP akan dikirimkan kepada Anda!"
+    }
+  },
+  "otp": {
+    "verifyPhone": "Verifikasi Nomor Telepon",
+    "enterOtpCode": "Masukkan kode 4 digit yang kami kirim ke nomor WhatsApp Anda untuk menyelesaikan pesanan",
+    "didntReceiveCode": "Tidak menerima kode verifikasi?",
+    "resendCode": "Kirim ulang kode",
+    "resendTimer": "Kirim ulang kode dalam  ",
+    "verifyOtp": "Verifikasi OTP"
+  }, 
+  "resetpass": {
+    "recoverPassword": "Pulihkan kata sandi",
+    "description": "Tambahkan kata sandi baru ke akun Anda",
+    "password": "Kata Sandi",
+    "confirmPassword": "Konfirmasi Kata Sandi",
+    "enterPassword": "Masukkan Kata Sandi",
+    "enterConfirmPassword": "Masukkan Konfirmasi Kata Sandi",
+    "submit": "Kirim"
   }
 }

@@ -168,7 +168,8 @@
       "date_of_birth": "出生日期",
       "city": "城市",
       "categories": "感兴趣的类别",
-      "placeholder": "......"
+      "placeholder": "......",
+      "bio": "简介"
     },
     "register_book": {
       "form_title": "请求书籍",
@@ -226,6 +227,10 @@
     "address": {
       "required": "地址是必填项",
       "minLength": "地址必须至少 5 个字符"
+    },
+    "bio": {
+      "required": "需要填写简介。",
+      "minLength": "简介至少需要10个字符。"
     },
     "gender": {
       "required": "性别是必填项"
@@ -644,5 +649,49 @@
     "closeButton": "关闭",
     "sendButton": "发送通知",
     "error": "请填写所有字段。"
+  },
+  "authors": {
+    "page_title": "作者",
+    "table": {
+      "id": "编号",
+      "name": "姓名",
+      "bio": "简介",
+      "phone": "电话",
+      "image": "图片",
+      "balance": "余额"
+    },
+    "entity": "作者",
+    "notify_action": "发送通知",
+    "notification": "通知"
+  },
+  "forget": {
+    "labels": {
+      "phone": "电话"
+    },
+    "placeholders": {
+      "phone": "输入您的电话号码"
+    },
+    "buttons": {
+      "sendPhone": "发送电话"
+    },
+    "messages": {
+      "instructions": "输入您的电话号码，我们会发送 OTP 给您！"
+    }
+  },
+  "otp": {
+    "verifyPhone": "验证手机",
+    "enterOtpCode": "请输入我们发送到您的WhatsApp号码的4位数字验证码以完成订单",
+    "didntReceiveCode": "没有收到验证码？",
+    "resendCode": "重新发送验证码",
+    "resendTimer": "  秒内重新发送验证码",
+    "verifyOtp": "验证OTP"
+  },  "resetpass": {
+    "recoverPassword": "恢复密码",
+    "description": "将新密码添加到您的帐户",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "enterPassword": "请输入密码",
+    "enterConfirmPassword": "请输入确认密码",
+    "submit": "提交"
   }
 }

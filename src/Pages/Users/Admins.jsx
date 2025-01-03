@@ -77,7 +77,7 @@ const Admins = () => {
                 onAdd={handleAddUser}
                 onEdit={handleEditUser}
                 onDelete={handleDeleteUser}
-                onNotify={handleSendNotification}
+                // onNotify={handleSendNotification}
               />
               <Nofiticate
                 actionType="Send"

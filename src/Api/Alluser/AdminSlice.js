@@ -79,13 +79,14 @@ export const AdminUpdateUserApi = createAsyncThunk("users/update", async (data) 
   }
 });
 export const AddAdminApi = createAsyncThunk("admin/add", async (data) => {
+  console.log(data)
   try {
     const res = await axios.post(`${baseurl}/admin`,data,{
       headers: {
         lang: lang,
         Authorization: `Bearer ${token}`,
         Accept: "*/*",
-        "Content-Type": "multipar/form-data",
+        
         "Access-Control-Allow-Origin": "*",
       },
     });

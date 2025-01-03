@@ -169,7 +169,8 @@
       "date_of_birth": "تاريخ الميلاد",
       "city": "المدينة",
       "categories": "الفئات المهتم بها",
-      "placeholder": "......"
+      "placeholder": "......",
+      "bio": "السيرة الذاتية"
     },
     "register_book": {
       "form_title": "طلب كتاب",
@@ -256,6 +257,10 @@
       "maxLength": "لا يمكن أن يتجاوز اسم الشارع 100 حرف.",
       "pattern": "يحتوي اسم الشارع على أحرف غير صالحة."
     },
+    "bio": {
+      "required": "السيرة الذاتية مطلوبة.",
+      "minLength": "يجب أن تتكون السيرة الذاتية من 10 أحرف على الأقل."
+    },
     "city": {
       "required": "اسم المدينة مطلوب.",
       "minLength": "يجب أن يكون اسم المدينة حرفين على الأقل.",
@@ -285,6 +290,7 @@
       "image_invalid": "تنسيق الصورة غير صحيح. استخدم .jpg أو .jpeg أو .png أو .gif.",
       "image_required": "الصورة الشخصية مطلوبة"
     }
+    
   },
   "table": {
     "management": "الإدارة",
@@ -647,6 +653,49 @@
     "closeButton": "إغلاق",
     "sendButton": "إرسال الإشعار",
     "error": "يرجى ملء جميع الحقول."
+  },
+   "authors": {
+    "page_title": "المؤلفون",
+    "table": {
+      "id": "المعرف",
+      "name": "الاسم",
+      "bio": "السيرة الذاتية",
+      "phone": "الهاتف",
+      "image": "الصورة",
+      "balance": "الرصيد"
+    },
+    "entity": "مؤلف",
+    "notify_action": "إرسال إشعار",
+    "notification": "الإشعار"
+  },
+  "forget": {
+    "labels": {
+      "phone": "رقم الهاتف"
+    },
+    "placeholders": {
+      "phone": "أدخل رقم هاتفك"
+    },
+    "buttons": {
+      "sendPhone": "إرسال الهاتف"
+    },
+    "messages": {
+      "instructions": "أدخل رقم هاتفك وستُرسل إليك رمز التحقق"
+    }
+  },
+  "otp": {
+    "verifyPhone": "تحقق من الهاتف",
+    "enterOtpCode": "أدخل الرمز المكون من 4 أرقام الذي أرسلناه إلى رقم WhatsApp الخاص بك لإتمام الطلب",
+    "didntReceiveCode": "لم تستلم رمز التحقق؟",
+    "resendCode": "إعادة إرسال الرمز",
+    "resendTimer": "إعادة إرسال الرمز في  ",
+    "verifyOtp": "التحقق من OTP"
+  },"resetpass": {
+    "recoverPassword": "استرجاع كلمة المرور",
+    "description": "أضف كلمة المرور الجديدة إلى حسابك",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "enterPassword": "أدخل كلمة المرور",
+    "enterConfirmPassword": "أدخل تأكيد كلمة المرور",
+    "submit": "إرسال"
   }
-  
 }

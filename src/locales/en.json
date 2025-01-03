@@ -168,7 +168,8 @@
       "date_of_birth": "Date of Birth",
       "city": "City",
       "categories": "Categories interested in",
-      "placeholder": "......"
+      "placeholder": "......",
+      "bio": "Bio"
     },
     "register_book": {
       "form_title": "Request a Book",
@@ -241,6 +242,10 @@
       "minLength": "Phone Number must be at least 10 digits",
       "maxLength": "Phone Number must not exceed 15 digits",
       "pattern": "Phone Number must only contain digits"
+    },
+    "bio": {
+      "required": "Bio is required.",
+      "minLength": "Bio must be at least 10 characters."
     },
     "passwordConfirm": {
       "required": "Confirm Password is required",
@@ -647,5 +652,49 @@
     "closeButton": "Close",
     "sendButton": "Send Notification",
     "error": "Please fill in all fields."
+  },
+  "authors": {
+    "page_title": "Authors",
+    "table": {
+      "id": "ID",
+      "name": "Name",
+      "bio": "Bio",
+      "phone": "Phone",
+      "image": "Image",
+      "balance": "Balance"
+    },
+    "entity": "Author",
+    "notify_action": "Send Notification",
+    "notification": "Notification"
+  },
+  "forget": {
+    "labels": {
+      "phone": "Phone"
+    },
+    "placeholders": {
+      "phone": "Enter your phone number"
+    },
+    "buttons": {
+      "sendPhone": "Send Phone"
+    },
+    "messages": {
+      "instructions": "Enter your phone and OTP will be sent to you!"
+    }
+  },
+  "otp": {
+    "verifyPhone": "Verify Phone",
+    "enterOtpCode": "Enter the 4-digit code we sent to your WhatsApp number to complete the order",
+    "didntReceiveCode": "Didn't receive the verification code?",
+    "resendCode": "Resend code",
+    "resendTimer": "Resend code in ",
+    "verifyOtp": "Verify OTP"
+  }, "resetpass": {
+    "recoverPassword": "Recover password",
+    "description": "Add the new password to your account",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "enterPassword": "Enter Password",
+    "enterConfirmPassword": "Enter Confirm Password",
+    "submit": "Submit"
   }
 }

@@ -5,11 +5,86 @@ import { useTranslation } from "react-i18next";
 import logo from '../../../public/assets/images/favicon.png'
 const Navbar = () => {
   const { t, i18n } = useTranslation();
-  const [activeLink, setActiveLink] = useState("");
   const isRtl = document.documentElement.lang !== "ar" ? false : true;
+
+  const [activeLink, setActiveLink] = useState("");
+
   const handleLinkClick = (link) => {
-    setActiveLink(link);
+    setActiveLink((prev) => (prev === link ? "" : link));
   };
+
+  const menuItems = [
+    {
+      title: t("global.nav.dashboard"),
+      icon: "mdi-airplay",
+      link: "/",
+    },
+    {
+      title: t("global.nav.menu.settings.title"),
+      icon: "mdi-settings",
+      link: "/settings",
+      subItems: [],
+    },
+    {
+      title: t("global.nav.menu.category.title"),
+      icon: "mdi-view-list",
+      link: "/category",
+      subItems: [
+        { title: t("global.nav.menu.category.title"), link: "/category/all" },
+        { title: t("global.nav.menu.category.create"), link: "/category/create" },
+      ],
+    },
+    {
+      title: t("global.nav.menu.books.title"),
+      icon: "mdi-book-open",
+      link: "/books",
+      subItems: [
+        { title: t("global.nav.menu.books.title"), link: "/books/all" },
+        { title: t("global.nav.menu.books.create"), link: "/books/create" },
+      ],
+    },
+    {
+      title: t("global.nav.menu.users.title"),
+      icon: "mdi-account-multiple",
+      link: "/users",
+      subItems: [
+        { title: t("global.nav.menu.users.all"), link: "/users/all" },
+        { title: t("global.nav.menu.users.admins"), link: "/users/admins" },
+        { title: t("global.nav.menu.users.authors"), link: "/users/authors" },
+      ],
+    },
+    {
+      title: t("global.nav.menu.orders.title"),
+      icon: "mdi-cart",
+      link: "/orders",
+      subItems: [{ title: t("global.nav.menu.orders.title"), link: "/orders/all" }],
+    },
+    {
+      title: t("global.nav.menu.subscription.title"),
+      icon: "mdi-crown",
+      link: "/subscription",
+      subItems: [
+        { title: t("global.nav.menu.subscription.title"), link: "/subscription/all" },
+        { title: t("global.nav.menu.subscription.create"), link: "/subscription/create" },
+      ],
+    },
+    {
+      title: t("global.nav.menu.book_requests.title"),
+      icon: "mdi-crown",
+      link: "/requestbook",
+      subItems: [
+        { title: t("global.nav.menu.book_requests.title"), link: "/requestsbooks" },
+      ],
+    },
+    {
+      title: t("global.nav.menu.author_requests.title"),
+      icon: "mdi-crown",
+      link: "/requestsauthors",
+      subItems: [
+        { title: t("global.nav.menu.author_requests.title"), link: "/requestsauthors" },
+      ],
+    },
+  ];
   // {t("global.nav.menu.users.authors")}
   return (
     <>
@@ -36,408 +111,48 @@ const Navbar = () => {
 
           <div class="sidebar-inner slimscrollleft">
             <div id="sidebar-menu">
-              <ul>
-                <li class="menu-title">Main</li>
-
-                <li>
-                  <Link to="/" class="waves-effect">
-                    <i class="mdi mdi-airplay"></i>
-                    <span>{t("global.nav.dashboard")}</span>
+            <ul>
+      {menuItems.map((item, index) => (
+        <li
+          key={index}
+          className={`has_sub ${activeLink.includes(item.link) ? "nav-active" : ""}`}
+        >
+          <a
+            href={ Array.isArray(item.subItems) && item.subItems.length > 0 ? "javascript:void(0);" : item.link}
+            className="waves-effect"
+            onClick={() => item.subItems.length > 0 && handleLinkClick(item.link)}
+          >
+            <i className={`mdi ${item.icon}`}></i>
+            <span>{item.title}</span>
+            { Array.isArray(item.subItems) && item.subItems.length > 0 && (
+              <span className={`float-${isRtl ? "left" : "right"}`}>
+                <i
+                  className={`mdi mdi-chevron-${
+                    activeLink.includes(item.link) ? "down" : isRtl ? "left" : "right"
+                  }`}
+                ></i>
+              </span>
+            )}
+          </a>
+          {Array.isArray(item.subItems) && item.subItems.length > 0 && activeLink.includes(item.link) && (
+            <ul className="list-unstyled">
+               { Array.isArray(item.subItems) && item.subItems.map((subItem, subIndex) => (
+                <li
+                  key={subIndex}
+                  className={activeLink === subItem.link ? "nav-active" : ""}
+                  onClick={() => handleLinkClick(subItem.link)}
+                >
+                  <Link to={subItem.link}>
+                    <i className={`mdi ${item.icon}`}></i>
+                    {subItem.title}
                   </Link>
                 </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/settings") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="/settings/all"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/settings")}
-                  >
-                    <i className="mdi mdi-settings"></i>
-                    <span>{t("global.nav.menu.settings.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      {/* <i
-                        className={`mdi mdi-chevron-${
-                           isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/settings")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i> */}
-                    </span>
-                  </a>
-                 
-                </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/category") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/category")}
-                  >
-                    <i className="mdi mdi-view-list"></i>
-                    <span> {t("global.nav.menu.category.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                         isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/category")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                  <li
-                      className={
-                        activeLink === "/category/all"
-                          ? "nav-active"
-                          : ""
-                      }
-                      onClick={() => handleLinkClick("/category/all")}
-                    >
-                      <Link to="/category/all">
-                        <i className="mdi mdi-view-list"></i>
-                        {t("global.nav.menu.category.title")}
-                      </Link>
-                    </li>
-                    <li
-                      className={
-                        activeLink === "/category/create"
-                          ? "nav-active"
-                          : ""
-                      }
-                      onClick={() => handleLinkClick("/category/create")}
-                    >
-                      <Link to="/category/create">
-                        <i className="mdi mdi-view-list"></i>
-                        {t("global.nav.menu.category.create")}
-                      </Link>
-                    </li>
-                   
-                  </ul>
-                </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/books") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/books")}
-                  >
-                    <i className="mdi mdi-book-open"></i>
-                    <span>{t("global.nav.menu.books.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                           isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/books")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                    <li
-                      className={
-                        activeLink === "/books/all" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/books/all")}
-                    >
-                      <Link to="/books/all">
-                        <i className="mdi mdi-book-open"></i>
-                        {t("global.nav.menu.books.title")}
-                      </Link>
-                    </li>
-                    <li
-                      className={
-                        activeLink === "/books/create" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/books/create")}
-                    >
-                      <Link to="/books/create">
-                        <i className="mdi mdi-book-open"></i>
-                        {t("global.nav.menu.books.create")}
-                      </Link>
-                    </li>
-                   
-                  </ul>
-                </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/users") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/users")}
-                  >
-                    <i className="mdi mdi-account-multiple"></i>
-                    <span>{t("global.nav.menu.users.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                         isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/users")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                  <li
-                      className={
-                        activeLink === "/users/all" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/users/all")}
-                    >
-                      <Link to="/users/all">
-                        <i className="mdi mdi-account-multiple"></i>
-                        {t("global.nav.menu.users.all")}
-                      </Link>
-                    </li>
-                    <li
-                      className={
-                        activeLink === "/users/admins" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/users/admins")}
-                    >
-                      <Link to="/users/admins">
-                        <i className="mdi mdi-account-multiple"></i>
-                        {t("global.nav.menu.users.admins")}
-                      </Link>
-                    </li>
-                    <li
-                      className={
-                        activeLink === "/users/authors" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/users/authors")}
-                    >
-                      <Link to="/users/authors">
-                        <i className="mdi mdi-account-multiple"></i>
-                        {t("global.nav.menu.users.authors")}
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-               
-               
-
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/orders") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/orders")}
-                  >
-                    <i className="mdi mdi-cart"></i>
-                    <span>{t("global.nav.menu.orders.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                        isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/orders")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                    <li
-                      className={
-                        activeLink === "/orders/all" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/orders/all")}
-                    >
-                      <Link to="/orders/all">
-                        <i className="mdi mdi-cart"></i>
-                        {t("global.nav.menu.orders.title")}
-                      </Link>
-                    </li>
-                    {/* <li
-                      className={
-                        activeLink === "/orders/processed" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/orders/processed")}
-                    >
-                      <Link to="/orders/processed">
-                        <i className="mdi mdi-cart"></i>
-                        Processed Orders
-                      </Link>
-                    </li> */}
-                  </ul>
-                </li>
-
-              
-
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/subscription") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/subscription")}
-                  >
-                    <i className="mdi mdi-crown"></i>
-                    <span>{t("global.nav.menu.subscription.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                         isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/subscription")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                    <li
-                      className={
-                        activeLink === "/subscription/all" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/subscription/all")}
-                    >
-                      <Link to="/subscription/all">
-                        <i className="mdi mdi-crown"></i>
-                        {t("global.nav.menu.subscription.title")}
-                      </Link>
-                    </li>
-                    <li
-                      className={
-                        activeLink === "/subscription/create" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/subscription/create")}
-                    >
-                      <Link to="/subscription/create">
-                        <i className="mdi mdi-crown"></i>
-                        {t("global.nav.menu.subscription.create")}
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/requestbook") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/requestbook")}
-                  >
-                    <i className="mdi mdi-crown"></i>
-                    <span>{t("global.nav.menu.book_requests.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                         isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/requestbook")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                    <li
-                      className={
-                        activeLink === "/requestsbooks" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/requestsbooks")}
-                    >
-                      <Link to="/requestsbooks">
-                        <i className="mdi mdi-crown"></i>
-                        {t("global.nav.menu.book_requests.title")}
-                      </Link>
-                    </li>
-                    {/* <li
-                      className={
-                        activeLink === "/subscription/create" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/subscription/create")}
-                    >
-                      <Link to="/subscription/create">
-                        <i className="mdi mdi-crown"></i>
-                        {t("global.nav.menu.subscription.create")}
-                      </Link>
-                    </li> */}
-                  </ul>
-                </li>
-                <li
-                  className={`has_sub ${
-                    activeLink.includes("/requestbook") ? "nav-active" : ""
-                  }`}
-                >
-                  <a
-                    href="javascript:void(0);"
-                    className="waves-effect"
-                    onClick={() => handleLinkClick("/requestauthors")}
-                  >
-                    <i className="mdi mdi-crown"></i>
-                    <span>{t("global.nav.menu.author_requests.title")}</span>
-                    <span className={`float-${isRtl ? "left" : "right"}`}>
-                      <i
-                        className={`mdi mdi-chevron-${
-                         isRtl ? "left" : "right"
-                        } ${
-                          activeLink.includes("/requestauthors")
-                            ? "mdi-chevron-down"
-                            : ""
-                        }`}
-                      ></i>
-                    </span>
-                  </a>
-                  <ul className="list-unstyled">
-                    <li
-                      className={
-                        activeLink === "/requestsbooks" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/requestsbooks")}
-                    >
-                      <Link to="/requestsauthors">
-                        <i className="mdi mdi-crown"></i>
-                        {t("global.nav.menu.author_requests.title")}
-                      </Link>
-                    </li>
-                    {/* <li
-                      className={
-                        activeLink === "/subscription/create" ? "nav-active" : ""
-                      }
-                      onClick={() => handleLinkClick("/subscription/create")}
-                    >
-                      <Link to="/subscription/create">
-                        <i className="mdi mdi-crown"></i>
-                        {t("global.nav.menu.subscription.create")}
-                      </Link>
-                    </li> */}
-                  </ul>
-                </li>
-              </ul>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
             </div>
             <div class="clearfix"></div>
           </div>

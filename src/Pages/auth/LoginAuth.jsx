@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import { LoginApi } from "../../Api/Auth/AuthSlice";
+import { LoginApi, LoginAuthorApi } from "../../Api/Auth/AuthSlice";
 import Loadertwo from "../../Components/loader/loadertwo";
 import Cookies from "js-cookie";
-const Login = () => {
+const LoginAuth = () => {
   const { t, i18n } = useTranslation();
   const loading = useSelector((state) => state.auth.status);
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const Login = () => {
     const error_submit = validate(formdata);
 
     if (Object.keys(error_submit).length === 0) {
-      dispatch(LoginApi(formdata)).then((res) => {
+      dispatch(LoginAuthorApi(formdata)).then((res) => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           Cookies.set("token", res.payload?.data?.token);
@@ -206,14 +206,14 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* <div class="form-group m-t-10 mb-0 row">
+                <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-sm-7 m-t-20">
-                                    <Link to="/forgetpass" class="text-muted"><i class="mdi mdi-lock"></i> <small>Forgot your password ?</small></Link>
+                                    <Link to="/forgetpass" class="text-muted"><i class="mdi mdi-lock"></i> <small>{t("global.login.forgotPassword")}</small></Link>
                                 </div>
-                                <div class="col-sm-5 m-t-20">
+                                {/* <div class="col-sm-5 m-t-20">
                                     <Link to="/register" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></Link>
-                                </div>
-                            </div> */}
+                                </div> */}
+                            </div>
               </form>
             </div>
           </div>
@@ -223,4 +223,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginAuth;

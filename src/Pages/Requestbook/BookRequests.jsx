@@ -66,7 +66,7 @@ const BookRequests = () => {
           <div class="page-content-wrapper">
             <div class="container-fluid">
               <div class="row">
-                <Breadcrumb page={t("global.nav.menu.category.title")} />
+                <Breadcrumb page={t("global.nav.menu.book_requests.title")} />
               </div>
               {/* tables for data and cate crud functionlity */}
               <Tables

@@ -25,8 +25,95 @@ export const LoginApi = createAsyncThunk("auth/Login", async (data) => {
 });
 
 
+export const LoginAuthorApi = createAsyncThunk("auth/Login", async (data) => {
+  try {
+    const res = await axios.post(`${baseurl}/authorAuth/login`, data, {
+      headers: {
+        lang: lang,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    // console.error(err.response.data)
+    return err.response.data;
+  }
+});
+
+export const ForgotPasswordApi = createAsyncThunk(
+  "auth/forgotPassword",
+  async (phone) => {
+    try {
+      const res = await axios.post(
+        `${baseurl}/authorAuth/forgotPassword`,
+        phone,
+        {
+          headers: {
+            lang: lang,
+          },
+        }
+      );
+
+      return res.data;
+    } catch (err) {
+      // console.error(err.response.data)
+      return err.response.data;
+    }
+  }
+);
 
 
+export const VerifyCodeApi = createAsyncThunk(
+  "auth/verifyCode",
+  async (data) => {
+    try {
+      const res = await axios.post(`${baseurl}/authorAuth/verifyCode`, data, {
+        headers: {
+          lang: lang,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      // console.error(err.response.data)
+      return err.response.data;
+    }
+  }
+);
+export const ResendCodeApi = createAsyncThunk(
+  "auth/resendCode",
+  async (data) => {
+    try {
+      const res = await axios.post(`${baseurl}/userAuth/resendCode`, data, {
+        headers: {
+          lang: lang,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      // console.error(err.response.data)
+      return err.response.data;
+    }
+  }
+);
+export const ResetPasswordApi = createAsyncThunk(
+  "auth/resetPassword",
+  async (data) => {
+    try {
+      const res = await axios.patch(`${baseurl}/authorAuth/resendCode`, data, {
+        headers: {
+          lang: lang,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      // console.error(err.response.data)
+      return err.response.data;
+    }
+  }
+);
 
 const Authslice = createSlice({
   name: "auth",

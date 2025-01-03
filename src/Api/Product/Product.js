@@ -182,7 +182,7 @@ export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge"
         'Authorization':`Bearer ${token}`,
         'Accept':'*/*',
         // 'Content-Type':'multipar/form-data',
-        'Access-Control-Allow-Origin':''
+        'Access-Control-Allow-Origin':'*'
       },
     });
 
@@ -192,10 +192,10 @@ export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge"
     return err.response.data
   }
 });
-export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", async (productId,data) => {
+export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", async (data) => {
   try {
 
-    const res = await axios.patch(`${baseurl}/product/changePDFFile/${productId}`,data, {
+    const res = await axios.patch(`${baseurl}/product/changePDFFile/${data?.id}`,data, {
       headers: {
         lang: lang,
         'Authorization':`Bearer ${token}`,

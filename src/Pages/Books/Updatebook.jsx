@@ -223,16 +223,14 @@ const Updatebook = () => {
       const pdfFile = new FormData();
 
       // Append image field
-      if (productimg) {
+      if (productimg) { 
+        coverImage.append("coverimage", productimg);
         const data = {
           id: id,
           coverImage: coverImage,
         };
-        coverImage.append("coverimage", productimg);
-        // Log FormData contents
-        for (let pair of coverImage.entries()) {
-          console.log(pair[0] + ": " + pair[1]);
-        }
+       
+       
 
         dispatch(UpdateProductimgeApi(data)).then((res) => {
           if (res.payload?.code === 200) {
@@ -244,14 +242,16 @@ const Updatebook = () => {
       }
 
       // Append PDF field
-      if (productpdf) {
+      if (productpdf) { 
         pdfFile.append("pdfFile", productpdf);
-        // Log FormData contents
-        for (let pair of pdfFile.entries()) {
-          console.log(pair[0] + ": " + pair[1]);
-        }
+        const data = {
+          id: id,
+          pdfFile:pdfFile ,
+        };
+        
+        
 
-        dispatch(UpdateProductpdfApi(id, pdfFile)).then((res) => {
+        dispatch(UpdateProductpdfApi(data)).then((res) => {
           if (res.payload?.code === 200) {
             setSuccessmessage(res.payload?.message);
           }

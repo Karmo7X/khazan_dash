@@ -26,13 +26,13 @@ export const GetAuthorApi = createAsyncThunk("Author/get", async () => {
 
 export const AddAuthorApi = createAsyncThunk("Author/AddAuthor", async (authordata) => {
   try {
-    const res = await axios.post(`${baseurl}/author/formAuthor`,authordata, {
+    const res = await axios.post(`${baseurl}/author/createAuthor`,authordata, {
       headers: {
         lang: lang,
         'Authorization':`Bearer ${token}`,
         'Accept':'*/*',
-        'Content-Type':'multipar/form-data',
-        'Access-Control-Allow-Origin':'*'
+        // 'Content-Type':'multipar/form-data',
+        
 
       },
     });
@@ -95,7 +95,38 @@ export const GetAuthorproductsApi = createAsyncThunk("Author/getdetails", async 
     console.error(err.response.data);
   }
 });
+export const DeleteAuthorApi = createAsyncThunk("Author/DeleteAuthor", async (authorId) => {
+  try {
+    const res = await axios.delete(`${baseurl}/blockAuthor/${authorId}`, {
+      headers: {
+        lang: lang,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const UpdateAuthorApi = createAsyncThunk("Author/AddAuthor", async (authordata) => {
+  try {
+    const res = await axios.patch(`${baseurl}/author/${authordata?.id}`,authordata, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+        'Accept':'*/*',
+        // 'Content-Type':'multipar/form-data',
+        'Access-Control-Allow-Origin':'*'
+
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
 
 const AuthorsSlice = createSlice({
   name: "author",

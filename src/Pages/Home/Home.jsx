@@ -42,11 +42,11 @@ const Home = () => {
       type: "donut",
       height: 345,
     },
-    labels: Array.isArray(datacharts?.topCities) && datacharts?.topCities.map((city) => city?.name),
+    labels: Array.isArray(datacharts?.topCities) && datacharts?.topCities.map((city) => city?.cityName),
     series: Array.isArray(datacharts?.topCities) && datacharts?.topCities.map((city) => city?.userCount),
     colors: ["#4CAF50", "#2196F3", "#9E9E9E"], // Add more colors as needed
   };
-  console.log(donutChartOptions)
+  console.log(multiLineChartOptions)
 
   useEffect(() => {
     dispatch(GetdashboardApi()).then((res) => {
@@ -257,7 +257,7 @@ const Home = () => {
                 {/* <!-- Column --> */}
               </div>
               <div className="row">
-                <div className="col-md-12 col-lg-12 col-xl-12">
+                <div className="col-md-12 col-lg-12 col-xl-8">
                   <div className="card m-b-30">
                     <div className="card-body">
                       <h5 className="header-title pb-3 mt-0">{t("global.dash.overview")}</h5>
@@ -270,7 +270,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                {/* <div className="col-md-12 col-lg-12 col-xl-4">
+                <div className="col-md-12 col-lg-12 col-xl-4">
                   <div className="card m-b-30">
                     <div className="card-body">
                     
@@ -279,7 +279,7 @@ const Home = () => {
                       </h5>
 
                       <ul className="list-unstyled list-inline text-center">
-                        <li className="list-inline-item">
+                        {/* <li className="list-inline-item">
                           <p>
                             <i className="mdi mdi-checkbox-blank-circle text-primary mr-2"></i>
                             Canada
@@ -296,7 +296,7 @@ const Home = () => {
                             <i className="mdi mdi-checkbox-blank-circle text-greylight mr-2"></i>
                             London
                           </p>
-                        </li>
+                        </li> */}
                       </ul>
                       <Chart
                         options={donutChartOptions}
@@ -306,12 +306,12 @@ const Home = () => {
                       />
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
 
               <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-8 align-self-center">
-                  <div class="card bg-white m-b-30">
+                  <div class="card bg-white m-b-30" style={{height:'519px'}}>
                     <div className="card-body best-rated-books">
                       <h5 className="header-title mb-4 mt-0">
                       {t("global.dash.top_rated_books")}
@@ -386,7 +386,7 @@ const Home = () => {
                 </div>
                 <div class="col-md-12 col-lg-12 col-xl-4">
                   <div class="card bg-white m-b-30">
-                    <div class="card-body new-user">
+                    <div class="card-body new-user" >
                       <h5 class="header-title mt-0 mb-4">{t("global.dash.new_users")}</h5>
                       <ul
                         class="list-unstyled mb-0 pr-3"

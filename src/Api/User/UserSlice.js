@@ -85,7 +85,9 @@ export const GetUserApi = createAsyncThunk("User/get", async () => {
     }
   });
   
-  
+    //  ------------------------Author apis-----------------------------
+
+    
 
 const Userslice = createSlice({
   name: "cate",

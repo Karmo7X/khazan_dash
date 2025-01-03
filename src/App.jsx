@@ -28,6 +28,9 @@ import AddAbout from "./Components/Addpages/AddAbout";
 import UpdateUser from "./Pages/Users/UpdateUser";
 import BookRequests from "./Pages/Requestbook/BookRequests";
 import AuthorRequests from "./Pages/AuthorRequest/AuthorRequests";
+import LoginAuth from "./Pages/auth/LoginAuth";
+import OTP from "./Pages/auth/OTP";
+import ResetPassword from "./Pages/auth/Resetpassword";
 
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
@@ -90,6 +93,14 @@ function App() {
             }
           />
           <Route
+            path="loginAuthor"
+            element={
+              <Suspense fallback={<Loader />}>
+                <LoginAuth />
+              </Suspense>
+            }
+          />
+          <Route
             path="register"
             element={
               <Suspense fallback={<Loader />}>
@@ -105,6 +116,22 @@ function App() {
               </Suspense>
             }
           />
+          <Route
+            path="otp"
+            element={
+              <Suspense fallback={<Loader />}>
+                <OTP />
+              </Suspense>
+            }
+          /> 
+          <Route
+          path="resetpass"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ResetPassword />
+            </Suspense>
+          }
+        />
 
           <Route path="/" element={<Layout />}>
             <Route
