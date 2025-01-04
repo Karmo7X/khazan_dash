@@ -7,41 +7,41 @@ import ModalEdit from "../../Components/Modal/ModalEdit";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { DeleteProductApi, DeleteRequestBookApi, GetProductApi, GetRequestBookApi } from "../../Api/Product/Product";
+import { DeleteAuthorrequestApi, GetAuthorrequestsApi } from "../../Api/Authors/AuthorsSlice";
 
 const AuthorRequests = () => {
     const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const navigate =useNavigate()
-  const [books, setBooks] = useState([]);
-  const booksColumns = [
-    { label: t("global.admin.table.id"), field: "id" },
-    { label: t("global.books.Title"), field: "title" },
-    { label: t("global.books.Author"), field: "author" },
-    { label: t("global.table.category.image"), field: "image" },
-    { label: t("global.profile.register_book.fields.publisher"), field: "publisher" },
-    { label: t("global.profile.register_book.fields.publication_date"), field: "DateOfPublication" },
-  ];
+  const [authors, setauthors] = useState([]);
   
-  const [currentbook,setcurrentbook]=useState(null)
-  const handleAddBook = () => {
-     navigate('/books/create')
-  };
-
-  const handleEditBook = (book) => {
-    // Logic for editing the book
+  const authorsColumns = [
+    { label: t("global.authors.table.id"), field: "id" },
+    { label: t("global.authors.table.name"), field: "name" },
+    { label: t("global.authors.table.bio"), field: "bio" },
+    { label: t("global.authors.table.phone"), field: "phone" },
+    { label: t("global.authors.table.image"), field: "profileImg" },
     
-    navigate(`/books/${book?.id}`)
+  ];
+  const [currentAuthor,setcurrentAuthor]=useState(null)
+  const handleAddAuthor = () => {
+     navigate('/authors/create')
   };
 
-  const handleDeleteBook = (book) => {
-    // setBooks(books.filter((b) => b !== book));
-      dispatch(DeleteRequestBookApi(book)).then((res)=>{
+  const handleEditAuthor = (Author) => {
+    // Logic for editing the Author
+    
+    navigate(`/authors/${Author?.id}`)
+  };
+
+  const handleDeleteAuthor = (Author) => {
+    // setauthors(authors.filter((b) => b !== Author));
+      dispatch(DeleteAuthorrequestApi(Author)).then((res)=>{
               if(res.payload?.code === 200 ){
     
-                dispatch(GetRequestBookApi()).then((res)=>{
+                dispatch(GetAuthorrequestsApi()).then((res)=>{
                     if(res.payload?.code ===200){
-                      setBooks(res.payload?.data?.Books)
+                      setauthors(res.payload?.data?.authors)
                     }
                   })
               }
@@ -50,9 +50,9 @@ const AuthorRequests = () => {
 
 
   useEffect(()=>{
-    dispatch(GetRequestBookApi()).then((res)=>{
+    dispatch(GetAuthorrequestsApi()).then((res)=>{
       if(res.payload?.code ===200){
-        setBooks(res.payload?.data?.Books)
+        setauthors(res.payload?.data?.authors)
       }
     })
   },[])
@@ -71,12 +71,12 @@ const AuthorRequests = () => {
               {/* tables for data and cate crud functionlity */}
               <Tables
                 entityType={t("global.nav.menu.author_requests.title")}
-                data={books}
-                route="books"
-                columns={booksColumns}
-                // onAdd={handleAddBook}
-                // onEdit={handleEditBook}
-                onDelete={handleDeleteBook}
+                data={authors}
+                route="authors"
+                columns={authorsColumns}
+                // onAdd={handleAddAuthor}
+                // onEdit={handleEditAuthor}
+                onDelete={handleDeleteAuthor}
               />
             </div>
           </div>

@@ -101,7 +101,7 @@ export const ResetPasswordApi = createAsyncThunk(
   "auth/resetPassword",
   async (data) => {
     try {
-      const res = await axios.patch(`${baseurl}/authorAuth/resendCode`, data, {
+      const res = await axios.patch(`${baseurl}/authorAuth/resetPassword`, data, {
         headers: {
           lang: lang,
         },

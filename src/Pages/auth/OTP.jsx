@@ -8,9 +8,10 @@ import {
 
 } from "../../Api/Auth/AuthSlice";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const OTP = () => {
   const { t } = useTranslation();
+    const navigate =useNavigate()
   const phonenum = localStorage.getItem("phone");
   const loading = useSelector((state) => state.auth.status);
   const [otp, setOtp] = useState(new Array(4).fill(""));
@@ -18,6 +19,7 @@ const OTP = () => {
   const [canResend, setCanResend] = useState(false);
   const [successmessage, setSuccessmessage] = useState();
   const [error, setError] = useState(null);
+  
   const inputRefs = useRef([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -69,15 +71,21 @@ const OTP = () => {
     e.preventDefault();
     const data = {
       phone: phonenum,
-      activateCode: otp.join(""),
+      resetCode: otp.join(""),
     };
     dispatch(VerifyCodeApi(data)).then((res) => {
       if (res.payload?.code === 200) {
         setSuccessmessage(res.payload?.message);
         // Cookies.set("token", res.payload?.data?.token);
-        window.location.reload();
+        navigate('/resetpass')
+        setTimeout(() => {
+          setSuccessmessage(null);
+        }, 2000);
       } else {
         setError(res.payload?.message);
+        setTimeout(() => {
+          setError(null);
+        }, 2000);
       }
     });
   };

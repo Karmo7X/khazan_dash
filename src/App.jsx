@@ -31,6 +31,10 @@ import AuthorRequests from "./Pages/AuthorRequest/AuthorRequests";
 import LoginAuth from "./Pages/auth/LoginAuth";
 import OTP from "./Pages/auth/OTP";
 import ResetPassword from "./Pages/auth/Resetpassword";
+import Profileauthor from "./Pages/Profile/Profileauthor";
+import LayoutAuthor from "./Components/LayoutAuthor";
+import Homeauthor from "./Pages/Home/Homeauthor";
+import ALLBooksAuthor from "./Pages/Books/ALLBooksAuthor";
 
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
@@ -440,6 +444,51 @@ function App() {
                 </Suspense>
               }
             />
+          </Route>
+          <Route path="Author" element={<LayoutAuthor />}>
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Homeauthor />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Author/books/all"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <ALLBooksAuthor />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+           
+           
+            
+         
+            <Route
+              path="profileauthor"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Profileauthor />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+           
+            
+            
+           
+           
+           
+             
+           
+           
           </Route>
         </Routes>
       </BrowserRouter>

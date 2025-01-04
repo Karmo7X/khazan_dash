@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // For internationalization
+import { useDispatch } from "react-redux";
+import { ForgotPasswordApi } from "../../Api/Auth/AuthSlice";
 
 const Forgetpass = () => {
   const { t } = useTranslation();
-
+  const navigate =useNavigate()
+  const dispatch =useDispatch()
   // Form state
-  const [formData, setFormData] = useState({
+  const [formData, setformData] = useState({
     phone: "",
   });
-
+const [showpassconfirm, setShowpassconfirm] = useState(false);
+      const [errorvalid, setErrorvalid] = useState();
+      const [errormessg, setErrormessg] = useState(null);
+      const [successmessage, setSuccessmessage] = useState();
   // Handle form data changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
+    setformData({
       ...formData,
       [name]: value,
     });
@@ -25,9 +31,9 @@ const Forgetpass = () => {
     // Phone validation
     if (!value.phone) {
       error.phone = t("global.validation_message.phone.required");
-    } else if (!/^\d+$/.test(value.phone)) {
+    } else if (!/^5\d{8}$/.test(value.phone)) {
       error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
-    } else if (value.phone.length < 10) {
+    } else if (value.phone.length < 5) {
       error.phone = t("global.validation_message.phone.minLength"); // Minimum 10 digits
     } else if (value.phone.length > 15) {
       error.phone = t("global.validation_message.phone.maxLength"); // Maximum 15 digits
@@ -38,16 +44,17 @@ const Forgetpass = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const error_submit = validate(formdata);
+    const error_submit = validate(formData);
 
     if (Object.keys(error_submit).length === 0) {
-      dispatch(ForgotPasswordApi(formdata)).then((res) => {
+      dispatch(ForgotPasswordApi(formData)).then((res) => {
       
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
-         setShowModal(true)
+      
           setErrorvalid(null);
-
+          localStorage.setItem('phone',formData.phone)
+          navigate('/otp')
           
         }else {
           setErrormessg(res.payload?.message);
@@ -56,7 +63,6 @@ const Forgetpass = () => {
       });
     } else {
       setErrorvalid(error_submit);
-      setShowModal(false)
     }
   };
 
@@ -97,12 +103,33 @@ const Forgetpass = () => {
                       required
                       placeholder={t("global.forget.placeholders.phone")}
                     />
+                     {errorvalid?.phone && (
+                      <>
+                        <div class="text-danger">{errorvalid?.phone}</div>
+                      </>
+                    )}
                   </div>
                 </div>
+
+                {successmessage && (
+                  <>
+                    <div class="alert alert-success" role="alert">
+                      {successmessage}
+                    </div>
+                  </>
+                )}
+                {errormessg && (
+                  <>
+                    <div class="alert alert-danger" role="alert">
+                      {errormessg}
+                    </div>
+                  </>
+                )}
                 <div className="form-group text-center row m-t-20">
                   <div className="col-12">
                     <button
-                      type="submit"
+                      type="button"
+                      onClick={(e)=>handleSubmit(e)}
                       className="btn btn-danger btn-block waves-effect waves-light"
                     >
                       {t("global.forget.buttons.sendPhone")}

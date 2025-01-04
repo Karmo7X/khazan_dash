@@ -13,7 +13,7 @@ export const GetProductApi = createAsyncThunk("Product/get", async () => {
   try {
    
   
-    const res = await axios.get(`${baseurl}/product`, {
+    const res = await axios.get(`${baseurl}/product?limit=200`, {
       headers: {
         lang: lang,
       },
@@ -211,6 +211,26 @@ export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", 
     return err.response.data
   }
 });
+
+
+// ---------------------- author products api ---------------------------------------
+export const GetauthorProductApi = createAsyncThunk("Product/get", async () => {
+  try {
+   
+  
+    const res = await axios.get(`${baseurl}/product/authorMyProducts?limit=200`, {
+      headers: {
+        lang: lang,
+      },
+    });
+
+    
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+
 const Productslice = createSlice({
   name: "product",
   initialState,

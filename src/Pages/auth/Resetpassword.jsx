@@ -5,11 +5,13 @@ import { ResetPasswordApi } from "../../Api/Auth/AuthSlice";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 const ResetPassword = () => {
   const { t } = useTranslation();
   const phonenumber = localStorage.getItem("phone");
   const dispatch = useDispatch();
+  const navigate =useNavigate()
   const [formData, setFormData] = useState({
     phone: phonenumber,
     password: "",
@@ -21,7 +23,7 @@ const ResetPassword = () => {
   const [showpass, setShowpass] = useState(false);
   const [showpassconfirm, setShowpassconfirm] = useState(false);
   const [errorvalid, setErrorvalid] = useState();
-  console.log(errorvalid);
+ 
   // Handle opening and closing modal
   const [errormessg, setErrormessg] = useState(null);
   const validate = (value) => {
@@ -63,8 +65,10 @@ const ResetPassword = () => {
 
     if (Object.keys(error_submit).length === 0) {
       dispatch(ResetPasswordApi(formData)).then((res) => {
-        if (res.payload?.code === 201) {
+        if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
+          Cookies.set("token", res.payload?.data?.token);
+          navigate('/Author')
         } else {
           setErrormessg(res.payload?.message);
         }
@@ -86,21 +90,21 @@ const ResetPassword = () => {
               </Link>
             </h3>
             <div className="identityBox">
-              <div className="form-wrapper d-flex align-items-center justify-content-center flex-column gap-5 w-100">
+              <div className="form-wrapper   d-flex align-items-center justify-content-center flex-column gap-2 w-100">
                 <div className="d-flex align-items-center justify-content-center flex-column text-center">
                   <h1>{t("global.resetpass.recoverPassword")}</h1>
                   <p className="w-75">{t("global.resetpass.description")}</p>
                 </div>
 
                 {/*  Password  Input */}
-                <Form.Group>
-                  <div className="w-100 mt-2 mb-5">
+                <Form.Group  className=" w-100 mt-2 ">
+                  <div className="w-100 mt-2 ">
                     <label htmlFor="password">
                       {t("global.register.password")}
                     </label>
                     <div className="d-flex  align-items-center ">
                       <input
-                        className={` form-control border border-0 border-bottom  rounded-0    `}
+                        className="form-control"
                         type={showpass === true ? "text" : "password"}
                         name="password"
                         placeholder={t("global.register.password")}
@@ -132,14 +136,14 @@ const ResetPassword = () => {
                 </Form.Group>
 
                 {/* Confirm Password Input */}
-                <Form.Group className="mt-2 mb-5">
+                <Form.Group className=" w-100 mt-2 mb-3 ">
                   <div className="w-100 mt-2">
                     <label htmlFor="passwordConfirm">
                       {t("global.register.confirmPassword")}
                     </label>
-                    <div className="d-flex  align-items-center ">
+                    <div className="d-flex w-100  align-items-center ">
                       <input
-                        className={` form-control border border-0 border-bottom  rounded-0  `}
+                        className="form-control"
                         type={showpassconfirm === true ? "text" : "password"}
                         name="passwordConfirm"
                         placeholder={t("global.register.confirmPassword")}
@@ -171,6 +175,31 @@ const ResetPassword = () => {
                     )}
                   </div>
                 </Form.Group>
+                {successmessage && (
+                  <>
+                    <div class="alert alert-success" role="alert">
+                      {successmessage}
+                    </div>
+                  </>
+                )}
+                {errormessg && (
+                  <>
+                    <div class="alert alert-danger" role="alert">
+                      {errormessg}
+                    </div>
+                  </>
+                )}
+                <div className="form-group text-center row m-t-20">
+                  <div className="col-12">
+                    <button
+                      type="button"
+                      onClick={(e)=>handleSubmit(e)}
+                      className="btn btn-danger btn-block waves-effect waves-light"
+                    >
+                      {t("global.resetpass.submit")}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

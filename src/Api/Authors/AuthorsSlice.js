@@ -100,6 +100,7 @@ export const DeleteAuthorApi = createAsyncThunk("Author/DeleteAuthor", async (au
     const res = await axios.delete(`${baseurl}/blockAuthor/${authorId}`, {
       headers: {
         lang: lang,
+        'Authorization':`Bearer ${token}`,
       },
     });
 
@@ -127,7 +128,34 @@ export const UpdateAuthorApi = createAsyncThunk("Author/AddAuthor", async (autho
     return err.response.data
   }
 });
+export const GetAuthorrequestsApi = createAsyncThunk("Author/getdetails", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/author/formAuthor?limit=10`, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const DeleteAuthorrequestApi = createAsyncThunk("Author/DeleteAuthorrequest", async (authorId) => {
+  try {
+    const res = await axios.delete(`${baseurl}/author/formAuthor/${authorId}`, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
 const AuthorsSlice = createSlice({
   name: "author",
   initialState,
