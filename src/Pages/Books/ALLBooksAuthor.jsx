@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Topbar from "../../Components/Topbar/Topbar";
+
 import Breadcrumb from "../../Components/breadcrumb/Breadcrumb";
 import Tables from "../../Components/Tables/Tables";
 import Modal from "../../Components/Modal/Modal";
@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { DeleteProductApi, GetProductApi } from "../../Api/Product/Product";
 import { GetAuthorproductsApi } from "../../Api/Authors/AuthorsSlice";
+import Toparauthor from "../../Components/Topbar/Toparauthor";
 const ALLBooksAuthor = () => {
  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const ALLBooksAuthor = () => {
       <div class="content-page">
         {/* <!-- Start content --> */}
         <div class="content">
-          <Topbar />
+          <Toparauthor />
 
           <div class="page-content-wrapper">
             <div class="container-fluid">

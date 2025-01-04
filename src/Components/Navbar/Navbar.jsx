@@ -22,7 +22,7 @@ const Navbar = () => {
     {
       title: t("global.nav.menu.settings.title"),
       icon: "mdi-settings",
-      link: "/settings",
+      link: "/settings/all",
       subItems: [],
     },
     {

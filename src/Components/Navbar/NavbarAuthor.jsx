@@ -14,11 +14,11 @@ const NavbarAuthor = () => {
   };
 
   const menuItems = [
-    {
-      title: t("global.nav.dashboard"),
-      icon: "mdi-airplay",
-      link: "/Author",
-    },
+    // {
+    //   title: t("global.nav.dashboard"),
+    //   icon: "mdi-airplay",
+    //   link: "/Author",
+    // },
     // {
     //   title: t("global.nav.menu.settings.title"),
     //   icon: "mdi-settings",

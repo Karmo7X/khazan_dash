@@ -13,7 +13,7 @@ export const GetProductApi = createAsyncThunk("Product/get", async () => {
   try {
    
   
-    const res = await axios.get(`${baseurl}/product?limit=200`, {
+    const res = await axios.get(`${baseurl}/product?limit=700`, {
       headers: {
         lang: lang,
       },
@@ -29,7 +29,7 @@ export const GetRequestBookApi = createAsyncThunk("Productrequest/get", async ()
   try {
    
   
-    const res = await axios.get(`${baseurl}/requestBook`, {
+    const res = await axios.get(`${baseurl}/requestBook?limit=700`, {
       headers: {
         lang: lang,
         Authorization: `Bearer ${token}`
@@ -176,12 +176,12 @@ export const UpdateProductApi = createAsyncThunk(
 export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge", async (data) => {
   try {
 
-    const res = await axios.patch(`${baseurl}/product/changeCoverImage/${data?.id}`,data, {
+    const res = await axios.patch(`${baseurl}/product/changeCoverImage/${data.get('id')}`,data, {
       headers: {
         lang: lang,
         'Authorization':`Bearer ${token}`,
         'Accept':'*/*',
-        // 'Content-Type':'multipar/form-data',
+        'Content-Type':'multipar/form-data',
         'Access-Control-Allow-Origin':'*'
       },
     });
@@ -195,12 +195,12 @@ export const UpdateProductimgeApi = createAsyncThunk("Product/UpdateProductimge"
 export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", async (data) => {
   try {
 
-    const res = await axios.patch(`${baseurl}/product/changePDFFile/${data?.id}`,data, {
+    const res = await axios.patch(`${baseurl}/product/changePDFFile/${data.get('id')}`,data, {
       headers: {
         lang: lang,
         'Authorization':`Bearer ${token}`,
         'Accept':'*/*',
-        // 'Content-Type':'multipar/form-data',
+        'Content-Type':'multipar/form-data',
         'Access-Control-Allow-Origin':'*'
       },
     });
@@ -213,23 +213,6 @@ export const UpdateProductpdfApi = createAsyncThunk("Product/UpdateProductpdf", 
 });
 
 
-// ---------------------- author products api ---------------------------------------
-export const GetauthorProductApi = createAsyncThunk("Product/get", async () => {
-  try {
-   
-  
-    const res = await axios.get(`${baseurl}/product/authorMyProducts?limit=200`, {
-      headers: {
-        lang: lang,
-      },
-    });
-
-    
-    return res.data;
-  } catch (err) {
-    console.error(err.response.data);
-  }
-});
 
 const Productslice = createSlice({
   name: "product",

@@ -12,7 +12,7 @@ const initialState = {
 
 export const GetAuthorApi = createAsyncThunk("Author/get", async () => {
   try {
-    const res = await axios.get(`${baseurl}/author`, {
+    const res = await axios.get(`${baseurl}/author?limit=400`, {
       headers: {
         lang: lang,
       },
@@ -23,6 +23,89 @@ export const GetAuthorApi = createAsyncThunk("Author/get", async () => {
     console.error(err.response.data);
   }
 });
+export const GetUserAuthorApi = createAsyncThunk("UserAuthor/get", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/author/getProfile`, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+export const UpdateUserAuthorApi = createAsyncThunk("UserAuthor/update", async (updatedata) => {
+  try {
+    const res = await axios.patch(`${baseurl}/author/updateProfile`,updatedata, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+        'Accept':'*/*',
+       
+        'Access-Control-Allow-Origin':'*'
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
+
+
+export const UpdateUserAuthorimgeApi = createAsyncThunk("UserAuthor/UpdateUserimge", async (profileImg) => {
+  try {
+
+    const res = await axios.patch(`${baseurl}/author/updateImgProfile`,profileImg, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+        'Accept':'*/*',
+        'Content-Type':'multipar/form-data',
+        'Access-Control-Allow-Origin':'*'
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
+
+
+export const ChangeUserAuthorpassApi = createAsyncThunk("UserAuthor/Changepass", async (updatepassword) => {
+  try {
+    const res = await axios.patch(`${baseurl}/author/changePassword`,updatepassword, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const AddAuthorApi = createAsyncThunk("Author/AddAuthor", async (authordata) => {
   try {
@@ -66,7 +149,7 @@ export const GetAuthorproductsApi = createAsyncThunk("Author/getdetails", async 
     if (data?.pagenum) {
       queryParams.push(`page=${data.pagenum}`);
     }
-    queryParams.push(`limit=10`); // Always include limit
+    queryParams.push(`limit=400`); // Always include limit
 
    
   }
@@ -156,6 +239,9 @@ export const DeleteAuthorrequestApi = createAsyncThunk("Author/DeleteAuthorreque
     console.error(err.response.data);
   }
 });
+
+
+
 const AuthorsSlice = createSlice({
   name: "author",
   initialState,

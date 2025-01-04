@@ -19,6 +19,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Changepass from "../../Components/Usersections/Changepass";
+import { GetAuthorApi, GetUserAuthorApi, UpdateUserAuthorApi, UpdateUserAuthorimgeApi } from "../../Api/Authors/AuthorsSlice";
 const Profileauthor = () => {
   const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
@@ -32,12 +33,7 @@ const Profileauthor = () => {
   const [profileImg, setProfileImg] = useState(null);
   const loading = useSelector((state) => state.user.status);
   const loadingupdate = useSelector((state) => state.user.statusupdate);
-  const roleoption =
-    userdata?.roles?.map((data) => ({
-      value: data,
-      label: data,
-    })) || [];
-
+ 
   const [value, setValue] = useState("1");
 
   const handleChangetab = (event, newValue) => {
@@ -60,9 +56,9 @@ const Profileauthor = () => {
 
   useEffect(() => {
     // fetch data user profile
-    dispatch(GetUserApi()).then((res) => {
+    dispatch(GetUserAuthorApi()).then((res) => {
       if (res.payload?.code === 200) {
-        setUserdata(res.payload?.data?.admin);
+        setUserdata(res.payload?.data?.author);
       }
     });
   }, []);
@@ -113,7 +109,7 @@ const Profileauthor = () => {
   const handleUpdate = () => {
     const errorupdate = validate(userdata);
     if (Object.keys(errorupdate).length === 0) {
-      dispatch(UpdateUserApi(userdata)).then((res) => {
+      dispatch(UpdateUserAuthorApi(userdata)).then((res) => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           setErrormessg(null);
@@ -131,7 +127,7 @@ const Profileauthor = () => {
       const formData = new FormData();
       formData.append("profileImg", profileImg);
 
-      dispatch(UpdateUserimgeApi(formData)).then((res) => {
+      dispatch(UpdateUserAuthorimgeApi(formData)).then((res) => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           setErrormessg(null);
@@ -396,62 +392,7 @@ const Profileauthor = () => {
                                         )}
                                       </div>
                                     </div>
-                                    <div className="col-lg-8 col-md-6 col-sm-12">
-                                      <div className="mb-3">
-                                        <label className="form-label">
-                                          {t("global.user.role")}
-                                        </label>
-
-                                        <Select
-                                          closeMenuOnSelect={false}
-                                          components={animatedComponents}
-                                          isMulti
-                                          isDisabled
-                                          value={
-                                            Array.isArray(userdata?.roles)
-                                              ? roleoption.filter((option) =>
-                                                  userdata.roles.some(
-                                                    (data) =>
-                                                      typeof data ===
-                                                        "object" && data?.id // Check if `data` is an object with an `id` property
-                                                        ? data.id ===
-                                                          option.value // Match the `id` with `option.value`
-                                                        : data === option.value // If not an object, check directly for string match
-                                                  )
-                                                )
-                                              : []
-                                          } // Filter selected option based on userdata
-                                          name="roles"
-                                          options={roleoption}
-                                          onChange={(selectedOptions) => {
-                                            const values = selectedOptions.map(
-                                              (option) => option.value
-                                            ); // Get array of selected option values
-                                            handleChange("roles", values);
-                                          }}
-                                          className={` inputField p-0  ${
-                                            errorvalid?.roles
-                                              ? "is-invalid"
-                                              : "is-valid"
-                                          }`}
-                                          placeholder="......"
-                                          styles={{
-                                            control: (styles) => ({
-                                              ...styles,
-                                              outline: "none",
-                                              boxShadow: "none",
-                                            }),
-                                          }}
-                                        />
-                                        {errorvalid?.roles && (
-                                          <>
-                                            <div class="text-danger">
-                                              {errorvalid?.roles}
-                                            </div>
-                                          </>
-                                        )}
-                                      </div>
-                                    </div>
+                                    
                                   </div>
                                   {successmessage && (
                                     <>

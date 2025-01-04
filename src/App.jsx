@@ -446,7 +446,7 @@ function App() {
             />
           </Route>
           <Route path="Author" element={<LayoutAuthor />}>
-            <Route
+            {/* <Route
               index
               element={
                 <ProtectedRoute>
@@ -455,9 +455,10 @@ function App() {
                   </Suspense>
                 </ProtectedRoute>
               }
-            />
+            /> */}
             <Route
-              path="/Author/books/all"
+            index
+              // path="/Author/books/all"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>
@@ -471,7 +472,7 @@ function App() {
             
          
             <Route
-              path="profileauthor"
+              path="profile/author"
               element={
                 <ProtectedRoute>
                   <Suspense fallback={<Loader />}>

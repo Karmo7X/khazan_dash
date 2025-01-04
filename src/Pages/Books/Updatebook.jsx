@@ -211,55 +211,131 @@ const Updatebook = () => {
     return error;
   };
 
-  // Handle form submit
+  // // Handle form submit
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const error_submit = validate(formData);
+  //   setErrormessg(null);
+  //   if (
+  //     Object.keys(error_submit).length === 0) {
+  //     const coverImage = new FormData();
+  //     const pdfFile = new FormData();
+
+  //     // Append image field
+  //     if (productimg) { 
+  //       coverImage.append("coverimage", productimg);
+  //       const data = {
+  //         id: id,
+  //         coverImage: coverImage,
+  //       };
+       
+       
+
+  //       dispatch(UpdateProductimgeApi(data)).then((res) => {
+  //         if (res.payload?.code === 200) {
+  //           setSuccessmessage(res.payload?.message);
+  //         }
+  //       });
+  //     } else {
+  //       console.error("No image file selected.");
+  //     }
+
+  //     // Append PDF field
+  //     if (productpdf) { 
+  //       pdfFile.append("pdfFile", productpdf);
+  //       const data = {
+  //         id: id,
+  //         pdfFile:pdfFile ,
+  //       };
+        
+        
+
+  //       dispatch(UpdateProductpdfApi(data)).then((res) => {
+  //         if (res.payload?.code === 200) {
+  //           setSuccessmessage(res.payload?.message);
+  //         }
+  //       });
+  //     } else {
+  //       console.error("No PDF file selected.");
+  //     }
+  //     // setErrorvalid(null);
+  //     dispatch(UpdateProductApi(formData)).then((res) => {
+  //       if (res.payload?.code === 200) {
+  //         setSuccessmessage(res.payload?.message);
+  //         setErrorvalid(null);
+  //         setErrormessg(null);
+  //         navigate("/books/all");
+  //         // Reset the form
+  //         setFormData({
+  //           arTitle: "",
+  //           enTitle: "",
+  //           idTitle: "",
+  //           zhTitle: "",
+  //           arDescription: "",
+  //           enDescription: "",
+  //           idDescription: "",
+  //           zhDescription: "",
+  //           pricePdf: "",
+  //           category: "",
+  //           isAvailablePdf: "",
+  //           isAvailablePaper: "",
+  //           author: "",
+  //           pricePaper: "",
+  //           stock: "",
+  //         });
+  //         setproductimg(null); // Clear image
+  //         setproductpdfvalue(null);
+  //         setproductimgvalue(null);
+  //         setproductpdfvalue(null);
+  //       } else {
+  //         setSuccessmessage(null);
+  //         setErrormessg(res.payload?.message);
+  //       }
+  //     });
+  //   } else {
+  //     setErrorvalid(error_submit);
+  //   }
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const error_submit = validate(formData);
-    setErrormessg(null);
-    if (
-      Object.keys(error_submit).length === 0) {
-      const coverImage = new FormData();
-      const pdfFile = new FormData();
+    // Combine formData and productimg for validation
+    const combinedFormData = { ...formData };
+    const error_submit = validate(combinedFormData);
 
-      // Append image field
-      if (productimg) { 
-        coverImage.append("coverimage", productimg);
-        const data = {
-          id: id,
-          coverImage: coverImage,
-        };
-       
-       
+    if (Object.keys(error_submit).length === 0) {
+         // Handle image upload
+    if (productimg) {
+      const formDataToSend = new FormData();
+      formDataToSend.append("coverImage", productimg);
+      formDataToSend.append("id", id);
 
-        dispatch(UpdateProductimgeApi(data)).then((res) => {
-          if (res.payload?.code === 200) {
-            setSuccessmessage(res.payload?.message);
-          }
-        });
-      } else {
-        console.error("No image file selected.");
-      }
+      dispatch(UpdateProductimgeApi(formDataToSend)).then((res) => {
+        if (res.payload?.code === 200) {
+          setSuccessmessage(res.payload?.message);
+        } else {
+          setErrormessg(res.payload?.message);
+        }
+      });
+    }
 
-      // Append PDF field
-      if (productpdf) { 
-        pdfFile.append("pdfFile", productpdf);
-        const data = {
-          id: id,
-          pdfFile:pdfFile ,
-        };
-        
-        
+    // Handle PDF upload
+    if (productpdf) {
+      const formDataToSend = new FormData();
+      formDataToSend.append("pdfFile", productpdf);
+      formDataToSend.append("id", id);
 
-        dispatch(UpdateProductpdfApi(data)).then((res) => {
-          if (res.payload?.code === 200) {
-            setSuccessmessage(res.payload?.message);
-          }
-        });
-      } else {
-        console.error("No PDF file selected.");
-      }
-      // setErrorvalid(null);
+      dispatch(UpdateProductpdfApi(formDataToSend)).then((res) => {
+        if (res.payload?.code === 200) {
+          setSuccessmessage(res.payload?.message);
+        } else {
+          setErrormessg(res.payload?.message);
+        }
+      });
+    }
+      setErrorvalid(null);
       dispatch(UpdateProductApi(formData)).then((res) => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);

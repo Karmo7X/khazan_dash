@@ -65,7 +65,7 @@ const LoginAuth = () => {
           Cookies.set("token", res.payload?.data?.token);
           setErrorvalid(null);
           setErrormessg(null);
-          navigate('/')
+          navigate('/Author')
           setTimeout(() => {
             setSuccessmessage(null);
           }, 2000);
