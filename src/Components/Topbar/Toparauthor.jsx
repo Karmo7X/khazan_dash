@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { GetUserApi } from "../../Api/User/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import { GetUserAuthorApi } from "../../Api/Authors/AuthorsSlice";
 const Toparauthor = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -34,9 +35,9 @@ const Toparauthor = () => {
      
   
       // fetch data user profile
-      dispatch(GetUserApi()).then((res) => {
+      dispatch(GetUserAuthorApi()).then((res) => {
         if (res.payload?.code === 200) {
-          setUserdata(res.payload?.data?.admin);
+          setUserdata(res.payload?.data?.auhtor);
         }
       });
       

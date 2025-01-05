@@ -6,6 +6,7 @@ import { baseurl, lang, token } from "../../global";
 const initialState = {
   data: null,
   status: false,
+  addresses:null
 };
 
 
@@ -239,8 +240,86 @@ export const DeleteAuthorrequestApi = createAsyncThunk("Author/DeleteAuthorreque
     console.error(err.response.data);
   }
 });
+export const GetMyProductsAuthorApi = createAsyncThunk("Author/getdetails", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/product/authorMyProducts?limit=100`, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+ 
+export const GetMyordersAuthorApi = createAsyncThunk("Author/orders", async () => {
+  try {
+    const res = await axios.get(`${baseurl}/order/author?limit=100`, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`,
+      },
+    });
 
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+  }
+});
+  
+export const AddAddressApi = createAsyncThunk("author/AddAddress", async (addressdata) => {
+  try {
+    const res = await axios.post(`${baseurl}/author/address`,addressdata, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
+ 
+// export const AddmainAddressApi = createAsyncThunk("author/AddmainAddress", async (addressId) => {
+//   try {
+//     const res = await axios.post(
+//       `${baseurl}/user/address/${addressId}`,
+//       {}, // Body of the POST request (if needed)
+//       {
+//         headers: {
+//           lang: lang,
+//           Authorization: `Bearer ${token}`,
+//         },
+//       }
+//     );
+//     return res.data;
+//   } catch (err) {
+//     console.error(err.response.data);
+//     return err.response.data
+//   }
+// });
+
+export const deleteAddressApi = createAsyncThunk("author/deleteAddress", async (addressId) => {
+  try {
+    const res = await axios.delete(`${baseurl}/author/address/${addressId}`, {
+      headers: {
+        lang: lang,
+        'Authorization':`Bearer ${token}`
+      },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.error(err.response.data);
+    return err.response.data
+  }
+});
 
 const AuthorsSlice = createSlice({
   name: "author",
@@ -276,6 +355,17 @@ const AuthorsSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(GetAuthordetailsApi.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(GetUserAuthorApi.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(GetUserAuthorApi.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+        state.addresses = action.payload?.data?.author?.address;
+      })
+      .addCase(GetUserAuthorApi.rejected, (state) => {
         state.status = "failed";
       });
   },

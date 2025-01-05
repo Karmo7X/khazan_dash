@@ -95,12 +95,16 @@ const Banner = () => {
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    // Validate the form data
+    const error_submit = validate(formData);
     
-    const error_submit = validate(formData); // Validate only `formData`
-     const data ={
-        ...formData,
-        image:bannerimg
-     }
+    // Prepare the data object for API call
+    const data = {
+      ...formData,
+      image: bannerimg,
+    };
+  
     if (Object.keys(error_submit).length === 0) {
       const formDataToSend = new FormData();
   
@@ -109,34 +113,40 @@ const Banner = () => {
         formDataToSend.append(key, formData[key]);
       });
   
-      // Append image field
+      // Append the image field if `bannerimg` exists
       if (bannerimg) {
         formDataToSend.append("image", bannerimg);
       }
   
-      dispatch(UpdateHomeApi(data)).then((res) => {
+      // Dispatch the API call
+      dispatch(UpdateHomeApi(formDataToSend)).then((res) => {
         if (res && res.payload) {
           if (res.payload.code === 200) {
+            // Handle success
             setSuccessmessage(res.payload.message);
             setErrorvalid(null);
             setErrormessg(null);
-             window.location.reload()
-            // Reset the form (uncomment if needed)
+            
+            // Reset form fields if necessary
             // setFormData({
             //   arTitle: "",
             //   enTitle: "",
             //   idTitle: "",
             //   zhTitle: "",
             // });
-            setBannerimg(null); // Clear image
+            
+            // Clear image states
+            setBannerimg(null);
             setBannerimgdata(null);
           } else {
+            // Handle API error
             setSuccessmessage(null);
             setErrormessg(res.payload.message);
           }
-        } 
-      })
+        }
+      });
     } else {
+      // Handle validation errors
       setErrorvalid(error_submit);
     }
   };

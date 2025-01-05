@@ -63,6 +63,7 @@ const LoginAuth = () => {
         if (res.payload?.code === 200) {
           setSuccessmessage(res.payload?.message);
           Cookies.set("token", res.payload?.data?.token);
+          Cookies.set("role", res.payload?.data?.role);
           setErrorvalid(null);
           setErrormessg(null);
           navigate('/Author')

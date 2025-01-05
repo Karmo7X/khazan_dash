@@ -37,9 +37,9 @@ const NavbarAuthor = () => {
     {
       title: t("global.nav.menu.books.title"),
       icon: "mdi-book-open",
-      link: "/Author/books/all",
+      link: "/books",
       subItems: [
-        { title: t("global.nav.menu.books.title"), link: "/Author/books/all" },
+        { title: t("global.nav.menu.books.title"), link: "/Author" },
         // { title: t("global.nav.menu.books.create"), link: "/books/create" },
       ],
     },
@@ -53,12 +53,12 @@ const NavbarAuthor = () => {
     //     { title: t("global.nav.menu.users.authors"), link: "/users/authors" },
     //   ],
     // },
-    // {
-    //   title: t("global.nav.menu.orders.title"),
-    //   icon: "mdi-cart",
-    //   link: "/orders",
-    //   subItems: [{ title: t("global.nav.menu.orders.title"), link: "/orders/all" }],
-    // },
+    {
+      title: t("global.nav.menu.orders.title"),
+      icon: "mdi-cart",
+      link: "/orders",
+      subItems: [{ title: t("global.nav.menu.orders.title"), link: "/Author/orders/all" }],
+    },
     // {
     //   title: t("global.nav.menu.subscription.title"),
     //   icon: "mdi-crown",

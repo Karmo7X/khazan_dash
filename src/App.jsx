@@ -35,6 +35,7 @@ import Profileauthor from "./Pages/Profile/Profileauthor";
 import LayoutAuthor from "./Components/LayoutAuthor";
 import Homeauthor from "./Pages/Home/Homeauthor";
 import ALLBooksAuthor from "./Pages/Books/ALLBooksAuthor";
+import Ordersauthor from "./Pages/Orders/Ordersauthor";
 
 // auth routes
 const Login = lazy(() => import("./Pages/auth/login"));
@@ -70,19 +71,21 @@ const BannerManagement = lazy(() =>
 
 const ProtectedRoute = ({ children }) => {
   const token = Cookies.get("token");
+  const role = Cookies.get("role"); // Assume the role is stored in a cookie
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) {
-      // Redirect to login page if token is not found
-      navigate("/Login", { replace: true });
+      if (role === "author") {
+        navigate("/loginAuthor", { replace: true });
+      } else {
+        navigate("/Login", { replace: true });
+      }
     }
-  }, [token, navigate]);
+  }, [token, role, navigate]);
 
-  // If the token exists, render the children components
   return token ? children : null;
 };
-
 function App() {
   return (
     <>
@@ -127,15 +130,15 @@ function App() {
                 <OTP />
               </Suspense>
             }
-          /> 
+          />
           <Route
-          path="resetpass"
-          element={
-            <Suspense fallback={<Loader />}>
-              <ResetPassword />
-            </Suspense>
-          }
-        />
+            path="resetpass"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ResetPassword />
+              </Suspense>
+            }
+          />
 
           <Route path="/" element={<Layout />}>
             <Route
@@ -348,7 +351,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="requestsauthors"
               element={
                 <ProtectedRoute>
@@ -357,8 +360,8 @@ function App() {
                   </Suspense>
                 </ProtectedRoute>
               }
-            /> 
-           
+            />
+
             <Route
               path="privacy/create"
               element={
@@ -367,7 +370,7 @@ function App() {
                 </Suspense>
               }
             />
-           <Route
+            <Route
               path="terms/create"
               element={
                 <Suspense fallback={<Loader />}>
@@ -375,7 +378,7 @@ function App() {
                 </Suspense>
               }
             />
-           <Route
+            <Route
               path="banner/create"
               element={
                 <Suspense fallback={<Loader />}>
@@ -383,7 +386,7 @@ function App() {
                 </Suspense>
               }
             />
-             
+
             <Route
               path="feature/create"
               element={
@@ -405,7 +408,7 @@ function App() {
               }
             /> */}
 
-             <Route
+            <Route
               path="city/create"
               element={
                 <ProtectedRoute>
@@ -415,7 +418,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route
+            <Route
               path="about/create"
               element={
                 <ProtectedRoute>
@@ -457,39 +460,38 @@ function App() {
               }
             /> */}
             <Route
-            index
+              index
               // path="/Author/books/all"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="author">
                   <Suspense fallback={<Loader />}>
                     <ALLBooksAuthor />
                   </Suspense>
                 </ProtectedRoute>
               }
             />
-           
-           
-            
-         
+
+            <Route
+              path="/Author/orders/all"
+              element={
+                <ProtectedRoute requiredRole="author">
+                  <Suspense fallback={<Loader />}>
+                    <Ordersauthor />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+
             <Route
               path="profile/author"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="author">
                   <Suspense fallback={<Loader />}>
                     <Profileauthor />
                   </Suspense>
                 </ProtectedRoute>
               }
             />
-           
-            
-            
-           
-           
-           
-             
-           
-           
           </Route>
         </Routes>
       </BrowserRouter>

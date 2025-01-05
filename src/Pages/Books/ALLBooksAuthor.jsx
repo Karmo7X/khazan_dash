@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { DeleteProductApi, GetProductApi } from "../../Api/Product/Product";
-import { GetAuthorproductsApi } from "../../Api/Authors/AuthorsSlice";
+import { GetAuthorproductsApi, GetMyProductsAuthorApi } from "../../Api/Authors/AuthorsSlice";
 import Toparauthor from "../../Components/Topbar/Toparauthor";
 const ALLBooksAuthor = () => {
  const { t, i18n } = useTranslation();
@@ -44,7 +44,7 @@ const ALLBooksAuthor = () => {
       dispatch(DeleteProductApi(book)).then((res)=>{
               if(res.payload?.code === 200 ){
     
-                dispatch(GetAuthorproductsApi()).then((res) => {
+                dispatch(GetMyProductsAuthorApi()).then((res) => {
                   if (res.payload?.code === 200) {
                     setBooks(res.payload?.data?.products);
                   }
@@ -55,7 +55,7 @@ const ALLBooksAuthor = () => {
 
 
   useEffect(()=>{
-    dispatch(GetAuthorproductsApi()).then((res)=>{
+    dispatch(GetMyProductsAuthorApi()).then((res)=>{
       if(res.payload?.code ===200){
         setBooks(res.payload?.data?.products)
       }

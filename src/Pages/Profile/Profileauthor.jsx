@@ -19,7 +19,15 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Changepass from "../../Components/Usersections/Changepass";
-import { GetAuthorApi, GetUserAuthorApi, UpdateUserAuthorApi, UpdateUserAuthorimgeApi } from "../../Api/Authors/AuthorsSlice";
+import {
+  GetAuthorApi,
+  GetUserAuthorApi,
+  UpdateUserAuthorApi,
+  UpdateUserAuthorimgeApi,
+} from "../../Api/Authors/AuthorsSlice";
+import Toparauthor from "../../Components/Topbar/Toparauthor";
+import Changepassauthor from "../../Components/Usersections/Changepassauthor";
+import Address from "../../Components/Usersections/Address";
 const Profileauthor = () => {
   const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
@@ -33,7 +41,7 @@ const Profileauthor = () => {
   const [profileImg, setProfileImg] = useState(null);
   const loading = useSelector((state) => state.user.status);
   const loadingupdate = useSelector((state) => state.user.statusupdate);
- 
+
   const [value, setValue] = useState("1");
 
   const handleChangetab = (event, newValue) => {
@@ -41,7 +49,19 @@ const Profileauthor = () => {
   };
 
   const handleChange = (name, value) => {
-    setUserdata({ ...userdata, [name]: value });
+    // If the field is "birthday", format the date
+    if (name === "birthday") {
+      const formattedDate = new Date(value)
+        .toLocaleDateString("en-GB")
+        .split("/")
+        .join("-");
+        setUserdata((prevData) => ({
+        ...prevData,
+        [name]: formattedDate,
+      }));
+    } else {
+      setUserdata({ ...userdata, [name]: value });
+    }
   };
   // Handle the file upload
   const handleImageChange = (e) => {
@@ -51,6 +71,13 @@ const Profileauthor = () => {
       // handleImageUpload(selectedFile);
     }
   };
+
+  // formate date to  yyyy-mm-dd
+  const formatToYYYYMMDD = (dateString) => {
+    if (!dateString) return ""; // Handle empty or undefined input
+    const [day, month, year] = dateString.split("-"); // Split by "-"
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`; // Reformat to YYYY-MM-DD
+  }; 
 
   // fetch data
 
@@ -75,19 +102,19 @@ const Profileauthor = () => {
       error.name = t("global.validation_message.name.maxLength"); // Maximum length of 50
     }
 
-    // Phone validation
-    if (!value.phone) {
-      error.phone = t("global.validation_message.phone.required");
-    } else if (!/^\d{10,15}$/.test(value.phone)) {
-      // Only digits, length between 10 and 15
-      error.phone = t("global.validation_message.phone.invalid");
-    }
+    // // Phone validation
+    // if (!value.phone) {
+    //   error.phone = t("global.validation_message.phone.required");
+    // } else if (!/^\d{10,15}$/.test(value.phone)) {
+    //   // Only digits, length between 10 and 15
+    //   error.phone = t("global.validation_message.phone.invalid");
+    // }
 
-    // Email validation
-    if (!value.email) {
-      error.email = t("global.validation_message.email.required");
-    } else if (!/\S+@\S+\.\S+/.test(value.email)) {
-      error.email = t("global.validation_message.email.invalid");
+    if (!value.bio.trim()) {
+      error.bio = t("global.validation_message.bio.required");
+    } 
+    else if (value.bio.length < 10) {
+      error.bio = t("global.validation_message.bio.minLength");
     }
 
     // Address validation
@@ -101,7 +128,25 @@ const Profileauthor = () => {
     if (!value.gender) {
       error.gender = t("global.validation_message.genderRequired");
     }
+    // Birthday validation
+    if (!value.birthday) {
+      error.birthday = t("global.validation_message.birthday.required");
+    } else {
+      const today = new Date();
+      const birthdayDate = new Date(value.birthday);
 
+      // Check if the date is in the future
+      if (birthdayDate >= today) {
+        error.birthday = t("global.validation_message.birthday.max");
+      }
+
+      // Check minimum age (12 years)
+      const minAgeDate = new Date();
+      minAgeDate.setFullYear(today.getFullYear() - 12); // Subtract 12 years
+      if (birthdayDate > minAgeDate) {
+        error.birthday = t("global.validation_message.birthday.minAge");
+      }
+    }
     return error;
   };
   // submit data for update user data
@@ -140,40 +185,43 @@ const Profileauthor = () => {
     }
   };
   return (
-    <>  <div class="content-page">
-    {/* <!-- Start content --> */}
-    <div class="content">
-    <Topbar />
-      <div style={{ minHeight: "100vh" }}>
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <TabList
-                sx={{
-                  "& .MuiTab-root": {
-                    color: "#000", // Tab text color (inactive)
-                  },
-                  "& .MuiTab-root.Mui-selected": {
-                    color: "#007bff", // Active tab text color
-                  },
-                  "& .MuiTabs-indicator": {
-                    backgroundColor: "#007bff", // Indicator color
-                  },
-                }}
-                onChange={handleChangetab}
-                aria-label="lab API tabs example"
-                variant="scrollable"
-                scrollButtons={false}
-              >
-                <Tab label={t("global.profile.account_settings")} value="1" />
-
-                <Tab label={t("global.profile.changePassword")} value="2" />
-              </TabList>
-            </Box>
-            <TabPanel value="1">
-            
-                 
-
+    <>
+      {" "}
+      <div class="content-page">
+        {/* <!-- Start content --> */}
+        <div class="content">
+          <Toparauthor />
+          <div style={{ minHeight: "100vh" }}>
+            <Box sx={{ width: "100%", typography: "body1" }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <TabList
+                    sx={{
+                      "& .MuiTab-root": {
+                        color: "#000", // Tab text color (inactive)
+                      },
+                      "& .MuiTab-root.Mui-selected": {
+                        color: "#007bff", // Active tab text color
+                      },
+                      "& .MuiTabs-indicator": {
+                        backgroundColor: "#007bff", // Indicator color
+                      },
+                    }}
+                    onChange={handleChangetab}
+                    aria-label="lab API tabs example"
+                    variant="scrollable"
+                    scrollButtons={false}
+                  >
+                    <Tab
+                      label={t("global.profile.account_settings")}
+                      value="1"
+                    />
+                    <Tab label={t("global.profile.address.title")} value="2" />
+                    <Tab label={t("global.profile.changePassword")} value="3" />
+                    
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
                   <div class="page-content-wrapper">
                     <div class="container-fluid">
                       <div class="row">
@@ -272,13 +320,15 @@ const Profileauthor = () => {
                                     <div className="col-lg-12 col-md-6 col-sm-12">
                                       <div className="mb-3">
                                         <label className="form-label">
-                                          {t("global.profile.email.label")}
+                                          {t("global.profile.form.bio")}
                                         </label>
-                                        <input
-                                          type="email"
+                                        <textarea
+                                          type="text"
                                           className={`form-control `}
-                                          name="email"
-                                          value={userdata?.email}
+                                          rows={10}
+                                          name="bio"
+                                          value={userdata?.bio}
+                                          style={{ resize: "none" }}
                                           onChange={(e) => {
                                             handleChange(
                                               e.target.name,
@@ -286,38 +336,16 @@ const Profileauthor = () => {
                                             );
                                           }}
                                         />
-                                        {errorvalid?.email && (
+                                        {errorvalid?.bio && (
                                           <>
                                             <div class="text-danger">
-                                              {errorvalid?.email}
+                                              {errorvalid?.bio}
                                             </div>
                                           </>
                                         )}
                                       </div>
                                     </div>
-                                    {/* <div className="col-lg-12 col-md-6 col-sm-12">
-                      <div className="mb-3">
-                        <label className="form-label">
-                          {t("global.profile.address.placeholder")}
-                        </label>
-                        <input
-                          type="text"
-                          className={`form-control `}
-                          name="address"
-                          value={userdata?.address}
-                          onChange={(e) => {
-                            handleChange(e.target.name, e.target.value);
-                          }}
-                        />
-                        {errorvalid?.address && (
-                          <>
-                            <div class="text-danger">
-                              {errorvalid?.address}
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </div> */}
+                          
                                     <div className="col-lg-12 col-md-6 col-sm-12">
                                       <div className="mb-3">
                                         <label className="form-label">
@@ -375,7 +403,6 @@ const Profileauthor = () => {
                                             boxShadow: "none",
                                           }}
                                         >
-                                          
                                           <option value={"male"}>
                                             {t("global.profile.gender.male")}
                                           </option>
@@ -392,7 +419,63 @@ const Profileauthor = () => {
                                         )}
                                       </div>
                                     </div>
-                                    
+                                    <div className="col-lg-4 col-md-6 col-sm-12">
+                      <div className="mb-3">
+                        <label className="form-label">
+                          {t("global.profile.form.date_of_birth")}
+                        </label>
+                        <input
+                          type="date"
+                          name="birthday"
+                          className={` form-control`}
+                          value={
+                            userdata?.birthday
+                              ? formatToYYYYMMDD(userdata.birthday)
+                              : ""
+                          }
+                          onChange={(e) => {
+                            handleChange(e.target.name, e.target.value);
+                          }}
+                        />
+                        {errorvalid?.birthday && (
+                          <>
+                            <div class="invalid-feedback">
+                              {errorvalid?.birthday}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                                    </div>
+                                    <div className="col-lg-4 col-md-6 col-sm-12">
+                                      <div className="mb-3">
+                                        <label className="form-label">
+                                          {t("global.authors.table.balance")}
+                                        </label>
+                                        <div className="input-group">
+                                          {/* <span className="input-group-text">
+                      <img
+                        src="https://via.placeholder.com/24" // Replace with country flag icon URL
+                        alt="Country Flag"
+                        className="flag-icon"
+                      />
+                    </span> */}
+                                          <input
+                                            type="text"
+                                            name="phone"
+                                            className="form-control"
+                                            value={userdata?.balance}
+                                            onChange={(e) => {
+                                              handleChange(
+                                                e.target.name,
+                                                e.target.value
+                                              );
+                                            }}
+                                            readOnly
+                                            disabled
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                   {successmessage && (
                                     <>
@@ -456,15 +539,17 @@ const Profileauthor = () => {
                       )}
                     </div>
                   </div>
-              
-            </TabPanel>
-            <TabPanel value="2">
-              <Changepass/>
-              </TabPanel>
-          </TabContext>
-        </Box>  
+                </TabPanel>
+                <TabPanel value="2">
+                  <Address/>
+                </TabPanel>
+                <TabPanel value="3">
+                  <Changepassauthor />
+                </TabPanel>
+              </TabContext>
+            </Box>
+          </div>
         </div>
-              </div>
       </div>
     </>
   );
