@@ -96,7 +96,7 @@ const AddAuthor = () => {
 if (!value.phone.trim()) {
   error.phone = t("global.validation.phone.required");
 }
-else if (!/^5\d{8}$/.test(value.phone)) {
+else if (!/^\d+$/.test(value.phone)) {
   error.phone = t("global.validation.phone.phoneFormat");
 }
   

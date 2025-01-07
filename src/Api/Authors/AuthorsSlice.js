@@ -61,7 +61,7 @@ export const UpdateUserAuthorApi = createAsyncThunk("UserAuthor/update", async (
 export const UpdateUserAuthorimgeApi = createAsyncThunk("UserAuthor/UpdateUserimge", async (profileImg) => {
   try {
 
-    const res = await axios.patch(`${baseurl}/author/updateImgProfile`,profileImg, {
+    const res = await axios.patch(`${baseurl}/author/updateImage`,profileImg, {
       headers: {
         lang: lang,
         'Authorization':`Bearer ${token}`,

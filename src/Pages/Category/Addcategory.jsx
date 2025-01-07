@@ -87,22 +87,21 @@ const Addcategory = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    // Combine formData and categoryimg for validation
-    const combinedFormData = { ...formData, image: categoryimg };
-    const error_submit = validate(combinedFormData);
-  
-    if (Object.keys(error_submit).length === 0) {
-      const formDataToSend = new FormData();
-  
-      // Append text fields
-      Object.keys(formData).forEach((key) => {
-        formDataToSend.append(key, formData[key]);
-      });
-  
-      // Append image field
-      if (categoryimg) {
-        formDataToSend.append("image", categoryimg);
-      }
+    const error_submit = validate(formData);
+
+  if (Object.keys(error_submit).length === 0) {
+    const formDataToSend = new FormData();
+
+    // Append text fields
+    Object.keys(formData).forEach((key) => {
+      formDataToSend.append(key, formData[key]);
+    });
+
+    // Append image field
+    if (categoryimg) {
+      formDataToSend.append("image", categoryimg);
+    }
+
   
       dispatch(AddCategoryApi(formDataToSend)).then((res) => {
         if (res.payload?.code === 201) {

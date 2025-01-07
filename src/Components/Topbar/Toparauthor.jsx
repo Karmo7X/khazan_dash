@@ -9,7 +9,6 @@ const Toparauthor = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
    const [userdata, setUserdata] = useState({});
-  
   const [selectedLanguage, setSelectedLanguage] = useState("ar");
   const changeLanguage = (language) => {
     setSelectedLanguage(language); // Update state
@@ -37,7 +36,7 @@ const Toparauthor = () => {
       // fetch data user profile
       dispatch(GetUserAuthorApi()).then((res) => {
         if (res.payload?.code === 200) {
-          setUserdata(res.payload?.data?.auhtor);
+          setUserdata(res.payload?.data?.author);
         }
       });
       

@@ -57,10 +57,10 @@ export const AddCategoryApi = createAsyncThunk("Catgory/add", async (data) => {
 
 export const UpdateCategoryApi = createAsyncThunk(
   "Catgory/Update",
-  async (categoryId,data) => {
+  async (data) => {
     
     try {
-      const res = await axios.patch(`${baseurl}/category/${categoryId}`, data, {
+      const res = await axios.patch(`${baseurl}/category/${data.get('categoryId')}`, data, {
         headers: {
           lang: lang,
           Authorization: `Bearer ${token}`,

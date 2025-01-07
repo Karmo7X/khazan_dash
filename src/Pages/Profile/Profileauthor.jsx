@@ -41,7 +41,6 @@ const Profileauthor = () => {
   const [profileImg, setProfileImg] = useState(null);
   const loading = useSelector((state) => state.user.status);
   const loadingupdate = useSelector((state) => state.user.statusupdate);
-
   const [value, setValue] = useState("1");
 
   const handleChangetab = (event, newValue) => {
@@ -151,39 +150,47 @@ const Profileauthor = () => {
   };
   // submit data for update user data
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const errorupdate = validate(userdata);
+  
     if (Object.keys(errorupdate).length === 0) {
-      dispatch(UpdateUserAuthorApi(userdata)).then((res) => {
-        if (res.payload?.code === 200) {
-          setSuccessmessage(res.payload?.message);
+      try {
+        // Update profile image if it exists
+        if (profileImg) {
+          const formData = new FormData();
+          formData.append("profileImg", profileImg);
+  
+          const imgResponse = await dispatch(UpdateUserAuthorimgeApi(formData));
+          if (imgResponse.payload?.code !== 200) {
+            setSuccessmessage(null);
+            window.location.reload()
+            setErrormessg(imgResponse.payload?.message);
+            return; // Exit if image update fails
+          }
+        }
+  
+        // Update other user data
+        const userResponse = await dispatch(UpdateUserAuthorApi(userdata));
+        if (userResponse.payload?.code === 200) {
+          window.location.reload()
+          setSuccessmessage(userResponse.payload?.message);
           setErrormessg(null);
-          window.location.reload();
+          // Optionally refresh the page or update UI state
+          // window.location.reload();
         } else {
           setSuccessmessage(null);
-          setErrormessg(res.payload?.message);
+          setErrormessg(userResponse.payload?.message);
         }
-      });
+      } catch (error) {
+        setSuccessmessage(null);
+        setErrormessg("An unexpected error occurred.");
+        console.error(error);
+      }
     } else {
       setErrorvalid(errorupdate);
     }
-
-    if (profileImg) {
-      const formData = new FormData();
-      formData.append("profileImg", profileImg);
-
-      dispatch(UpdateUserAuthorimgeApi(formData)).then((res) => {
-        if (res.payload?.code === 200) {
-          setSuccessmessage(res.payload?.message);
-          setErrormessg(null);
-          window.location.reload();
-        } else {
-          setSuccessmessage(null);
-          setErrormessg(res.payload?.message);
-        }
-      });
-    }
   };
+  
   return (
     <>
       {" "}

@@ -114,50 +114,55 @@ const UpdateCategory = () => {
   };
 
   // Handle form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    // Combine formData and categoryimg for validation
-    const combinedFormData = { ...formData, image: categoryimg };
-    const error_submit = validate(combinedFormData);
+  // Combine formData and categoryimg for validatio
+  const error_submit = validate(formData);
 
-    if (Object.keys(error_submit).length === 0) {
-      const formDataToSend = new FormData();
+  if (Object.keys(error_submit).length === 0) {
+    const formDataToSend = new FormData();
 
-      // Append text fields
-      Object.keys(formData).forEach((key) => {
-        formDataToSend.append(key, formData[key]);
-      });
+    // Append text fields
+    Object.keys(formData).forEach((key) => {
+      formDataToSend.append(key, formData[key]);
+    });
 
-      // Append image field
-      if (categoryimg) {
-        formDataToSend.append("image", categoryimg);
-      }
-      setErrorvalid(null);
-      dispatch(UpdateCategoryApi(id, formDataToSend)).then((res) => {
-        if (res.payload?.code === 200) {
-          setSuccessmessage(res.payload?.message);
-          setErrorvalid(null);
-          setErrormessg(null);
-          navigate("/category/all");
-          // Reset the form
-          setFormData({
-            arTitle: "",
-            enTitle: "",
-            idTitle: "",
-            zhTitle: "",
-          });
-          setCategoryimg(null); // Clear image
-          setCategoryimgvalue(null)
-        } else {
-          setSuccessmessage(null);
-          setErrormessg(res.payload?.message);
-        }
-      });
-    } else {
-      setErrorvalid(error_submit);
+    // Append image field
+    if (categoryimg) {
+      formDataToSend.append("image", categoryimg);
     }
-  };
+
+    setErrorvalid(null);
+
+   
+
+    dispatch(UpdateCategoryApi(formDataToSend)).then((res) => {
+      if (res.payload?.code === 200) {
+        setSuccessmessage(res.payload?.message);
+        setErrorvalid(null);
+        setErrormessg(null);
+        navigate('/category/all')
+        // Reset the form
+        setFormData({
+          arTitle: "",
+          enTitle: "",
+          idTitle: "",
+          zhTitle: "",
+        });
+        setCategoryimg(null); // Clear image state
+        setCategoryimgvalue(null); // Clear image input value
+
+        console.log("Form and image state reset.");
+      } else {
+        setSuccessmessage(null);
+        setErrormessg(res.payload?.message);
+      }
+    });
+  } else {
+    setErrorvalid(error_submit);
+  }
+};
 
   return (
     <>
