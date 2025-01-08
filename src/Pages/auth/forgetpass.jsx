@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // For internationalization
 import { useDispatch } from "react-redux";
 import { ForgotPasswordApi } from "../../Api/Auth/AuthSlice";
+import 'react-phone-number-input/style.css'
+import PhoneInput from "react-phone-number-input";
 
 const Forgetpass = () => {
   const { t } = useTranslation();
@@ -17,12 +19,8 @@ const [showpassconfirm, setShowpassconfirm] = useState(false);
       const [errormessg, setErrormessg] = useState(null);
       const [successmessage, setSuccessmessage] = useState();
   // Handle form data changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformData({
-      ...formData,
-      [name]: value,
-    });
+  const handleChange = (name, value) => {
+    setformData({ ...formData, [name]: value });
   };
 
   const validate = (value) => {
@@ -31,9 +29,11 @@ const [showpassconfirm, setShowpassconfirm] = useState(false);
     // Phone validation
     if (!value.phone) {
       error.phone = t("global.validation_message.phone.required");
-    } else if (!/^\d+$/.test(value.phone)) {
-      error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
-    } else if (value.phone.length < 5) {
+    } 
+    // else if (!/^\d+$/.test(value.phone)) {
+    //   error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
+    // } 
+    else if (value.phone.length < 5) {
       error.phone = t("global.validation_message.phone.minLength"); // Minimum 10 digits
     } else if (value.phone.length > 15) {
       error.phone = t("global.validation_message.phone.maxLength"); // Maximum 15 digits
@@ -94,15 +94,17 @@ const [showpassconfirm, setShowpassconfirm] = useState(false);
                 <div className="form-group">
                   <div className="col-xs-12">
                     <label htmlFor="phone">{t("global.forget.labels.phone")}</label>
-                    <input
-                      className="form-control"
+                    <PhoneInput
+                      class="form-control"
                       name="phone"
-                      type="tel"
                       value={formData.phone}
-                      onChange={handleChange}
-                      required
                       placeholder={t("global.forget.placeholders.phone")}
+                      onChange={(value) => {
+                        handleChange("phone", value); // Pass the name of the field and its new value
+                      }}
+                      required
                     />
+                   
                      {errorvalid?.phone && (
                       <>
                         <div class="text-danger">{errorvalid?.phone}</div>

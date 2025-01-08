@@ -7,11 +7,14 @@ import { IoIosEyeOff } from "react-icons/io";
 import { LoginApi, LoginAuthorApi } from "../../Api/Auth/AuthSlice";
 import Loadertwo from "../../Components/loader/loadertwo";
 import Cookies from "js-cookie";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+
 const LoginAuth = () => {
   const { t, i18n } = useTranslation();
   const loading = useSelector((state) => state.auth.status);
   const dispatch = useDispatch();
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [formdata, setFormdata] = useState({
     phone: "",
     password: "",
@@ -31,9 +34,11 @@ const LoginAuth = () => {
     // Phone validation
     if (!value.phone) {
       error.phone = t("global.validation_message.phone.required");
-    } else if (!/^5\d{8}$/.test(value.phone)) {
-      error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
-    } else if (value.phone.length < 5) {
+    }
+    // else if (!/^5\d{8}$/.test(value.phone)) {
+    //   error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
+    // }
+    else if (value.phone.length < 5) {
       error.phone = t("global.validation_message.phone.minLength"); // Minimum 10 digits
     } else if (value.phone.length > 15) {
       error.phone = t("global.validation_message.phone.maxLength"); // Maximum 15 digits
@@ -55,7 +60,7 @@ const LoginAuth = () => {
     return error;
   };
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const error_submit = validate(formdata);
 
     if (Object.keys(error_submit).length === 0) {
@@ -66,7 +71,7 @@ const LoginAuth = () => {
           Cookies.set("role", res.payload?.data?.role);
           setErrorvalid(null);
           setErrormessg(null);
-          navigate('/Author')
+          navigate("/Author");
           setTimeout(() => {
             setSuccessmessage(null);
           }, 2000);
@@ -100,23 +105,23 @@ const LoginAuth = () => {
               <form class="form-horizontal m-t-20">
                 <div class="form-group row">
                   <div class="col-12">
-                    <input
+                    <PhoneInput
                       class="form-control"
                       name="phone"
-                      type="text"
-                      required
+                      value={formdata.phone}
                       placeholder={t("global.login.phoneNumber")}
                       style={{
                         color: "#000",
                         border: "none",
                         borderBottom: "1px solid ",
                         borderRadius: "0px",
-                        outline:'none',
-                          boxShadow:'none'
+                        outline: "none",
+                        boxShadow: "none",
                       }}
-                      onChange={(e) => {
-                        handleChange(e.target.name, e.target.value);
+                      onChange={(value) => {
+                        handleChange("phone", value); // Pass the name of the field and its new value
                       }}
+                      required
                     />
                   </div>
                   {errorvalid?.phone && (
@@ -139,8 +144,8 @@ const LoginAuth = () => {
                           border: "none",
                           borderBottom: "1px solid ",
                           borderRadius: "0px",
-                          outline:'none',
-                          boxShadow:'none'
+                          outline: "none",
+                          boxShadow: "none",
                         }}
                         onChange={(e) => {
                           handleChange(e.target.name, e.target.value);
@@ -198,23 +203,28 @@ const LoginAuth = () => {
                       class="btn btn-danger btn-block waves-effect waves-light"
                       type="button"
                     >
-                        {loading === 'loading' ? (<> 
-                      
-                    <Loadertwo/>
-                    </>):t("global.login.login")}
-                
+                      {loading === "loading" ? (
+                        <>
+                          <Loadertwo />
+                        </>
+                      ) : (
+                        t("global.login.login")
+                      )}
                     </button>
                   </div>
                 </div>
 
                 <div class="form-group m-t-10 mb-0 row">
-                                <div class="col-sm-7 m-t-20">
-                                    <Link to="/forgetpass" class="text-muted"><i class="mdi mdi-lock"></i> <small>{t("global.login.forgotPassword")}</small></Link>
-                                </div>
-                                {/* <div class="col-sm-5 m-t-20">
+                  <div class="col-sm-7 m-t-20">
+                    <Link to="/forgetpass" class="text-muted">
+                      <i class="mdi mdi-lock"></i>{" "}
+                      <small>{t("global.login.forgotPassword")}</small>
+                    </Link>
+                  </div>
+                  {/* <div class="col-sm-5 m-t-20">
                                     <Link to="/register" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></Link>
                                 </div> */}
-                            </div>
+                </div>
               </form>
             </div>
           </div>

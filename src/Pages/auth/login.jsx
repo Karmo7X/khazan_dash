@@ -7,11 +7,14 @@ import { IoIosEyeOff } from "react-icons/io";
 import { LoginApi } from "../../Api/Auth/AuthSlice";
 import Loadertwo from "../../Components/loader/loadertwo";
 import Cookies from "js-cookie";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+
 const Login = () => {
   const { t, i18n } = useTranslation();
   const loading = useSelector((state) => state.auth.status);
   const dispatch = useDispatch();
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [formdata, setFormdata] = useState({
     phone: "",
     password: "",
@@ -31,9 +34,11 @@ const Login = () => {
     // Phone validation
     if (!value.phone) {
       error.phone = t("global.validation_message.phone.required");
-    } else if (!/^\d+$/.test(value.phone)) {
-      error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
-    } else if (value.phone.length < 5) {
+    }
+    // else if (!/^\d+$/.test(value.phone)) {
+    //   error.phone = t("global.validation_message.phone.pattern"); // Must be numeric
+    // } 
+    else if (value.phone.length < 5) {
       error.phone = t("global.validation_message.phone.minLength"); // Minimum 10 digits
     } else if (value.phone.length > 15) {
       error.phone = t("global.validation_message.phone.maxLength"); // Maximum 15 digits
@@ -55,7 +60,7 @@ const Login = () => {
     return error;
   };
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const error_submit = validate(formdata);
 
     if (Object.keys(error_submit).length === 0) {
@@ -65,7 +70,7 @@ const Login = () => {
           Cookies.set("token", res.payload?.data?.token);
           setErrorvalid(null);
           setErrormessg(null);
-          navigate('/')
+          navigate("/");
           setTimeout(() => {
             setSuccessmessage(null);
           }, 2000);
@@ -99,7 +104,7 @@ const Login = () => {
               <form class="form-horizontal m-t-20">
                 <div class="form-group row">
                   <div class="col-12">
-                    <input
+                    {/* <input
                       class="form-control"
                       name="phone"
                       type="text"
@@ -110,12 +115,30 @@ const Login = () => {
                         border: "none",
                         borderBottom: "1px solid ",
                         borderRadius: "0px",
-                        outline:'none',
-                          boxShadow:'none'
+                        outline: "none",
+                        boxShadow: "none",
                       }}
                       onChange={(e) => {
                         handleChange(e.target.name, e.target.value);
                       }}
+                    /> */}
+                    <PhoneInput
+                      class="form-control"
+                      name="phone"
+                      value={formdata.phone}
+                      placeholder={t("global.login.phoneNumber")}
+                      style={{
+                        color: "#000",
+                        border: "none",
+                        borderBottom: "1px solid ",
+                        borderRadius: "0px",
+                        outline: "none",
+                        boxShadow: "none",
+                      }}
+                      onChange={(value) => {
+                        handleChange("phone", value); // Pass the name of the field and its new value
+                      }}
+                      required
                     />
                   </div>
                   {errorvalid?.phone && (
@@ -138,8 +161,8 @@ const Login = () => {
                           border: "none",
                           borderBottom: "1px solid ",
                           borderRadius: "0px",
-                          outline:'none',
-                          boxShadow:'none'
+                          outline: "none",
+                          boxShadow: "none",
                         }}
                         onChange={(e) => {
                           handleChange(e.target.name, e.target.value);
@@ -197,11 +220,13 @@ const Login = () => {
                       class="btn btn-danger btn-block waves-effect waves-light"
                       type="button"
                     >
-                        {loading === 'loading' ? (<> 
-                      
-                    <Loadertwo/>
-                    </>):t("global.login.login")}
-                
+                      {loading === "loading" ? (
+                        <>
+                          <Loadertwo />
+                        </>
+                      ) : (
+                        t("global.login.login")
+                      )}
                     </button>
                   </div>
                 </div>
