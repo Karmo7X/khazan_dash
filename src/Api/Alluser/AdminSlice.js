@@ -217,10 +217,28 @@ export const AdminblockuserApi = createAsyncThunk(
       return res.data;
     } catch (err) {
       console.error(err.response.data);
+      return err.response.data
     }
   }
 );
+export const AdminunblockuserApi = createAsyncThunk(
+  "Admin/unblock",
+  async (id) => {
+    try {
+      const res = await axios.patch(`${baseurl}/user/activeUser/${id}`,{},{
+        headers: {
+          lang: lang,
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
+      return res.data;
+    } catch (err) {
+      console.error(err.response.data);
+      return err.response.data
+    }
+  }
+);
 
 const Adminslice = createSlice({
   name: "admin",

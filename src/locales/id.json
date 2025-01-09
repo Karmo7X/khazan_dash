@@ -297,6 +297,7 @@
     "delete": "Hapus",
     "notify": "Notifikasi",
     "block": "memblokir",
+    "activateUser": "Aktifkan Pengguna",
     "update": " memperbarui",
     "actions": "Tindakan",
     "crud_instruction": "Gunakan tombol di bawah ini untuk mengelola {{entityType}}. Anda dapat menambah, mengedit, atau menghapus entri sesuai kebutuhan.",

@@ -17,7 +17,8 @@ const Tables = ({
   onEdit,
   onDelete,
   onNotify,
-  onBlock
+  onBlock,
+  onunBlock
 }) => {
   const { t } = useTranslation();
   const [id, setid] = useState();
@@ -159,16 +160,28 @@ const Tables = ({
               {t("global.table.delete")}
             </Button>
           )}
-          {onBlock && data?.haveBlock !== true && (
+          {onBlock  && (
             <Button
               variant="contained"
               color="error"
               size="small"
               // data-bs-toggle="modal"
               // data-bs-target="#delete"
-              onClick={onBlock(params.row?.id)}
+              onClick={() => onBlock(params.row?.id)}
             >
               {t("global.table.block")}
+            </Button>
+          )}
+           {onunBlock && (
+            <Button
+              variant="contained"
+              color="success"
+              size="small"
+              // data-bs-toggle="modal"
+              // data-bs-target="#delete"
+              onClick={() => onunBlock(params.row?.id)}
+            >
+              {t("global.table.activateUser")}
             </Button>
           )}
         </div>

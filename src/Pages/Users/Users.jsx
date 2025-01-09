@@ -8,7 +8,11 @@ import Nofiticate from "../../Components/Modal/Nofiticate";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { AdminblockuserApi, GetUsersApi } from "../../Api/Alluser/AdminSlice";
+import {
+  AdminblockuserApi,
+  AdminunblockuserApi,
+  GetUsersApi,
+} from "../../Api/Alluser/AdminSlice";
 const Users = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -24,7 +28,8 @@ const Users = () => {
     },
     { label: "Image", field: "profileImg" },
   ];
-
+  const [successmsg, setSuccessmsg] = useState();
+  const [errormsg, setErrormsg] = useState();
   const [currentuser, setcurrentuser] = useState(null);
   const navigate = useNavigate();
   const handleAddUser = () => {
@@ -45,7 +50,35 @@ const Users = () => {
     setcurrentuser(user?.id);
   };
   const handleblockuser = (user) => {
-    dispatch(AdminblockuserApi(user))
+    dispatch(AdminblockuserApi(user)).then((res) => {
+      if (res.payload?.code === 200) {
+        setSuccessmsg(res.payload?.message);
+        setTimeout(()=>{
+          setSuccessmsg(null);
+        },1000)
+      } else {
+        
+        setErrormsg(res.payload?.message);
+        setTimeout(()=>{
+          setErrormsg(null);
+        },1000)
+      }
+    });
+  };
+  const handleunblockuser = (user) => {
+    dispatch(AdminunblockuserApi(user)).then((res) => {
+      if (res.payload?.code === 200) {
+        setSuccessmsg(res.payload?.message);
+        setTimeout(()=>{
+          setSuccessmsg(null);
+        },1000)
+      } else {
+        setErrormsg(res.payload?.message);
+        setTimeout(()=>{
+          setErrormsg(null);
+        },1000)
+      }
+    });
   };
 
   useEffect(() => {
@@ -79,7 +112,23 @@ const Users = () => {
                 // onDelete={handleDeleteUser}
                 onNotify={handleSendNotification}
                 onBlock={handleblockuser}
+                onunBlock={handleunblockuser}
               />
+
+              {successmsg && (
+                <>
+                  <div class="alert alert-success" role="alert">
+                    {successmsg}
+                  </div>
+                </>
+              )}
+              {errormsg && (
+                <>
+                  <div class="alert alert-danger" role="alert">
+                    {errormsg}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
