@@ -126,7 +126,7 @@ const Banner = () => {
             setSuccessmessage(res.payload.message);
             setErrorvalid(null);
             setErrormessg(null);
-            
+              window.location.reload()
             // Reset form fields if necessary
             // setFormData({
             //   arTitle: "",
