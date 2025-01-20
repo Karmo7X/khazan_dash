@@ -50,36 +50,53 @@ const Orders = () => {
   };
 
   const handleSaveEditOrder = (order) => {
-    // Logic for editing the order
-   
-      let dispatchAction;
-    
-      if (order.isPaid === true) {
-        dispatchAction = UpdateOrdersPaidApi(order.id);
-      } 
-       if (order.isDelivered === true) {
-        dispatchAction = UpdateOrdersDeliveredApi(order.id);
-      }
-      if (order.orderState) {
-        const data = {
-          id: order.id,
-          state: order.orderState,
-        };
-        dispatchAction = UpdateOrdersStateApi(data);
-      } 
-      
-      else {
-        console.error("No valid data to update!");
-        return;
-      }
-    
-      dispatch(dispatchAction).then((res) => {
-        if (res.payload?.code === 200) {
-          window.location.reload();
+    if (!order) {
+      console.error("Order is undefined!");
+      return;
+    }
+  
+    // Array to store multiple dispatch actions
+    const dispatchActions = [];
+  
+    // Check conditions and add corresponding actions to the array
+    if (order.isPaid === true) {
+      dispatchActions.push(UpdateOrdersPaidApi(order.id));
+    }
+    if (order.isDelivered === true) {
+      dispatchActions.push(UpdateOrdersDeliveredApi(order.id));
+    }
+    if (order.orderState) {
+      const data = { id: order.id, state: order.orderState };
+      dispatchActions.push(UpdateOrdersStateApi(data));
+    }
+  
+    if (dispatchActions.length === 0) {
+      console.error("No valid data to update!");
+      return;
+    }
+  
+    // Dispatch all actions and handle their responses
+    Promise.all(dispatchActions.map(dispatch))
+      .then((responses) => {
+        let allSuccessful = true;
+        responses.forEach((res, index) => {
+          if (res.payload?.code !== 200) {
+            // console.error(`Action ${index + 1} failed:`, res.payload);
+            allSuccessful = false;
+          }
+        });
+  
+        if (allSuccessful) {
+          console.log("All updates successful");
+          
+           window.location.reload();
         }
+      })
+      .catch((error) => {
+        console.error("An error occurred while updating orders:", error);
       });
-   
   };
+  
 
   const handleDeleteOrder = (order) => {
     setorderData(orderData.filter((b) => b !== order));
