@@ -586,20 +586,22 @@
     "NumberofSales(PDF)": "Jumlah Penjualan (PDF)",
     "NumberofSales(Paper)": "Jumlah Penjualan (Kertas)",
     "form": {
-      "Title": "Judul",
-      "Description": "Deskripsi",
-      "Price PDF": "Harga PDF",
-      "Category": "Kategori",
-      "Availability PDF": "Ketersediaan (PDF)",
-      "Availability Paper": "Ketersediaan (Kertas)",
-      "Author": "Penulis",
-      "Price Paper": "Harga (Kertas)",
-      "Stock": "Stok",
-      "pdf": {
-        "file": "File PDF",
-        "view_or_download": "Lihat atau Unduh File"
-      }
+    "Title": "Judul",
+    "Description": "Deskripsi",
+    "Price PDF": "Harga (PDF)",
+    "Category": "Kategori",
+    "Availability PDF": "Ketersediaan (PDF)",
+    "Availability Paper": "Ketersediaan (Kertas)",
+    "Availability Audio": "Ketersediaan (Audio)",
+    "Author": "Penulis",
+    "Price Paper": "Harga (Kertas)",
+    "Stock": "Stok",
+    "pdf": {
+      "file": "File PDF",
+      "view_or_download": "Lihat atau Unduh File",
+      "pdf_lang": "Bahasa PDF"
     }
+  }
   },
   "orders": {
     "title": "Pesanan",

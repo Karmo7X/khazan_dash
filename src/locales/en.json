@@ -588,20 +588,22 @@
     "NumberofSales(PDF)": "Number of Sales (PDF)",
     "NumberofSales(Paper)": "Number of Sales (Paper)",
     "form": {
-      "Title": "Title",
-      "Description": "Description",
-      "Price PDF": "Price PDF",
-      "Category": "Category",
-      "Availability PDF": "Availability (PDF)",
-      "Availability Paper": "Availability (Paper)",
-      "Author": "Author",
-      "Price Paper": "Price (Paper)",
-      "Stock": "Stock",
-      "pdf": {
-        "file": "PDF File",
-        "view_or_download": "View or Download File"
-      }
+    "Title": "Title",
+    "Description": "Description",
+    "Price PDF": "Price (PDF)",
+    "Category": "Category",
+    "Availability PDF": "Availability (PDF)",
+    "Availability Paper": "Availability (Paper)",
+    "Availability Audio": "Availability (Audio)",
+    "Author": "Author",
+    "Price Paper": "Price (Paper)",
+    "Stock": "Stock",
+    "pdf": {
+      "file": "PDF File",
+      "view_or_download": "View or Download File",
+      "pdf_lang": "PDF Language"
     }
+  }
   },
   "orders": {
     "title": "Order",

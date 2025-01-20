@@ -626,7 +626,7 @@ const Updatebook = () => {
                   </select>
                 </div>
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-4">
                     <div className="form-group d-flex gap-3">
                       <input
                         class="form-check-input"
@@ -643,7 +643,7 @@ const Updatebook = () => {
                       </label>
                     </div>
                   </div>
-                  <div className="col-6">
+                  <div className="col-4">
                     <div className="form-group d-flex gap-3">
                       <input
                         class="form-check-input"
@@ -657,6 +657,23 @@ const Updatebook = () => {
                       />
                       <label className="mx-5 fw-bold">
                         {t("global.books.form.Availability Paper")}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="form-group d-flex gap-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="audio"
+                        value={formData.audio}
+                        checked={formData.audio}
+                        required
+                        placeholder={t("global.books.form.Availability Audio")}
+                        onChange={handleChange}
+                      />
+                      <label className="fw-bold mx-5">
+                        {t("global.books.form.Availability Audio")}
                       </label>
                     </div>
                   </div>

@@ -595,12 +595,14 @@
       "Category": "الفئة",
       "Availability PDF": "التوافر (PDF)",
       "Availability Paper": "التوافر (ورقي)",
+      "Availability Audio": "التوافر (صوتي)",
       "Author": "المؤلف",
       "Price Paper": "سعر (ورقي)",
       "Stock": "المخزون",
       "pdf": {
         "file": "ملف PDF",
-        "view_or_download": "عرض أو تنزيل الملف"
+        "view_or_download": "عرض أو تنزيل الملف",
+        "pdf_lang": "لغة PDF"
       }
     }
   },

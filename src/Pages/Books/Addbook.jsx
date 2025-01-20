@@ -39,11 +39,13 @@ const Addbook = () => {
     category: "",
     isAvailablePdf: false,
     isAvailablePaper: false,
+    
     author: "",
     pricePaper: "",
     stock: "",
+    pdfLang: "",
   });
-  
+  console.log(formData)
   const navigate = useNavigate();
   const [productimg, setproductimg] = useState(null);
   const [productpdf, setproductpdf] = useState(null);
@@ -143,18 +145,20 @@ const Addbook = () => {
     }
 
     // Price PDF Validation
-    if(value.isAvailablePdf){
+    if (value.isAvailablePdf) {
       if (!value.pricePdf) {
         error.pricePdf = t("global.validation.pricePdf.required");
       } else if (isNaN(value.pricePdf) || value.pricePdf <= 0) {
         error.pricePdf = t("global.validation.pricePdf.invalid");
       }
-   }
-    
+    }
 
     // Category Validation
     if (!value.category.trim()) {
       error.category = t("global.validation.category.required");
+    }
+    if (!value.pdfLang.trim()) {
+      error.pdfLang = t("global.validation.category.required");
     }
 
     // Availability PDF Validation
@@ -173,14 +177,13 @@ const Addbook = () => {
     }
 
     // Price Paper Validation
-    if(value.isAvailablePaper){
-       if (!value.pricePaper) {
-      error.pricePaper = t("global.validation.pricePaper.required");
-    } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
-      error.pricePaper = t("global.validation.pricePaper.invalid");
+    if (value.isAvailablePaper) {
+      if (!value.pricePaper) {
+        error.pricePaper = t("global.validation.pricePaper.required");
+      } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
+        error.pricePaper = t("global.validation.pricePaper.invalid");
+      }
     }
-    }
-   
 
     // Stock Validation
     if (!value.stock) {
@@ -335,7 +338,9 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="arDescription"
                             value={formData.arDescription}
@@ -368,7 +373,9 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="enDescription"
                             value={formData.enDescription}
@@ -401,7 +408,9 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="idDescription"
                             value={formData.idDescription}
@@ -434,7 +443,9 @@ const Addbook = () => {
                           <label className="fw-bold">
                             {t("global.books.form.Description")}
                           </label>
-                          <textarea rows={10} style={{resize:'none'}}
+                          <textarea
+                            rows={10}
+                            style={{ resize: "none" }}
                             className="form-control"
                             name="zhDescription"
                             value={formData.zhDescription}
@@ -448,7 +459,7 @@ const Addbook = () => {
                   </TabContext>
                 </Box>
                 {/* Additional Fields */}
-               
+
                 <div className="form-group">
                   <label className="fw-bold">
                     {t("global.books.form.Category")}
@@ -468,6 +479,27 @@ const Addbook = () => {
                         </option>
                       );
                     })}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="fw-bold">
+                    {t("global.books.form.pdf.pdf_lang")}
+                  </label>
+                  <select
+                    className="form-select"
+                    name="pdfLang"
+                    value={formData.pdfLang}
+                    required
+                    onChange={handleChange}
+                  >
+                    <option value="">
+                      {" "}
+                      {t("global.books.form.pdf.pdf_lang")}
+                    </option>
+                    <option value={"ar"}>{t("global.nav.languages.ar")}</option>
+                    <option value={"en"}>{t("global.nav.languages.en")}</option>
+                    <option value={"id"}>{t("global.nav.languages.id")}</option>
+                    <option value={"zh"}>{t("global.nav.languages.zh")}</option>
                   </select>
                 </div>
                 <div className="row">
@@ -516,12 +548,12 @@ const Addbook = () => {
                     name="pricePdf"
                     value={formData.pricePdf}
                     required
-                    disabled={formData.isAvailablePdf !== true ?true:false}
+                    disabled={formData.isAvailablePdf !== true ? true : false}
                     placeholder={t("global.books.form.Price PDF")}
                     onChange={handleChange}
                   />
                 </div>
-               
+
                 <div className="form-group">
                   <label className="fw-bold">
                     {t("global.books.form.Price Paper")}
@@ -531,13 +563,13 @@ const Addbook = () => {
                     className="form-control"
                     name="pricePaper"
                     value={formData.pricePaper}
-                    disabled={formData.isAvailablePaper !== true ?true:false}
+                    disabled={formData.isAvailablePaper !== true ? true : false}
                     required
                     placeholder={t("global.books.form.Price Paper")}
                     onChange={handleChange}
                   />
                 </div>
-              
+
                 <div className="form-group">
                   <label className="fw-bold">
                     {t("global.books.form.Author")}
@@ -646,7 +678,11 @@ const Addbook = () => {
                         {errorvalid?.isAvailablePaper && (
                           <p>{errorvalid.isAvailablePaper}</p>
                         )}
+                        {errorvalid?.audio && (
+                          <p>{errorvalid.audio}</p>
+                        )}
                         {errorvalid?.author && <p>{errorvalid.author}</p>}
+                        {errorvalid?.pdfLang && <p>{errorvalid.pdfLang}</p>}
                         {errorvalid?.pricePaper && (
                           <p>{errorvalid.pricePaper}</p>
                         )}
