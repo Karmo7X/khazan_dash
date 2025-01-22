@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { IoAlertCircle } from "react-icons/io5";
@@ -18,7 +18,7 @@ const Tables = ({
   onDelete,
   onNotify,
   onBlock,
-  onunBlock
+  onunBlock,
 }) => {
   const { t } = useTranslation();
   const [id, setid] = useState();
@@ -33,6 +33,7 @@ const Tables = ({
     const formattedDate = date.toISOString().split("T")[0];
     return formattedDate;
   }
+  
   // Define the columns for the DataGrid
   const gridColumns = [
     ...columns.map((col) => ({
@@ -124,30 +125,29 @@ const Tables = ({
         >
           {onEdit && (
             <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={() => onEdit(params.row)}
-            data-bs-toggle="modal"
-            data-bs-target="#edit_modal"
-          >
-            {t("global.table.edit")}
-          </Button>
+              variant="contained"
+              color="primary"
+              size="small"
+              onClick={() => onEdit(params.row)}
+              data-bs-toggle="modal"
+              data-bs-target="#edit_modal"
+            >
+              {t("global.table.edit")}
+            </Button>
           )}
-           {onNotify  && (
-          <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={() => onNotify && onNotify(params.row)}
-           data-bs-toggle="modal"
-            data-bs-target="#notify_modal"
-        >
-          {t("global.table.notify")}
-        </Button>
+          {onNotify && (
+            <Button
+              variant="contained"
+              color="secondary"
+              size="small"
+              onClick={() => onNotify && onNotify(params.row)}
+              data-bs-toggle="modal"
+              data-bs-target="#notify_modal"
+            >
+              {t("global.table.notify")}
+            </Button>
           )}
-         
-         
+
           {onDelete && (
             <Button
               variant="contained"
@@ -155,12 +155,12 @@ const Tables = ({
               size="small"
               data-bs-toggle="modal"
               data-bs-target="#delete"
-              onClick={setid(params.row?.id)}
+              onClick={()=>setid(params.row?.id)}
             >
               {t("global.table.delete")}
             </Button>
           )}
-          {onBlock  && (
+          {onBlock && (
             <Button
               variant="contained"
               color="error"
@@ -172,7 +172,7 @@ const Tables = ({
               {t("global.table.block")}
             </Button>
           )}
-           {onunBlock && (
+          {onunBlock && (
             <Button
               variant="contained"
               color="success"
@@ -221,9 +221,10 @@ const Tables = ({
                   <DataGrid
                     rows={data}
                     columns={gridColumns}
+                    disableSelectionOnClick
+                    disableRowSelectionOnClick // This disables row selection
                     pageSize={5}
                     rowsPerPageOptions={[5, 10, 25]}
-                    disableSelectionOnClick
                   />
                 </ThemeProvider>
               </div>

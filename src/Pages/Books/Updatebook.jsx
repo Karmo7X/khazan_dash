@@ -34,7 +34,7 @@ const Updatebook = () => {
   const [cates, setcates] = useState([]);
   const [authors, setauthors] = useState([]);
   const [formData, setFormData] = useState({
-    productId:id,
+    productId: id,
     arTitle: "",
     enTitle: "",
     idTitle: "",
@@ -60,7 +60,7 @@ const Updatebook = () => {
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
-  
+
   // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -199,13 +199,12 @@ const Updatebook = () => {
       } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
         error.pricePaper = t("global.validation.pricePaper.invalid");
       }
-    }
-
-    // Stock Validation
-    if (!value.stock) {
-      error.stock = t("global.validation.stock.required");
-    } else if (isNaN(value.stock) || value.stock < 0) {
-      error.stock = t("global.validation.stock.invalid");
+      // Stock Validation
+      if (!value.stock) {
+        error.stock = t("global.validation.stock.required");
+      } else if (isNaN(value.stock) || value.stock < 0) {
+        error.stock = t("global.validation.stock.invalid");
+      }
     }
 
     return error;
@@ -223,14 +222,12 @@ const Updatebook = () => {
   //     const pdfFile = new FormData();
 
   //     // Append image field
-  //     if (productimg) { 
+  //     if (productimg) {
   //       coverImage.append("coverimage", productimg);
   //       const data = {
   //         id: id,
   //         coverImage: coverImage,
   //       };
-       
-       
 
   //       dispatch(UpdateProductimgeApi(data)).then((res) => {
   //         if (res.payload?.code === 200) {
@@ -242,14 +239,12 @@ const Updatebook = () => {
   //     }
 
   //     // Append PDF field
-  //     if (productpdf) { 
+  //     if (productpdf) {
   //       pdfFile.append("pdfFile", productpdf);
   //       const data = {
   //         id: id,
   //         pdfFile:pdfFile ,
   //       };
-        
-        
 
   //       dispatch(UpdateProductpdfApi(data)).then((res) => {
   //         if (res.payload?.code === 200) {
@@ -306,35 +301,35 @@ const Updatebook = () => {
     const error_submit = validate(combinedFormData);
 
     if (Object.keys(error_submit).length === 0) {
-         // Handle image upload
-    if (productimg) {
-      const formDataToSend = new FormData();
-      formDataToSend.append("coverImage", productimg);
-      formDataToSend.append("id", id);
+      // Handle image upload
+      if (productimg) {
+        const formDataToSend = new FormData();
+        formDataToSend.append("coverImage", productimg);
+        formDataToSend.append("id", id);
 
-      dispatch(UpdateProductimgeApi(formDataToSend)).then((res) => {
-        if (res.payload?.code === 200) {
-          setSuccessmessage(res.payload?.message);
-        } else {
-          setErrormessg(res.payload?.message);
-        }
-      });
-    }
+        dispatch(UpdateProductimgeApi(formDataToSend)).then((res) => {
+          if (res.payload?.code === 200) {
+            setSuccessmessage(res.payload?.message);
+          } else {
+            setErrormessg(res.payload?.message);
+          }
+        });
+      }
 
-    // Handle PDF upload
-    if (productpdf) {
-      const formDataToSend = new FormData();
-      formDataToSend.append("pdfFile", productpdf);
-      formDataToSend.append("id", id);
+      // Handle PDF upload
+      if (productpdf) {
+        const formDataToSend = new FormData();
+        formDataToSend.append("pdfFile", productpdf);
+        formDataToSend.append("id", id);
 
-      dispatch(UpdateProductpdfApi(formDataToSend)).then((res) => {
-        if (res.payload?.code === 200) {
-          setSuccessmessage(res.payload?.message);
-        } else {
-          setErrormessg(res.payload?.message);
-        }
-      });
-    }
+        dispatch(UpdateProductpdfApi(formDataToSend)).then((res) => {
+          if (res.payload?.code === 200) {
+            setSuccessmessage(res.payload?.message);
+          } else {
+            setErrormessg(res.payload?.message);
+          }
+        });
+      }
       setErrorvalid(null);
       dispatch(UpdateProductApi(formData)).then((res) => {
         if (res.payload?.code === 200) {
@@ -626,7 +621,7 @@ const Updatebook = () => {
                   </select>
                 </div>
                 <div className="row">
-                <div className="col-6">
+                  <div className="col-6">
                     <div className="form-group d-flex gap-3">
                       <input
                         class="form-check-input"
@@ -810,46 +805,50 @@ const Updatebook = () => {
                   </div>
                 </form>
 
-                {/* {errorvalid && (
+                {errorvalid && (
                   <>
                     <div className="">
                       <div
                         class="alert alert-danger d-flex flex-wrap gap-2"
                         role="alert"
                       >
-                        {errorvalid?.arTitle && <p>{errorvalid.arTitle}</p>}
-                        {errorvalid?.enTitle && <p>{errorvalid.enTitle}</p>}
-                        {errorvalid?.idTitle && <p>{errorvalid.idTitle}</p>}
-                        {errorvalid?.zhTitle && <p>{errorvalid.zhTitle}</p>}
-                        {errorvalid?.arDescription && (
-                          <p>{errorvalid.arDescription}</p>
-                        )}
-                        {errorvalid?.enDescription && (
-                          <p>{errorvalid.enDescription}</p>
-                        )}
-                        {errorvalid?.idDescription && (
-                          <p>{errorvalid.idDescription}</p>
-                        )}
-                        {errorvalid?.zhDescription && (
-                          <p>{errorvalid.zhDescription}</p>
-                        )}
-                        {errorvalid?.pricePdf && <p>{errorvalid.pricePdf}</p>}
-                        {errorvalid?.category && <p>{errorvalid.category}</p>}
-                        {errorvalid?.isAvailablePdf && (
-                          <p>{errorvalid.isAvailablePdf}</p>
-                        )}
-                        {errorvalid?.isAvailablePaper && (
-                          <p>{errorvalid.isAvailablePaper}</p>
-                        )}
-                        {errorvalid?.author && <p>{errorvalid.author}</p>}
-                        {errorvalid?.pricePaper && (
-                          <p>{errorvalid.pricePaper}</p>
-                        )}
-                        {errorvalid?.stock && <p>{errorvalid.stock}</p>}
+                        <div style={{ whiteSpace: "pre-line" }}>
+                          {errorvalid?.arTitle && <p>{errorvalid.arTitle}</p>}
+                          {errorvalid?.enTitle && <p>{errorvalid.enTitle}</p>}
+                          {errorvalid?.idTitle && <p>{errorvalid.idTitle}</p>}
+                          {errorvalid?.zhTitle && <p>{errorvalid.zhTitle}</p>}
+                          {errorvalid?.arDescription && (
+                            <p>{errorvalid.arDescription}</p>
+                          )}
+                          {errorvalid?.enDescription && (
+                            <p>{errorvalid.enDescription}</p>
+                          )}
+                          {errorvalid?.idDescription && (
+                            <p>{errorvalid.idDescription}</p>
+                          )}
+                          {errorvalid?.zhDescription && (
+                            <p>{errorvalid.zhDescription}</p>
+                          )}
+                          {errorvalid?.pricePdf && <p>{errorvalid.pricePdf}</p>}
+                          {errorvalid?.category && <p>{errorvalid.category}</p>}
+                          {errorvalid?.isAvailablePdf && (
+                            <p>{errorvalid.isAvailablePdf}</p>
+                          )}
+                          {errorvalid?.isAvailablePaper && (
+                            <p>{errorvalid.isAvailablePaper}</p>
+                          )}
+                          {errorvalid?.audio && <p>{errorvalid.audio}</p>}
+                          {errorvalid?.author && <p>{errorvalid.author}</p>}
+                          {errorvalid?.pdfLang && <p>{errorvalid.pdfLang}</p>}
+                          {errorvalid?.pricePaper && (
+                            <p>{errorvalid.pricePaper}</p>
+                          )}
+                          {errorvalid?.stock && <p>{errorvalid.stock}</p>}
+                        </div>
                       </div>
                     </div>
                   </>
-                )} */}
+                )}
 
                 {successmessage && (
                   <>

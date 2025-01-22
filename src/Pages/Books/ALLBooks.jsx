@@ -13,6 +13,7 @@ const ALLBooks = () => {
   const dispatch = useDispatch();
   const navigate =useNavigate()
   const [books, setBooks] = useState([]);
+  const [error,setError]=useState(null)
   const booksColumns = [
     { label: t("global.admin.table.id"), field: "id" },
     { label: t("global.books.Title"), field: "title" },
@@ -36,8 +37,9 @@ const ALLBooks = () => {
     
     navigate(`/books/${book?.id}`)
   };
-
+  
   const handleDeleteBook = (book) => {
+      
     // setBooks(books.filter((b) => b !== book));
       dispatch(DeleteProductApi(book)).then((res)=>{
               if(res.payload?.code === 200 ){
@@ -45,8 +47,14 @@ const ALLBooks = () => {
                 dispatch(GetProductApi()).then((res) => {
                   if (res.payload?.code === 200) {
                     setBooks(res.payload?.data?.products);
+                    
                   }
                 });
+              }else{
+                setError(res.payload?.message);
+                setTimeout(() => {
+                  setError(null);
+                }, 2500);
               }
             })
   };
@@ -82,6 +90,14 @@ const ALLBooks = () => {
                 onEdit={handleEditBook}
                 onDelete={handleDeleteBook}
               />
+                 {error && (
+                  <>
+                    <div class="alert alert-danger" role="alert">
+                      {error}
+                    </div>
+                  </>
+                )}
+             
             </div>
           </div>
         </div>

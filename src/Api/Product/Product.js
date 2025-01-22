@@ -151,6 +151,7 @@ export const DeleteProductApi = createAsyncThunk(
       return res.data;
     } catch (err) {
       console.error(err.response.data);
+      return err.response.data
     }
   }
 );

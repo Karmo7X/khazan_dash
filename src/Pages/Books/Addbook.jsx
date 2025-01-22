@@ -52,7 +52,6 @@ const Addbook = () => {
   const [errorvalid, setErrorvalid] = useState();
   const [errormessg, setErrormessg] = useState(null);
   const [successmessage, setSuccessmessage] = useState();
-  console.log(errorvalid);
   // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -158,7 +157,7 @@ const Addbook = () => {
       error.category = t("global.validation.category.required");
     }
     if (!value.pdfLang.trim()) {
-      error.pdfLang = t("global.validation.category.required");
+      error.pdfLang = t("global.books.form.pdf.pdf_lang");
     }
 
     // Availability PDF Validation
@@ -183,13 +182,12 @@ const Addbook = () => {
       } else if (isNaN(value.pricePaper) || value.pricePaper <= 0) {
         error.pricePaper = t("global.validation.pricePaper.invalid");
       }
-    }
-
-    // Stock Validation
-    if (!value.stock) {
-      error.stock = t("global.validation.stock.required");
-    } else if (isNaN(value.stock) || value.stock < 0) {
-      error.stock = t("global.validation.stock.invalid");
+      // Stock Validation
+      if (!value.stock) {
+        error.stock = t("global.validation.stock.required");
+      } else if (isNaN(value.stock) || value.stock < 0) {
+        error.stock = t("global.validation.stock.invalid");
+      }
     }
 
     return error;
@@ -503,7 +501,7 @@ const Addbook = () => {
                   </select>
                 </div>
                 <div className="row">
-                <div className="col-4">
+                  <div className="col-4">
                     <div className="form-group d-flex gap-3">
                       <input
                         class="form-check-input"
@@ -554,7 +552,6 @@ const Addbook = () => {
                       </label>
                     </div>
                   </div>
-                  
                 </div>
                 <div className="form-group">
                   <label className="fw-bold">
@@ -619,7 +616,7 @@ const Addbook = () => {
                     className="form-control"
                     name="stock"
                     value={formData.stock}
-                    required
+                    disabled={formData.isAvailablePaper !== true ? true : false}
                     placeholder={t("global.books.form.Stock")}
                     onChange={handleChange}
                   />
@@ -672,39 +669,39 @@ const Addbook = () => {
                         class="alert alert-danger d-flex flex-wrap gap-2"
                         role="alert"
                       >
-                        {errorvalid?.arTitle && <p>{errorvalid.arTitle}</p>}
-                        {errorvalid?.enTitle && <p>{errorvalid.enTitle}</p>}
-                        {errorvalid?.idTitle && <p>{errorvalid.idTitle}</p>}
-                        {errorvalid?.zhTitle && <p>{errorvalid.zhTitle}</p>}
-                        {errorvalid?.arDescription && (
-                          <p>{errorvalid.arDescription}</p>
-                        )}
-                        {errorvalid?.enDescription && (
-                          <p>{errorvalid.enDescription}</p>
-                        )}
-                        {errorvalid?.idDescription && (
-                          <p>{errorvalid.idDescription}</p>
-                        )}
-                        {errorvalid?.zhDescription && (
-                          <p>{errorvalid.zhDescription}</p>
-                        )}
-                        {errorvalid?.pricePdf && <p>{errorvalid.pricePdf}</p>}
-                        {errorvalid?.category && <p>{errorvalid.category}</p>}
-                        {errorvalid?.isAvailablePdf && (
-                          <p>{errorvalid.isAvailablePdf}</p>
-                        )}
-                        {errorvalid?.isAvailablePaper && (
-                          <p>{errorvalid.isAvailablePaper}</p>
-                        )}
-                        {errorvalid?.audio && (
-                          <p>{errorvalid.audio}</p>
-                        )}
-                        {errorvalid?.author && <p>{errorvalid.author}</p>}
-                        {errorvalid?.pdfLang && <p>{errorvalid.pdfLang}</p>}
-                        {errorvalid?.pricePaper && (
-                          <p>{errorvalid.pricePaper}</p>
-                        )}
-                        {errorvalid?.stock && <p>{errorvalid.stock}</p>}
+                        <div style={{ whiteSpace: "pre-line" }}>
+                          {errorvalid?.arTitle && <p>{errorvalid.arTitle}</p>}
+                          {errorvalid?.enTitle && <p>{errorvalid.enTitle}</p>}
+                          {errorvalid?.idTitle && <p>{errorvalid.idTitle}</p>}
+                          {errorvalid?.zhTitle && <p>{errorvalid.zhTitle}</p>}
+                          {errorvalid?.arDescription && (
+                            <p>{errorvalid.arDescription}</p>
+                          )}
+                          {errorvalid?.enDescription && (
+                            <p>{errorvalid.enDescription}</p>
+                          )}
+                          {errorvalid?.idDescription && (
+                            <p>{errorvalid.idDescription}</p>
+                          )}
+                          {errorvalid?.zhDescription && (
+                            <p>{errorvalid.zhDescription}</p>
+                          )}
+                          {errorvalid?.pricePdf && <p>{errorvalid.pricePdf}</p>}
+                          {errorvalid?.category && <p>{errorvalid.category}</p>}
+                          {errorvalid?.isAvailablePdf && (
+                            <p>{errorvalid.isAvailablePdf}</p>
+                          )}
+                          {errorvalid?.isAvailablePaper && (
+                            <p>{errorvalid.isAvailablePaper}</p>
+                          )}
+                          {errorvalid?.audio && <p>{errorvalid.audio}</p>}
+                          {errorvalid?.author && <p>{errorvalid.author}</p>}
+                          {errorvalid?.pdfLang && <p>{errorvalid.pdfLang}</p>}
+                          {errorvalid?.pricePaper && (
+                            <p>{errorvalid.pricePaper}</p>
+                          )}
+                          {errorvalid?.stock && <p>{errorvalid.stock}</p>}
+                        </div>
                       </div>
                     </div>
                   </>
