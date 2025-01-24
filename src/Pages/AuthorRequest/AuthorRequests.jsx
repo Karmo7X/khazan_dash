@@ -18,7 +18,7 @@ const AuthorRequests = () => {
   const authorsColumns = [
     { label: t("global.authors.table.id"), field: "id" },
     { label: t("global.authors.table.name"), field: "name" },
-    { label: t("global.authors.table.bio"), field: "bio" },
+    // { label: t("global.authors.table.bio"), field: "bio" },
     { label: t("global.authors.table.phone"), field: "phone" },
     { label: t("global.authors.table.image"), field: "profileImg" },
     
