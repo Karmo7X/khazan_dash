@@ -188,6 +188,7 @@ const Tables = ({
       ),
     },
   ];
+  const isRtl = document.documentElement.getAttribute('dir') === 'rtl'; // Check if the direction is RTL
   const theme = createTheme({
     direction: document.documentElement.lang === "ar" ? "rtl" : "ltr",
   });
@@ -221,10 +222,12 @@ const Tables = ({
                   <DataGrid
                     rows={data}
                     columns={gridColumns}
+                   
                     disableSelectionOnClick
                     disableRowSelectionOnClick // This disables row selection
-                    pageSize={5}
-                    rowsPerPageOptions={[5, 10, 25]}
+                    pageSize={1000}
+                    rowsPerPageOptions={[10, 50, 100]}
+                    
                   />
                 </ThemeProvider>
               </div>

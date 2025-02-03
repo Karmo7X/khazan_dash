@@ -275,7 +275,7 @@ const Addbook = () => {
               <div class="row">
                 <Breadcrumb
                   page={` ${t("global.table.add")} ${t(
-                    "global.nav.menu.category.title"
+                    "global.nav.menu.books.title"
                   )}`}
                 />
               </div>
